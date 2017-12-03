@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Persistence
+namespace Persistence.ScaffoldedPostgres
 {
-    public partial class iwegytefContext : DbContext
+    public partial class PredictionsContext : DbContext
     {
         public virtual DbSet<Expert> Expert { get; set; }
         public virtual DbSet<Match> Match { get; set; }
@@ -16,22 +16,13 @@ namespace Persistence
         public virtual DbSet<Tour1> Tour1 { get; set; }
         public virtual DbSet<Tournament1> Tournament1 { get; set; }
 
-        // Unable to generate entity type for table 'dbo.__migrationhistory'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.tournament'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.tour'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.team'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.prediction'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.oldtour'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.match'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.expert'. Please see the warning messages.
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseNpgsql(@"Server=baasu.db.elephantsql.com;Port=5432;Database=iwegytef;User Id=iwegytef;Password=orcrmtcznzR5zWEQ0TwU6cIC1qjeobBO;");
-            }
+//             if (!optionsBuilder.IsConfigured)
+//             {
+// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                 optionsBuilder.UseNpgsql(@"Server=baasu.db.elephantsql.com;Port=5432;Database=iwegytef;User Id=iwegytef;Password=orcrmtcznzR5zWEQ0TwU6cIC1qjeobBO;");
+//             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

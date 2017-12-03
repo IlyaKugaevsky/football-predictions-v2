@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Predictions.Persistence;
 
 namespace Predictions.WebApi.Controllers
 {
@@ -13,6 +14,8 @@ namespace Predictions.WebApi.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            var ctx = new PredictionsContext();
+            var test = ctx.Expert.First();
             return new string[] { "value1", "value2" };
         }
 

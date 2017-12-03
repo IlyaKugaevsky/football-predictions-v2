@@ -27,11 +27,17 @@ namespace Predictions.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, 
+            IHostingEnvironment env, 
+            ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                loggerFactory
+                    .AddConsole(LogLevel.Debug)  // This will output to the console/terminal
+                    .AddDebug(LogLevel.Debug);   // This will output to Visual Studio Output window
             }
 
             app.UseMvc();

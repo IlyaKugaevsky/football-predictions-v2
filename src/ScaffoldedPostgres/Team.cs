@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Persistence {
-    public partial class Team {
-        public Team () {
+namespace Persistence
+{
+    public partial class Team
+    {
+        public Team ()
+        {
             MatchAwayteam = new HashSet<Match> ();
             MatchHometeam = new HashSet<Match> ();
         }

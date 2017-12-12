@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Persistence {
-    public partial class Prediction1 {
+namespace Persistence
+{
+    public partial class Prediction1
+    {
         public int Predictionid { get; set; }
         public string Value { get; set; }
         public bool Outcome { get; set; }

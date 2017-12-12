@@ -1,12 +1,14 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Predictions.Persistence.Entities;
 
-namespace Predictions.Persistence {
-    public class PredictionsContext : DbContext {
+namespace Predictions.Persistence
+{
+    public class PredictionsContext : DbContext
+    {
 
         public PredictionsContext (DbContextOptions<PredictionsContext> options) : base (options) { }
 
@@ -21,12 +23,14 @@ namespace Predictions.Persistence {
         public virtual DbSet<OldTour> OldTours { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
 
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)         {
+        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)        
+        {
             optionsBuilder
                 .UseLoggerFactory (MyLoggerFactory);
         }
 
-        protected override void OnModelCreating (ModelBuilder modelBuilder) {
+        protected override void OnModelCreating (ModelBuilder modelBuilder)
+        {
             modelBuilder.RemovePluralizingTableNameConvention ();
         }
     }

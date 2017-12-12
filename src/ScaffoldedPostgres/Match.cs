@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Persistence {
-    public partial class Match {
-        public Match () {
+namespace Persistence
+{
+    public partial class Match
+    {
+        public Match ()
+        {
             Prediction1 = new HashSet<Prediction1> ();
         }
 

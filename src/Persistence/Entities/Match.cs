@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Predictions.Persistence.Entities {
-    public class Match {
+namespace Predictions.Persistence.Entities
+{
+    public class Match
+    {
         public int MatchId { get; set; }
         public string Title { get; set; }
         public string Score { get; set; } = string.Empty;
 
         //[DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy | HH:mm}")]
+
         [Column (TypeName = "DateTime2")]
         public DateTime Date { get; set; }
 
@@ -29,7 +32,8 @@ namespace Predictions.Persistence.Entities {
 
         public Match () { }
 
-        public Match (DateTime date, Team homeTeam, Team awayTeam, Tour tour) {
+        public Match (DateTime date, Team homeTeam, Team awayTeam, Tour tour)
+        {
             if (homeTeam == null)
                 throw new ArgumentNullException ("HomeTeam");
 
@@ -43,7 +47,8 @@ namespace Predictions.Persistence.Entities {
             Score = string.Empty;
         }
 
-        public Match (DateTime date, Team homeTeam, Team awayTeam, int tourId) {
+        public Match (DateTime date, Team homeTeam, Team awayTeam, int tourId)
+        {
             if (homeTeam == null)
                 throw new ArgumentNullException ("HomeTeam");
 
@@ -57,7 +62,8 @@ namespace Predictions.Persistence.Entities {
             Score = string.Empty;
         }
 
-        public Match (DateTime date, int homeTeamId, int awayTeamId, int tourId) {
+        public Match (DateTime date, int homeTeamId, int awayTeamId, int tourId)
+        {
             Date = date;
             HomeTeamId = homeTeamId;
             AwayTeamId = awayTeamId;
@@ -74,11 +80,13 @@ namespace Predictions.Persistence.Entities {
         //    Score = String.Empty;
         //}
 
-        public FootballScore GetFootballScore () {
+        public FootballScore GetFootballScore ()
+        {
             return new FootballScore (Score);
         }
 
-        public int GetPredictionsSum () {
+        public int GetPredictionsSum ()
+        {
             if (Predictions == null) throw new NullReferenceException ("Predictions");
             return Predictions.Select (p => p.Sum).Sum ();
         }

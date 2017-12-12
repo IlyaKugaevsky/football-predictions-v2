@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Persistence {
-    public partial class SpatialRefSys {
+namespace Persistence
+{
+    public partial class SpatialRefSys
+    {
         public int Srid { get; set; }
         public string AuthName { get; set; }
         public int? AuthSrid { get; set; }

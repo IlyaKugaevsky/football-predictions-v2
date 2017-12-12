@@ -1,8 +1,11 @@
-namespace Predictions.Persistence.Entities {
-    public class Prediction {
+namespace Predictions.Persistence.Entities
+{
+    public class Prediction
+    {
         public Prediction () { }
 
-        public Prediction (int expertId, int matchId, string value) {
+        public Prediction (int expertId, int matchId, string value)
+        {
             ExpertId = expertId;
             MatchId = matchId;
             Value = value;

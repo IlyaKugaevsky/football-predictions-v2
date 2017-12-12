@@ -2,8 +2,10 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Persistence.ScaffoldedPostgres {
-    public partial class PredictionsContext : DbContext {
+namespace Persistence.ScaffoldedPostgres
+{
+    public partial class PredictionsContext : DbContext
+    {
         public virtual DbSet<Expert> Expert { get; set; }
         public virtual DbSet<Match> Match { get; set; }
         public virtual DbSet<Migrationhistory1> Migrationhistory1 { get; set; }
@@ -14,7 +16,8 @@ namespace Persistence.ScaffoldedPostgres {
         public virtual DbSet<Tour1> Tour1 { get; set; }
         public virtual DbSet<Tournament1> Tournament1 { get; set; }
 
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
+        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
+        {
             //             if (!optionsBuilder.IsConfigured)
             //             {
             // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
@@ -22,7 +25,8 @@ namespace Persistence.ScaffoldedPostgres {
             //             }
         }
 
-        protected override void OnModelCreating (ModelBuilder modelBuilder) {
+        protected override void OnModelCreating (ModelBuilder modelBuilder)
+        {
             modelBuilder.HasPostgresExtension ("btree_gin")
                 .HasPostgresExtension ("btree_gist")
                 .HasPostgresExtension ("citext")
@@ -47,7 +51,8 @@ namespace Persistence.ScaffoldedPostgres {
                 .HasPostgresExtension ("uuid-ossp")
                 .HasPostgresExtension ("xml2");
 
-            modelBuilder.Entity<Expert> (entity => {
+            modelBuilder.Entity<Expert> (entity =>
+            {
                 entity.ToTable ("expert");
 
                 entity.Property (e => e.Expertid)
@@ -73,7 +78,8 @@ namespace Persistence.ScaffoldedPostgres {
                     .HasDefaultValueSql ("0");
             });
 
-            modelBuilder.Entity<Match> (entity => {
+            modelBuilder.Entity<Match> (entity =>
+            {
                 entity.ToTable ("match");
 
                 entity.HasIndex (e => e.Awayteamid)
@@ -119,7 +125,8 @@ namespace Persistence.ScaffoldedPostgres {
                     .HasConstraintName ("fk_dbo.match_dbo.newtour_newtourid");
             });
 
-            modelBuilder.Entity<Migrationhistory1> (entity => {
+            modelBuilder.Entity<Migrationhistory1> (entity =>
+            {
                 entity.HasKey (e => new { e.Migrationid, e.Contextkey });
 
                 entity.ToTable ("__migrationhistory");
@@ -137,7 +144,8 @@ namespace Persistence.ScaffoldedPostgres {
                     .HasColumnName ("productversion");
             });
 
-            modelBuilder.Entity<Oldtour> (entity => {
+            modelBuilder.Entity<Oldtour> (entity =>
+            {
                 entity.ToTable ("oldtour");
 
                 entity.Property (e => e.Oldtourid)
@@ -153,7 +161,8 @@ namespace Persistence.ScaffoldedPostgres {
                 entity.Property (e => e.Startdate).HasColumnName ("startdate");
             });
 
-            modelBuilder.Entity<Prediction1> (entity => {
+            modelBuilder.Entity<Prediction1> (entity =>
+            {
                 entity.HasKey (e => e.Predictionid);
 
                 entity.ToTable ("prediction");
@@ -197,7 +206,8 @@ namespace Persistence.ScaffoldedPostgres {
                     .HasConstraintName ("fk_dbo.prediction_dbo.match_matchid");
             });
 
-            modelBuilder.Entity<SpatialRefSys> (entity => {
+            modelBuilder.Entity<SpatialRefSys> (entity =>
+            {
                 entity.HasKey (e => e.Srid);
 
                 entity.ToTable ("spatial_ref_sys");
@@ -215,7 +225,8 @@ namespace Persistence.ScaffoldedPostgres {
                 entity.Property (e => e.Srtext).HasColumnName ("srtext");
             });
 
-            modelBuilder.Entity<Team> (entity => {
+            modelBuilder.Entity<Team> (entity =>
+            {
                 entity.ToTable ("team");
 
                 entity.Property (e => e.Teamid)
@@ -225,7 +236,8 @@ namespace Persistence.ScaffoldedPostgres {
                 entity.Property (e => e.Title).HasColumnName ("title");
             });
 
-            modelBuilder.Entity<Tour1> (entity => {
+            modelBuilder.Entity<Tour1> (entity =>
+            {
                 entity.HasKey (e => e.Tourid);
 
                 entity.ToTable ("tour");
@@ -254,7 +266,8 @@ namespace Persistence.ScaffoldedPostgres {
                     .HasConstraintName ("fk_dbo.newtour_dbo.tournament_tournamentid");
             });
 
-            modelBuilder.Entity<Tournament1> (entity => {
+            modelBuilder.Entity<Tournament1> (entity =>
+            {
                 entity.HasKey (e => e.Tournamentid);
 
                 entity.ToTable ("tournament");

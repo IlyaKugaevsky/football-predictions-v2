@@ -6,25 +6,33 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Predictions.Persistence.Entities {
-    public class FootballScore {
+namespace Predictions.Persistence.Entities
+{
+    public class FootballScore
+    {
         private readonly string _score;
 
-        public FootballScore () {
+        public FootballScore ()
+        {
             _score = string.Empty;
         }
 
-        public FootballScore (string input) {
+        public FootballScore (string input)
+        {
             var rgx = new Regex (FootballScore.Pattern);
 
-            if (rgx.IsMatch (input)) {
+            if (rgx.IsMatch (input))
+            {
                 _score = input;
-            } else {
+            }
+            else
+            {
                 throw new ArgumentException ("Invalide score.");
             }
         }
 
-        public override string ToString () {
+        public override string ToString ()
+        {
             return _score;
         }
 

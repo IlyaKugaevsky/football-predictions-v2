@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Predictions.Persistence.Entities {
-    public class Expert {
+namespace Predictions.Persistence.Entities
+{
+    public class Expert
+    {
         public int ExpertId { get; set; }
         public string Nickname { get; set; }
 
@@ -14,7 +16,8 @@ namespace Predictions.Persistence.Entities {
 
         public virtual List<Prediction> Predictions { get; set; }
 
-        public int GetPredictionsSum () {
+        public int GetPredictionsSum ()
+        {
             if (Predictions == null) throw new NullReferenceException (Nickname + " predictions");
             return Predictions.Select (p => p.Sum).Sum ();
         }

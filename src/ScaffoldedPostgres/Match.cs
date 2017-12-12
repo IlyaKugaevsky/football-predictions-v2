@@ -1,13 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace Persistence
-{
-    public partial class Match
-    {
-        public Match()
-        {
-            Prediction1 = new HashSet<Prediction1>();
+namespace Persistence {
+    public partial class Match {
+        public Match () {
+            Prediction1 = new HashSet<Prediction1> ();
         }
 
         public int Matchid { get; set; }

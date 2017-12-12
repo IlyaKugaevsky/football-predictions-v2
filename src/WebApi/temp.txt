@@ -1,3 +1,0 @@
-
-sudo dotnet ef --project ../Persistence --startup-project . dbcontext scaffold "Server=baasu.db.elephantsql.com;Port=5432;Database=iwegytef;User Id=iwegytef;Password=orcrmtcznzR5zWEQ0TwU6cIC1qjeobBO;" Npgsql.EntityFrameworkCore.PostgreSQL
-

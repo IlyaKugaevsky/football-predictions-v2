@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace Persistence
-{
-    public partial class Oldtour
-    {
+namespace Persistence {
+    public partial class Oldtour {
         public int Oldtourid { get; set; }
         public int Oldtournumber { get; set; }
         public bool Isclosed { get; set; }

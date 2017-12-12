@@ -1,13 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace Persistence
-{
-    public partial class Tour1
-    {
-        public Tour1()
-        {
-            Match = new HashSet<Match>();
+namespace Persistence {
+    public partial class Tour1 {
+        public Tour1 () {
+            Match = new HashSet<Match> ();
         }
 
         public int Tourid { get; set; }

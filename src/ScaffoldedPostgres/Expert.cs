@@ -1,13 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace Persistence
-{
-    public partial class Expert
-    {
-        public Expert()
-        {
-            Prediction1 = new HashSet<Prediction1>();
+namespace Persistence {
+    public partial class Expert {
+        public Expert () {
+            Prediction1 = new HashSet<Prediction1> ();
         }
 
         public int Expertid { get; set; }

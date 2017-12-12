@@ -1,27 +1,25 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Predictions.Persistence.Entities
-{
-    public class Match
-    {
+namespace Predictions.Persistence.Entities {
+    public class Match {
         public int MatchId { get; set; }
         public string Title { get; set; }
         public string Score { get; set; } = string.Empty;
 
         //[DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy | HH:mm}")]
-        [Column(TypeName = "DateTime2")]
+        [Column (TypeName = "DateTime2")]
         public DateTime Date { get; set; }
 
         public int HomeTeamId { get; set; }
         public int AwayTeamId { get; set; }
 
-        [ForeignKey("HomeTeamId")]
+        [ForeignKey ("HomeTeamId")]
         public Team HomeTeam { get; set; }
 
-        [ForeignKey("AwayTeamId")]
+        [ForeignKey ("AwayTeamId")]
         public Team AwayTeam { get; set; }
 
         public int TourId { get; set; }
@@ -29,16 +27,14 @@ namespace Predictions.Persistence.Entities
 
         public virtual List<Prediction> Predictions { get; set; }
 
-        public Match()
-        { }
+        public Match () { }
 
-        public Match(DateTime date, Team homeTeam, Team awayTeam, Tour tour)
-        {
+        public Match (DateTime date, Team homeTeam, Team awayTeam, Tour tour) {
             if (homeTeam == null)
-                throw new ArgumentNullException("HomeTeam");
+                throw new ArgumentNullException ("HomeTeam");
 
             if (awayTeam == null)
-                throw new ArgumentNullException("AwayTeam");
+                throw new ArgumentNullException ("AwayTeam");
 
             Date = date;
             HomeTeam = homeTeam;
@@ -47,13 +43,12 @@ namespace Predictions.Persistence.Entities
             Score = string.Empty;
         }
 
-        public Match(DateTime date, Team homeTeam, Team awayTeam, int tourId)
-        {
+        public Match (DateTime date, Team homeTeam, Team awayTeam, int tourId) {
             if (homeTeam == null)
-                throw new ArgumentNullException("HomeTeam");
+                throw new ArgumentNullException ("HomeTeam");
 
             if (awayTeam == null)
-                throw new ArgumentNullException("AwayTeam");
+                throw new ArgumentNullException ("AwayTeam");
 
             Date = date;
             HomeTeam = homeTeam;
@@ -62,8 +57,7 @@ namespace Predictions.Persistence.Entities
             Score = string.Empty;
         }
 
-        public Match(DateTime date, int homeTeamId, int awayTeamId, int tourId)
-        {
+        public Match (DateTime date, int homeTeamId, int awayTeamId, int tourId) {
             Date = date;
             HomeTeamId = homeTeamId;
             AwayTeamId = awayTeamId;
@@ -80,15 +74,13 @@ namespace Predictions.Persistence.Entities
         //    Score = String.Empty;
         //}
 
-        public FootballScore GetFootballScore()
-        {
-            return new FootballScore(Score);
+        public FootballScore GetFootballScore () {
+            return new FootballScore (Score);
         }
 
-        public int GetPredictionsSum()
-        {
-            if (Predictions == null) throw new NullReferenceException("Predictions");
-            return Predictions.Select(p => p.Sum).Sum();
+        public int GetPredictionsSum () {
+            if (Predictions == null) throw new NullReferenceException ("Predictions");
+            return Predictions.Select (p => p.Sum).Sum ();
         }
     }
 }

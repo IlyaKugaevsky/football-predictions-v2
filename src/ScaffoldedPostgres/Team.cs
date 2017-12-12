@@ -1,14 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace Persistence
-{
-    public partial class Team
-    {
-        public Team()
-        {
-            MatchAwayteam = new HashSet<Match>();
-            MatchHometeam = new HashSet<Match>();
+namespace Persistence {
+    public partial class Team {
+        public Team () {
+            MatchAwayteam = new HashSet<Match> ();
+            MatchHometeam = new HashSet<Match> ();
         }
 
         public int Teamid { get; set; }

@@ -5,9 +5,9 @@ namespace Persistence
 {
     public partial class Match
     {
-        public Match ()
+        public Match()
         {
-            Prediction1 = new HashSet<Prediction1> ();
+            Prediction1 = new HashSet<Prediction1>();
         }
 
         public int Matchid { get; set; }

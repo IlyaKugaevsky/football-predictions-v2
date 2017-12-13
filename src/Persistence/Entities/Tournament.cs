@@ -11,14 +11,14 @@ namespace Predictions.Persistence.Entities
 
         public string Title { get; set; }
 
-        [DisplayFormat (ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
 
-        [Column (TypeName = "DateTime2")]
+        [Column(TypeName = "DateTime2")]
         public DateTime StartDate { get; set; }
 
-        [DisplayFormat (ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
 
-        [Column (TypeName = "DateTime2")]
+        [Column(TypeName = "DateTime2")]
         public DateTime EndDate { get; set; }
 
         //public virtual List<Tour> Tours { get; set; }

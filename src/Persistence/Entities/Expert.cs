@@ -16,10 +16,10 @@ namespace Predictions.Persistence.Entities
 
         public virtual List<Prediction> Predictions { get; set; }
 
-        public int GetPredictionsSum ()
+        public int GetPredictionsSum()
         {
-            if (Predictions == null) throw new NullReferenceException (Nickname + " predictions");
-            return Predictions.Select (p => p.Sum).Sum ();
+            if (Predictions == null) throw new NullReferenceException(Nickname + " predictions");
+            return Predictions.Select(p => p.Sum).Sum();
         }
     }
 }

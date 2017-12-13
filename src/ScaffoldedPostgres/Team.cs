@@ -5,10 +5,10 @@ namespace Persistence
 {
     public partial class Team
     {
-        public Team ()
+        public Team()
         {
-            MatchAwayteam = new HashSet<Match> ();
-            MatchHometeam = new HashSet<Match> ();
+            MatchAwayteam = new HashSet<Match>();
+            MatchHometeam = new HashSet<Match>();
         }
 
         public int Teamid { get; set; }

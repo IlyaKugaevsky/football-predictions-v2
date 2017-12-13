@@ -5,9 +5,9 @@ namespace Persistence
 {
     public partial class Tournament1
     {
-        public Tournament1 ()
+        public Tournament1()
         {
-            Tour1 = new HashSet<Tour1> ();
+            Tour1 = new HashSet<Tour1>();
         }
 
         public int Tournamentid { get; set; }

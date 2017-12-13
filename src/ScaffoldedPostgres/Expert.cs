@@ -5,9 +5,9 @@ namespace Persistence
 {
     public partial class Expert
     {
-        public Expert ()
+        public Expert()
         {
-            Prediction1 = new HashSet<Prediction1> ();
+            Prediction1 = new HashSet<Prediction1>();
         }
 
         public int Expertid { get; set; }

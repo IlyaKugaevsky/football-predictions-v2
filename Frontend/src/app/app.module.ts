@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-
+import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from './app.component';
+import { TournamentsModule } from './tournaments/tournaments.module';
 
 
 @NgModule({
@@ -10,7 +12,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule,
+    AppRoutingModule,
+    TournamentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 {
-  "name": "predictions-frontend",
+  "name": "frontend",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -20,7 +20,9 @@
     "@angular/http": "^5.0.0",
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
+    "@angular/platform-server": "^5.1.1",
     "@angular/router": "^5.0.0",
+    "@nguniversal/express-engine": "^5.0.0-beta.5",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

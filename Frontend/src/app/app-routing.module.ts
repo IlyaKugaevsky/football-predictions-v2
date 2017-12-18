@@ -1,10 +1,10 @@
 import { NgModule }      from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TournamentScheduleComponent } from "./tournaments/tournament-schedule.component";
+import { HomePageComponent } from "./home/home-page.component";
 
 const routes: Routes = [
-  // { path: "tournaments", component: TournamentScheduleComponent }
+  { path: "", component: HomePageComponent }
 ];
 
 @NgModule({

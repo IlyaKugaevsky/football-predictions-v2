@@ -3,10 +3,11 @@ import { CommonModule } from "@angular/common";
 
 import { TournamentsRoutingModule } from "./tournaments-routing.module";
 import { TournamentScheduleComponent } from "./tournament-schedule.component";
+import { TournamentService } from "./tournament.service"
 
 @NgModule({
   declarations: [TournamentScheduleComponent],
   imports: [CommonModule, TournamentsRoutingModule],
-  providers: []
+  providers: [TournamentService]
 })
 export class TournamentsModule {}

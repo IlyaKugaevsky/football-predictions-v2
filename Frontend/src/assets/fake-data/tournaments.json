@@ -1,0 +1,23 @@
+[
+  {
+    "tournamentId": 1,
+    "title": "Лига чемпионов 2016-2017",
+    "startDate": "0001-01-01T00:00:00",
+    "endDate": "0001-01-01T00:00:00",
+    "newTours": null
+  },
+  {
+    "tournamentId": 3,
+    "title": "Кубок конфедераций 2017",
+    "startDate": "0001-01-01T00:00:00",
+    "endDate": "0001-01-01T00:00:00",
+    "newTours": null
+  },
+  {
+    "tournamentId": 4,
+    "title": "Лига чемпионов 2017-2018",
+    "startDate": "2017-09-12T21:45:00",
+    "endDate": "2018-05-27T00:00:00",
+    "newTours": null
+  }
+]

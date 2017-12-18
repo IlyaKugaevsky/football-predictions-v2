@@ -9,18 +9,9 @@ import { HomePageComponent } from "./home/home-page.component";
 import { HeaderComponent } from "./shared/header.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    HeaderComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    TournamentsModule
-  ],
+  declarations: [AppComponent, HomePageComponent, HeaderComponent],
+  imports: [BrowserModule, RouterModule, AppRoutingModule, TournamentsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -3,5 +3,5 @@
   "angularCompilerOptions": {
       "entryModule": "./app/browser.app.module#BrowserAppModule"
   },
-  "exclude": ["test.ts", "**/*.spec.ts"]
+  "exclude": ["test.ts", "**/*.spec.ts", "assets/fake-data"]
 }

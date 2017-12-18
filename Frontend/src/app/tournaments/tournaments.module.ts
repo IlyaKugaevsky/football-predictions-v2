@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HttpClientModule }   from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
 
 import { TournamentsRoutingModule } from "./tournaments-routing.module";
 import { TournamentScheduleComponent } from "./tournament-schedule.component";
-import { TournamentService } from "./tournament.service"
+import { TournamentService } from "./tournament.service";
 
 @NgModule({
   declarations: [TournamentScheduleComponent],

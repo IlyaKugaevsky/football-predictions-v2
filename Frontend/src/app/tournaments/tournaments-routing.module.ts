@@ -4,7 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { TournamentScheduleComponent } from "./tournament-schedule.component";
 
 const routes: Routes = [
-  { path: "tournaments", component: TournamentScheduleComponent }
+  { path: "tournaments/latest/schedule", component: TournamentScheduleComponent }
 ];
 
 @NgModule({

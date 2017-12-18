@@ -1,5 +1,6 @@
-<h3>Здесь будет расписание турнира</h3>
-<button (click)="getTournaments()">Fetch tournaments!</button>
-<li *ngFor="let tournament of tournaments">
-  {{tournament}}
-</li>
+<h3>{{tournament.title}}</h3>
+
+<div *ngFor="let tour of tours" style="border: 1px solid black; margin-bottom: 10px;">
+  <li>{{tour.startDate}} - {{tour.endDate}}</li>
+  <li>{{tour.tourNumber}}</li>
+</div>

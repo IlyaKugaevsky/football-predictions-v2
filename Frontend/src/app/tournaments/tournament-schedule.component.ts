@@ -12,6 +12,6 @@ export class TournamentScheduleComponent {
   tournaments: String[] = ["tournament", "LUL", "kek"];
 
   getTournaments(): void {
-    this.tournaments = this.tournamentService.getData();
+    this.tournaments = this.tournamentService.getRealData();
   };
 }

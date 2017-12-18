@@ -40,7 +40,7 @@ namespace Predictions.WebApi
             services.AddMediatR(Assembly.Load("ReadModel")); 
 
             var connectionString =
-                Configuration.GetSection("DbConnections:Predictions:ConnectionString").Value;
+                Configuration.GetSection("DbConnections:Predictions:Somee:ConnectionString").Value;
             services.AddDbContext<PredictionsContext>(options =>
                 options.UseSqlServer(connectionString));
         }

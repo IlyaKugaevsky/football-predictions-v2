@@ -1,4 +1,4 @@
-namespace Predictions.Persistence.Entities
+namespace Predictions.Domain.Models
 {
     public class Team
     {

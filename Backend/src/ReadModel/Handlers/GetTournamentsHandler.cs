@@ -4,12 +4,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-// using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Predictions.Persistence;
-using Predictions.Persistence.Entities;
 using Predictions.ReadModel.Queries;
+using Predictions.Domain.Models;
 
 namespace Predictions.ReadModel.Handlers
 {

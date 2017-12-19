@@ -1,4 +1,6 @@
-namespace Predictions.Persistence.Entities
+using Predictions.Domain.Models;
+
+namespace Predictions.Domain.Models
 {
     public class Prediction
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Predictions.Persistence.Entities
+namespace Predictions.Domain.Models
 {
     public class Expert
     {

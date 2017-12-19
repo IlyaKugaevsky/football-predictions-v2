@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Predictions.Persistence.Entities
+namespace Predictions.Domain.Models
 {
     public class FootballScore
     {

@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Metadata;
 using MediatR;
 using Predictions.Persistence;
-using Predictions.Persistence.Entities;
 using Predictions.ReadModel.Queries;
 using Predictions.Persistence.EntityFrameworkExtensions;
 using Predictions.Persistence.FetchExtensions;
+using Predictions.Domain.Models;
 
 namespace Predictions.WebApi.Controllers
 {

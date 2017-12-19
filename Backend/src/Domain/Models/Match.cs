@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Predictions.Persistence.Entities
+namespace Predictions.Domain.Models
 {
     public class Match
     {

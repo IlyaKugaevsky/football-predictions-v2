@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Predictions.Persistence.Entities
+namespace Predictions.Domain.Models
 {
     public class Tour
     {

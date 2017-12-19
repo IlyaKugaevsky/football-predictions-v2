@@ -4,7 +4,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Predictions.Persistence;
-using Predictions.Persistence.Entities;
+// using Predictions.Persistence.Entities;
+using Predictions.Domain.Models;
 
 namespace Predictions.Persistence.FetchExtensions
 {

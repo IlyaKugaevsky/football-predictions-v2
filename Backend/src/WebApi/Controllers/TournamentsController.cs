@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Metadata;
 using MediatR;
 using Predictions.Persistence;
 using Predictions.Persistence.Entities;
 using Predictions.ReadModel.Queries;
+using Predictions.Persistence.EntityFrameworkExtensions;
+using Predictions.Persistence.FetchExtensions;
 
 namespace Predictions.WebApi.Controllers
 {
@@ -37,9 +40,9 @@ namespace Predictions.WebApi.Controllers
         // GET api/tournaments/latest/schedule
 
         [HttpGet("latest/schedule")]
-        public async Task<Tournament> GetLatestTournamentSchedule()
+        public Tournament GetLatestTournamentSchedule()
         {
-            return await _context.Tournaments.Include(t => t.NewTours).LastAsync();
+            return _context.Tournaments.WithScheduleInfo().OrderByDescending(t => t.StartDate).First();
         }
     }
 }

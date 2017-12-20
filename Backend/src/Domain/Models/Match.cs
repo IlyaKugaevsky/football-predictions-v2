@@ -11,18 +11,12 @@ namespace Predictions.Domain.Models
         public string Title { get; set; }
         public string Score { get; set; } = string.Empty;
 
-        //[DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy | HH:mm}")]
-
-        [Column(TypeName = "DateTime2")]
         public DateTime Date { get; set; }
 
         public int HomeTeamId { get; set; }
-        public int AwayTeamId { get; set; }
-
-        [ForeignKey("HomeTeamId")]
         public Team HomeTeam { get; set; }
 
-        [ForeignKey("AwayTeamId")]
+        public int AwayTeamId { get; set; }
         public Team AwayTeam { get; set; }
 
         public int TourId { get; set; }
@@ -70,15 +64,6 @@ namespace Predictions.Domain.Models
             TourId = tourId;
             Score = string.Empty;
         }
-
-        //public Match(MatchInfo matchInfo)
-        //{
-        //    Date = matchInfo.Date;
-        //    HomeTeamId = matchInfo.;
-        //    AwayTeamId = awayTeamId;
-        //    TourId = tourId;
-        //    Score = String.Empty;
-        //}
 
         public FootballScore GetFootballScore()
         {

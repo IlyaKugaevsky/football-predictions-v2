@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
-using Predictions.Persistence.Entities;
 using Predictions.Persistence.Configurations;
 using Predictions.Domain.Models;
 
@@ -42,6 +41,8 @@ namespace Predictions.Persistence
             modelBuilder.RemovePluralizingTableNameConvention();
 
             modelBuilder.ApplyConfiguration(new TournamentEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new MatchEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new TourEntityConfiguration());
         }
 
         public void BeginTransaction()

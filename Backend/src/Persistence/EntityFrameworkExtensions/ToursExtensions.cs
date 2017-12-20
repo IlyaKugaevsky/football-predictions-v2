@@ -1,6 +1,5 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Predictions.Persistence.Entities;
 
 namespace Predictions.Persistence.EntityFrameworkExtensions
 {

@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using AutoMapper;
+// using AutoMapper.Extensions.Microsoft.DependencyInjection;
 using Predictions.Persistence;
 
 namespace Predictions.WebApi
@@ -36,8 +38,12 @@ namespace Predictions.WebApi
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
+
             services.AddMediatR();
             services.AddMediatR(Assembly.Load("ReadModel")); 
+            
+            services.AddAutoMapper();
+
 
             var connectionString =
                 Configuration.GetSection("DbConnections:Predictions:Somee:ConnectionString").Value;

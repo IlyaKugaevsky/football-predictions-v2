@@ -8,14 +8,14 @@ namespace Predictions.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Tournament> tournamentConfiguration)
         {
-            tournamentConfiguration.HasKey(t => t.Id);
+            tournamentConfiguration.HasKey(trn => trn.Id);
 
-            tournamentConfiguration.Property(t => t.Id).HasColumnName("TournamentId");
+            tournamentConfiguration.Property(trn => trn.Id).HasColumnName("TournamentId");
 
             // tournamentConfiguration.Property(t => t.Tours).HasColumnName("NewTours");
 
-            tournamentConfiguration.Property(t => t.StartDate).HasColumnType("DateTime2");
-            tournamentConfiguration.Property(t => t.EndDate).HasColumnType("DateTime2");
+            tournamentConfiguration.Property(trn => trn.StartDate).HasColumnType("DateTime2");
+            tournamentConfiguration.Property(trn => trn.EndDate).HasColumnType("DateTime2");
         }
     }
 }

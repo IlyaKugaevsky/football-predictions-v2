@@ -9,10 +9,9 @@ namespace Predictions.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Tour> matchConfiguration)
         {
             matchConfiguration
-                .HasOne(tr => tr.Tournament)
-                .WithMany(t => t.Tours)
-                .HasForeignKey(m => m.TournamentId);
-            
+                .HasOne(t => t.Tournament)
+                .WithMany(trn => trn.Tours)
+                .HasForeignKey(m => m.TournamentId);   
         }
         
     }

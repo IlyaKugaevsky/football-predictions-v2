@@ -22,7 +22,5 @@ namespace Predictions.Domain.Models
         public DateTime EndDate { get; private set; }
 
         public IEnumerable<Tour> Tours => _tours.AsReadOnly();
-
-        // public 
     }
 }

@@ -42,7 +42,9 @@ namespace Predictions.WebApi
             services.AddMediatR();
             services.AddMediatR(Assembly.Load("ReadModel")); 
             
-            services.AddAutoMapper();
+            // services.AddAutoMapper();
+            services.AddAutoMapper(Assembly.Load("Domain"));
+
 
 
             var connectionString =

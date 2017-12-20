@@ -4,7 +4,7 @@ using Predictions.Domain.Models;
 
 namespace Predictions.Persistence.Configurations
 {
-    public class TournamentEntityConfiguration: IEntityTypeConfiguration<Tournament>
+    public class TournamentEntityConfiguration : IEntityTypeConfiguration<Tournament>
     {
         public void Configure(EntityTypeBuilder<Tournament> tournamentConfiguration)
         {
@@ -12,7 +12,9 @@ namespace Predictions.Persistence.Configurations
 
             tournamentConfiguration.Property(trn => trn.Id).HasColumnName("TournamentId");
 
-            // tournamentConfiguration.Property(t => t.Tours).HasColumnName("NewTours");
+            var navigation 
+                = tournamentConfiguration.Metadata.FindNavigation(nameof(Tournament.Tours));
+            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
 
             tournamentConfiguration.Property(trn => trn.StartDate).HasColumnType("DateTime2");
             tournamentConfiguration.Property(trn => trn.EndDate).HasColumnType("DateTime2");

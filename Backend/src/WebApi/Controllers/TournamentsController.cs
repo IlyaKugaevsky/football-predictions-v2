@@ -10,10 +10,10 @@ using MediatR;
 using AutoMapper;
 using Predictions.Persistence;
 using Predictions.ReadModel.Queries;
+using Predictions.ReadModel.Dtos;
 using Predictions.Persistence.EntityFrameworkExtensions;
 using Predictions.Persistence.FetchExtensions;
 using Predictions.Domain.Models;
-using Predictions.Domain.Dtos;
 
 namespace Predictions.WebApi.Controllers
 {
@@ -33,14 +33,11 @@ namespace Predictions.WebApi.Controllers
         // GET api/tournaments/
 
         [HttpGet()]
-        public async Task<TournamentInfoDto> GetTournaments()
+        public async Task<IEnumerable<TournamentInfoDto>> GetTournaments()
         {
 
             var getTournaments = new GetTournaments();
-            var tournaments = await _mediator.Send(getTournaments);
-
-            var first = tournaments.First();
-            return AutoMapper.Mapper.Map<TournamentInfoDto>(first);
+            return await _mediator.Send(getTournaments);
         }        
 
         // GET api/tournaments/latest/schedule

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Predictions.Domain;
 using Predictions.Domain.Models;
 
-namespace Predictions.Domain.Dtos
+namespace Predictions.ReadModel.Dtos
 {
     public class TournamentInfoDto
     {

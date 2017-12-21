@@ -1,8 +1,8 @@
 using AutoMapper;
-using Predictions.Domain.Dtos;
+using Predictions.ReadModel.Dtos;
 using Predictions.Domain.Models;
 
-namespace Predictions.Domain.Automapper
+namespace Predictions.ReadModel.Automapper
 {
     public class DomainMappingProfile : Profile
     {
@@ -12,7 +12,7 @@ namespace Predictions.Domain.Automapper
             ShouldMapProperty = propertyInfo => true;
 
             CreateMap<Tournament, TournamentInfoDto>();
-            CreateMap<Match, MatchInfoDto>();
+            // CreateMap<Match, MatchInfoDto>();
         }
     }
 }

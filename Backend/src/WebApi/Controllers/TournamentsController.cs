@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using MediatR;
 using AutoMapper;
 using Predictions.Persistence;
-using Predictions.ReadModel.Queries;
-using Predictions.ReadModel.Dtos;
+using Predictions.ReadModel.Features.Tournaments.Dtos;
+using Predictions.ReadModel.Features.Tournaments.Queries;
 using Predictions.Persistence.EntityFrameworkExtensions;
 using Predictions.Persistence.FetchExtensions;
 using Predictions.Domain.Models;
@@ -35,7 +35,6 @@ namespace Predictions.WebApi.Controllers
         [HttpGet()]
         public async Task<IEnumerable<TournamentInfoDto>> GetTournaments()
         {
-
             var getTournaments = new GetTournaments();
             return await _mediator.Send(getTournaments);
         }        
@@ -43,9 +42,11 @@ namespace Predictions.WebApi.Controllers
         // GET api/tournaments/latest/schedule
 
         [HttpGet("latest/schedule")]
-        public Tournament GetLatestTournamentSchedule()
+        public async Task<TournamentScheduleDto> GetLatestTournamentSchedule()
         {
-            return _context.Tournaments.WithScheduleInfo().OrderByDescending(t => t.StartDate).First();
+            var getSchedule = new GetSchedule();
+            return await _mediator.Send(getSchedule);
+
         }
     }
 }

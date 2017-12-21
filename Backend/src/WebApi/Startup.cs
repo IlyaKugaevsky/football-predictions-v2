@@ -45,8 +45,6 @@ namespace Predictions.WebApi
             // services.AddAutoMapper();
             services.AddAutoMapper(Assembly.Load("ReadModel"));
 
-
-
             var connectionString =
                 Configuration.GetSection("DbConnections:Predictions:Somee:ConnectionString").Value;
             services.AddDbContext<PredictionsContext>(options =>

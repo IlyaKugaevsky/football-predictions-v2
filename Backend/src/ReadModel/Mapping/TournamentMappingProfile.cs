@@ -1,12 +1,12 @@
 using AutoMapper;
-using Predictions.ReadModel.Dtos;
+using Predictions.ReadModel.Features.Tournaments.Dtos;
 using Predictions.Domain.Models;
 
-namespace Predictions.ReadModel.Automapper
+namespace Predictions.ReadModel.Mapping
 {
-    public class DomainMappingProfile : Profile
+    public class TournamentMappingProfile : Profile
     {
-        public DomainMappingProfile()
+        public TournamentMappingProfile()
         {
             ShouldMapField = fieldInfo => true;
             ShouldMapProperty = propertyInfo => true;

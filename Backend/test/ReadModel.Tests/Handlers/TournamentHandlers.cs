@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Predictions.Persistence;
-using Predictions.ReadModel.Queries;
+using Predictions.ReadModel.Features.Tournaments.Queries;
 using Shouldly;
 using Xunit;
 

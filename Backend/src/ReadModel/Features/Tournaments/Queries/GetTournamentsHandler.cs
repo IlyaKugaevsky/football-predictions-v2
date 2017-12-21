@@ -8,11 +8,10 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Predictions.Persistence;
-using Predictions.ReadModel.Queries;
 using Predictions.Domain.Models;
-using Predictions.ReadModel.Dtos;
+using Predictions.ReadModel.Features.Tournaments.Dtos;
 
-namespace Predictions.ReadModel.Handlers
+namespace Predictions.ReadModel.Features.Tournaments.Queries
 {
     public class GetTournamentsHandler : IRequestHandler<GetTournaments, IEnumerable<TournamentInfoDto>>
     {
@@ -28,7 +27,6 @@ namespace Predictions.ReadModel.Handlers
         {
             var tournaments = await _context.Tournaments.ToListAsync();
             return Mapper.Map<IEnumerable<TournamentInfoDto>>(tournaments);
-
         }
     }
 }

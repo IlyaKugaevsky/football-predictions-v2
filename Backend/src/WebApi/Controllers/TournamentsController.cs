@@ -37,6 +37,15 @@ namespace Predictions.WebApi.Controllers
         {
             var getTournaments = new GetTournaments();
             return await _mediator.Send(getTournaments);
+        }
+
+        // GET api/tournaments/:id
+
+        [HttpGet("{id}")]
+        public async Task<TournamentInfoDto> GetTournamentint(int id)
+        {
+            var getTournament = new GetTournament(id);
+            return await _mediator.Send(getTournament);
         }        
 
         // GET api/tournaments/latest/schedule

@@ -22,6 +22,7 @@ namespace Predictions.ReadModel.Features.Tours.Dtos
         }
 
         public TourInfoDto TourInfo { get; private set; }
-        public IReadOnlyCollection<MatchInfoDto> MatchInfo() => _matchInfos.AsReadOnly();
+        public IReadOnlyCollection<MatchInfoDto> MatchInfo() 
+            => _matchInfos.AsReadOnly();
     }
 }

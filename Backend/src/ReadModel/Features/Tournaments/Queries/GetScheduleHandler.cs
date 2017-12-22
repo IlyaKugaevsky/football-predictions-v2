@@ -32,6 +32,7 @@ namespace Predictions.ReadModel.Features.Tournaments.Queries
             var tournamentWithScheduleInfo = 
                 await _context.Tournaments
                         .FetchWithScheduleInfo()
+                        .AsNoTracking()
                         .LastStartedAsync();
 
             var tournamentInfo = Mapper.Map<TournamentInfoDto>(tournamentWithScheduleInfo);

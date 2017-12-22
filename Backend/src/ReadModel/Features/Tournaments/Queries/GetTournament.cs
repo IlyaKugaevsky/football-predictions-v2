@@ -8,5 +8,13 @@ using MediatR;
 
 namespace Predictions.ReadModel.Features.Tournaments.Queries
 {
-    public class GetTournaments: IRequest<IEnumerable<TournamentInfoDto>> { }
+    public class GetTournament: IRequest<TournamentInfoDto> 
+    {
+        public int TournamentId;
+
+        public GetTournament(int id)
+        {
+            TournamentId = id;
+        }
+    }
 }

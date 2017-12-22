@@ -22,6 +22,7 @@ namespace Predictions.ReadModel.Features.Tournaments.Dtos
         }
 
         public TournamentInfoDto TournamentInfo { get; private set; }
-        public IReadOnlyCollection<TourScheduleDto> TourSchedules() => _tourSchedules.AsReadOnly();
+        public IReadOnlyCollection<TourScheduleDto> TourSchedules() 
+            => _tourSchedules.AsReadOnly();
     }
 }

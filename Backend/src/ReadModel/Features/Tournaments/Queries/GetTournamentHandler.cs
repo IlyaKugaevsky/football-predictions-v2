@@ -8,25 +8,27 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Predictions.Persistence;
+using Predictions.Persistence.QueryExtensions;
 using Predictions.Domain.Models;
 using Predictions.ReadModel.Features.Tournaments.Dtos;
 
 namespace Predictions.ReadModel.Features.Tournaments.Queries
 {
-    public class GetTournamentsHandler: IRequestHandler<GetTournaments, IEnumerable<TournamentInfoDto>>
+    public class GetTournamentHandler : IRequestHandler<GetTournament, TournamentInfoDto>
     {
         private readonly PredictionsContext _context;
 
-        public GetTournamentsHandler(PredictionsContext context, IMediator mediator)
+        public GetTournamentHandler(PredictionsContext context, IMediator mediator)
         {
             _context = context;
         }
 
-        public async Task<IEnumerable<TournamentInfoDto>> Handle(GetTournaments request,
+        public async Task<TournamentInfoDto> Handle(GetTournament request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tournaments = await _context.Tournaments.ToListAsync();
-            return Mapper.Map<IEnumerable<TournamentInfoDto>>(tournaments);
+            var id = request.TournamentId;
+            var tournament = await _context.Tournaments.ByIdAsync(id);
+            return Mapper.Map<TournamentInfoDto>(tournament);
         }
     }
 }

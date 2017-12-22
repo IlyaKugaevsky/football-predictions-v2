@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
 import { TournamentService } from "./tournament.service";
-import { Tournament } from "./tournament";
-import { Tour } from "../tours/tour";
+import { TournamentSchedule } from "./tournament-schedule";
+import { TournamentInfo } from "./tournament-info";
+import { TourInfo } from "../tours/tour-info";
 
 @Component({
   selector: "pred-tournament-schedule",
@@ -11,9 +12,7 @@ import { Tour } from "../tours/tour";
 export class TournamentScheduleComponent implements OnInit {
   constructor(private tournamentService: TournamentService) {}
 
-  tournaments: Tournament[] = [];
-  tours: Tour[];
-  tournament: Tournament;
+  tournamentSchedule: TournamentSchedule;
 
   ngOnInit(): void {
     this.getTournamentSchedule();
@@ -22,15 +21,15 @@ export class TournamentScheduleComponent implements OnInit {
   getTournamentSchedule(): void {
     this.tournamentService
       .getTournamentScheduleFake()
-      .subscribe((data: Tournament) => {
-        this.tours = data.newTours;
-        this.tournament = data;
+      .subscribe((data: TournamentSchedule) => {
+        // this.tours = data.newTours;
+        this.tournamentSchedule = data;
       });
   }
 
-  getTournaments(): void {
-    this.tournamentService
-      .getTournamentsFake()
-      .subscribe((data: Tournament[]) => (this.tournaments = data));
-  }
+  // getTournaments(): void {
+  //   this.tournamentService
+  //     .getTournamentsFake()
+  //     .subscribe((data: Tournament[]) => (this.tournaments = data));
+  // }
 }

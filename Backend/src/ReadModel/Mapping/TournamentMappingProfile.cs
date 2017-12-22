@@ -8,9 +8,6 @@ namespace Predictions.ReadModel.Mapping
     {
         public TournamentMappingProfile()
         {
-            ShouldMapField = fieldInfo => true;
-            ShouldMapProperty = propertyInfo => true;
-
             CreateMap<Tournament, TournamentInfoReadDto>();
         }
     }

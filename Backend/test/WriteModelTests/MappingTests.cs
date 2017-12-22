@@ -30,6 +30,7 @@ namespace Predictions.WriteModelTests
             tournament.Title.ShouldBe(tournamentInfo.Title);
             tournament.StartDate.ShouldBe(tournamentInfo.StartDate);
             tournament.EndDate.ShouldBe(tournamentInfo.EndDate);
+            tournament.Tours.ShouldBeEmpty();
         }
 
     }

@@ -11,7 +11,7 @@ namespace Predictions.ReadModel.Mapping
             ShouldMapField = fieldInfo => true;
             ShouldMapProperty = propertyInfo => true;
 
-            CreateMap<Match, MatchInfoDto>();
+            CreateMap<Match, MatchInfoReadDto>();
         }
     }
 }

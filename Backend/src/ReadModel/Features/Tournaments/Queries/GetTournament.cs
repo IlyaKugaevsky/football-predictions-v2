@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Predictions.ReadModel.Features.Tournaments.Queries
 {
-    public class GetTournament: IRequest<TournamentInfoDto> 
+    public class GetTournament: IRequest<TournamentInfoReadDto> 
     {
         public int TournamentId;
 

@@ -17,7 +17,7 @@ using Predictions.ReadModel.Features.Matches.Dtos;
 
 namespace Predictions.ReadModel.Features.Tournaments.Queries
 {
-    public class GetScheduleHandler : IRequestHandler<GetSchedule, TournamentScheduleDto>
+    public class GetScheduleHandler : IRequestHandler<GetSchedule, TournamentScheduleReadDto>
     {
         private readonly PredictionsContext _context;
 
@@ -26,7 +26,7 @@ namespace Predictions.ReadModel.Features.Tournaments.Queries
             _context = context;
         }
         
-        public async Task<TournamentScheduleDto> Handle(GetSchedule request,
+        public async Task<TournamentScheduleReadDto> Handle(GetSchedule request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var tournamentWithScheduleInfo = 
@@ -35,14 +35,14 @@ namespace Predictions.ReadModel.Features.Tournaments.Queries
                         .AsNoTracking()
                         .LastStartedAsync();
 
-            var tournamentInfo = Mapper.Map<TournamentInfoDto>(tournamentWithScheduleInfo);
+            var tournamentInfo = Mapper.Map<TournamentInfoReadDto>(tournamentWithScheduleInfo);
             var tours = tournamentWithScheduleInfo.Tours;
 
-            var tournamentSchedules = tours.Select(t => new TourScheduleDto(
-                                        Mapper.Map<TourInfoDto>(t),
-                                        Mapper.Map<IEnumerable<MatchInfoDto>>(t.Matches)));
+            var tournamentSchedules = tours.Select(t => new TourScheduleReadDto(
+                                        Mapper.Map<TourInfoReadDto>(t),
+                                        Mapper.Map<IEnumerable<MatchInfoReadDto>>(t.Matches)));
             
-            return new TournamentScheduleDto(tournamentInfo, tournamentSchedules);
+            return new TournamentScheduleReadDto(tournamentInfo, tournamentSchedules);
         }
     }
 }

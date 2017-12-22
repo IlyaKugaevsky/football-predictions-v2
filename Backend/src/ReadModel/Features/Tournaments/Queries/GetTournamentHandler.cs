@@ -14,7 +14,7 @@ using Predictions.ReadModel.Features.Tournaments.Dtos;
 
 namespace Predictions.ReadModel.Features.Tournaments.Queries
 {
-    public class GetTournamentHandler : IRequestHandler<GetTournament, TournamentInfoDto>
+    public class GetTournamentHandler : IRequestHandler<GetTournament, TournamentInfoReadDto>
     {
         private readonly PredictionsContext _context;
 
@@ -23,12 +23,12 @@ namespace Predictions.ReadModel.Features.Tournaments.Queries
             _context = context;
         }
 
-        public async Task<TournamentInfoDto> Handle(GetTournament request,
+        public async Task<TournamentInfoReadDto> Handle(GetTournament request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var id = request.TournamentId;
             var tournament = await _context.Tournaments.ByIdAsync(id);
-            return Mapper.Map<TournamentInfoDto>(tournament);
+            return Mapper.Map<TournamentInfoReadDto>(tournament);
         }
     }
 }

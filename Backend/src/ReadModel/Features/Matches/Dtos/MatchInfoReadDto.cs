@@ -5,7 +5,7 @@ using Predictions.Domain.Models;
 
 namespace Predictions.ReadModel.Features.Matches.Dtos
 {
-    public class MatchInfoDto
+    public class MatchInfoReadDto
     {
         public string Id { get; private set; }
         public DateTime Date { get; private set; }

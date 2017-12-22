@@ -9,20 +9,20 @@ using Predictions.ReadModel.Features.Tours.Dtos;
 
 namespace Predictions.ReadModel.Features.Tournaments.Dtos
 {
-    public class TournamentScheduleDto
+    public class TournamentScheduleReadDto
     {
         [JsonProperty(PropertyName = "tourSchedules")]
-        private readonly List<TourScheduleDto> _tourSchedules;
+        private readonly List<TourScheduleReadDto> _tourSchedules;
     
-        public TournamentScheduleDto(TournamentInfoDto tournamentInfo,
-            IEnumerable<TourScheduleDto> tourSchedules)
+        public TournamentScheduleReadDto(TournamentInfoReadDto tournamentInfo,
+            IEnumerable<TourScheduleReadDto> tourSchedules)
         {
             TournamentInfo = tournamentInfo;
             _tourSchedules = tourSchedules.ToList();
         }
 
-        public TournamentInfoDto TournamentInfo { get; private set; }
-        public IReadOnlyCollection<TourScheduleDto> TourSchedules() 
+        public TournamentInfoReadDto TournamentInfo { get; private set; }
+        public IReadOnlyCollection<TourScheduleReadDto> TourSchedules() 
             => _tourSchedules.AsReadOnly();
     }
 }

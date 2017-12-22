@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using Predictions.Domain;
 using Predictions.Domain.Models;
 
-namespace Predictions.ReadModel.Features.Tours.Dtos
+namespace Predictions.ReadModel.Features.Tournaments.Dtos
 {
-    public class TourInfoDto
+    public class TournamentInfoReadDto
     {
         public string Id { get; private set; }
-        public int TourNumber { get; private set; }
+        public string Title { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
-        public bool IsClosed { get; private set; }
     }
 }

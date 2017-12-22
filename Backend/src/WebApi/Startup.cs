@@ -17,7 +17,6 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using AutoMapper;
-// using AutoMapper.Extensions.Microsoft.DependencyInjection;
 using Predictions.Persistence;
 
 namespace Predictions.WebApi
@@ -42,7 +41,6 @@ namespace Predictions.WebApi
             services.AddMediatR();
             services.AddMediatR(Assembly.Load("ReadModel")); 
             
-            // services.AddAutoMapper();
             services.AddAutoMapper(Assembly.Load("ReadModel"));
 
             var connectionString =

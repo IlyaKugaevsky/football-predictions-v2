@@ -1,8 +1,8 @@
 using AutoMapper;
+using Predictions.WriteModel.Features.Tournaments.Dtos;
 using Predictions.Domain.Models;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
 
-namespace Predictions.ReadModel.Mapping
+namespace Predictions.WriteModel.Mapping
 {
     public class TournamentMappingProfile : Profile
     {
@@ -11,7 +11,7 @@ namespace Predictions.ReadModel.Mapping
             ShouldMapField = fieldInfo => true;
             ShouldMapProperty = propertyInfo => true;
 
-            CreateMap<Tournament, TournamentInfoReadDto>();
+            CreateMap<Tournament, TournamentInfoWriteDto>();
         }
     }
 }

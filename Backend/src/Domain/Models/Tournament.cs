@@ -12,7 +12,9 @@ namespace Predictions.Domain.Models
         protected Tournament() { }
         public Tournament(string title, DateTime startDate, DateTime endDate)
         {
-
+            Title = title;
+            StartDate = startDate;
+            EndDate = endDate;
         }
 
         public string Title { get; private set; }

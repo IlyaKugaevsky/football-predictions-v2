@@ -15,7 +15,7 @@ using Predictions.ReadModel.Features.Tournaments.Queries;
 using Shouldly;
 using Xunit;
 
-namespace ReadModel.Tests.Handlers
+namespace Predictions.ReadModelTests.Handlers
 {
     public class TournamentHandlers
     {

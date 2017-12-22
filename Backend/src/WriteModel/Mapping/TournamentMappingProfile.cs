@@ -1,6 +1,7 @@
 using AutoMapper;
-using Predictions.WriteModel.Features.Tournaments.Dtos;
+using Predictions.Domain;
 using Predictions.Domain.Models;
+using Predictions.WriteModel.Features.Tournaments.Dtos;
 
 namespace Predictions.WriteModel.Mapping
 {
@@ -8,10 +9,11 @@ namespace Predictions.WriteModel.Mapping
     {
         public TournamentMappingProfile()
         {
-            ShouldMapField = fieldInfo => true;
-            ShouldMapProperty = propertyInfo => true;
+            CreateMap<TournamentInfoWriteDto, Entity>()
+                .Include<TournamentInfoWriteDto, Tournament>()
+                .ForMember(e => e.Id, opt => opt.Ignore());
 
-            CreateMap<Tournament, TournamentInfoWriteDto>();
+            CreateMap<TournamentInfoWriteDto, Tournament>();
         }
     }
 }

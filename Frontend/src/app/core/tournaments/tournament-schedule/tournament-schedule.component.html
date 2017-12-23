@@ -1,0 +1,36 @@
+<div *ngIf="tournamentInfo; then complete else loading"></div>
+
+<ng-template #loading>
+  <h1>Подождите, запрос обрабатывается...</h1>
+</ng-template>
+
+<ng-template #complete>
+  <pred-tournament-info [tournamentInfo] = "tournamentInfo"></pred-tournament-info>
+
+  <!-- <div *ngFor="let tourSchedule of tourSchedules" style="border: 1px solid black; margin-bottom: 10px;">
+    <li>{{tourSchedule.tourInfo.startDate}} - {{tourSchedule.tourInfo.endDate}}</li>
+    <li>{{tourSchedule.tourInfo.tourNumber}}</li>
+    <div>
+      <div *ngIf="tourMatchesExpanded[tourSchedule.tourInfo.tourNumber - 1]; then expandedMatches else hiddenMatches"></div>
+    </div>
+
+    <ng-template #expandedMatches>
+      <div *ngFor="let matchInfo of tourSchedule.matchInfos">
+          <button (click)="handleMatchesPanelBtnClick(tourSchedule.tourInfo.tourNumber)">Спрятать матчи</button>
+          <div>Матчи!</div>
+          <div>Их много много много</div>
+          <div>
+            <li>{{matchInfo.homeTeamTitle}} - {{matchInfo.awayTeamTitle}}</li>
+          </div>
+      </div>
+    </ng-template>
+
+    <ng-template #hiddenMatches>
+      <button (click)="handleMatchesPanelBtnClick(tourSchedule.tourInfo.tourNumber)">Показать матчи</button>
+      <div>___</div>
+    </ng-template>
+
+  </div> -->
+
+</ng-template>
+

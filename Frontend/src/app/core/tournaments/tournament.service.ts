@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 
-import { Tournament } from "./tournament";
+// import { TournamentInfo } from "./tournament-info";
 
 @Injectable()
 export class TournamentService {

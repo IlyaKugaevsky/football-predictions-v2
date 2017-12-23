@@ -1,6 +1,6 @@
 export class TourInfo {
-  Id: number;
-  Number: number;
+  id: number;
+  tourNumber: number;
   startDate: Date;
   endDate: Date;
   isClosed: boolean;

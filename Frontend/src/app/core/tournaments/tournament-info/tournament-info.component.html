@@ -1,3 +1,7 @@
-<p>{{tournamentInfo.title}}</p>
-<p>{{tournamentInfo.startDate | date}}</p>
-<p>{{tournamentInfo.endDate | date}}</p>
+<div>
+  <h2>{{tournamentInfo.title}}</h2>
+  <div class="bordered-dev">
+    <p>Дата старта: {{tournamentInfo.startDate | date}}</p>
+    <p>Дата окончания: {{tournamentInfo.endDate | date}}</p>
+  </div>
+</div>

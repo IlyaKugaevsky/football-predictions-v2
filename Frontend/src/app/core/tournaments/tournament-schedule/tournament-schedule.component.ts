@@ -43,7 +43,7 @@ export class TournamentScheduleComponent implements OnInit {
         this.tournamentInfo = data.tournamentInfo;
         this.tourMatchesExpanded = Array(this.tourSchedules.length);
         this.tourMatchesExpanded.fill(true);
-        // console.log(this.tourSchedules);
+        console.log(this.tourSchedules);
       });
   }
 }

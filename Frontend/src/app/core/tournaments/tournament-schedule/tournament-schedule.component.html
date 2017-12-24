@@ -7,9 +7,12 @@
 <ng-template #complete>
   <pred-tournament-info [tournamentInfo]="tournamentInfo"></pred-tournament-info>
 
-  <div *ngFor="let tourSchedule of tourSchedules">
-    <pred-tour-schedule [tourSchedule]="tourSchedule"></pred-tour-schedule>
+  <div class="bordered-dev">
+    <div *ngFor="let tourSchedule of tourSchedules">
+      <pred-tour-schedule [tourSchedule]="tourSchedule"></pred-tour-schedule>
+    </div>
   </div>
+
 
   <!-- <div *ngFor="let tourSchedule of tourSchedules" style="border: 1px solid black; margin-bottom: 10px;">
     <li>{{tourSchedule.tourInfo.startDate}} - {{tourSchedule.tourInfo.endDate}}</li>

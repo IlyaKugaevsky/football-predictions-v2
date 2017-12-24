@@ -7,6 +7,8 @@ import { TournamentScheduleComponent } from "./tournament-schedule/tournament-sc
 import { TournamentInfoComponent } from "./tournament-info/tournament-info.component";
 import { TourInfoComponent } from "../tours/tour-info/tour-info.component";
 import { TourScheduleComponent } from "../tours/tour-schedule/tour-schedule.component";
+import { MatchTableComponent } from "../matches/match-table/match-table.component";
+import { MatchInfoComponent } from "../matches/match-info/match-info.component";
 import { TournamentService } from "./tournament.service";
 
 @NgModule({
@@ -14,7 +16,9 @@ import { TournamentService } from "./tournament.service";
     TournamentScheduleComponent,
     TournamentInfoComponent,
     TourScheduleComponent,
-    TourInfoComponent
+    TourInfoComponent,
+    MatchTableComponent,
+    MatchInfoComponent
   ],
   imports: [CommonModule, HttpClientModule, TournamentsRoutingModule],
   providers: [TournamentService]

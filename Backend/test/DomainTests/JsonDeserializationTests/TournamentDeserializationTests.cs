@@ -5,9 +5,10 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Predictions.Domain.Models;
 using Shouldly;
 using Xunit;
+using Predictions.Domain.Models;
+using Predictions.Utils.Json;
 
 namespace Predictions.DomainTests.JsonDeserializationTests
 {

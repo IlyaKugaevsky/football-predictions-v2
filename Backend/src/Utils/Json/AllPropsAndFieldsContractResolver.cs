@@ -6,7 +6,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Predictions.DomainTests.JsonDeserializationTests
+namespace Predictions.Utils.Json
 {
     public class AllPropsAndFieldsContractResolver : Newtonsoft.Json.Serialization.DefaultContractResolver
     {

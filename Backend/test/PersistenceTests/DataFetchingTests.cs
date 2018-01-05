@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Predictions.Persistence;
+using Newtonsoft.Json;
 using Predictions.Domain.Models;
-using Xunit;
+using Predictions.Persistence;
+using Predictions.PersistenceTests.DbInitializers;
 using Shouldly;
+using Xunit;
 
 namespace Predictions.PersistenceTests
 {
@@ -14,27 +18,28 @@ namespace Predictions.PersistenceTests
         private DatabaseFixture _fixture;
         public DataFetchingTests(DatabaseFixture fixture)
         {
+            IDbInitializer initializer
+                = new JsonDbInitializer<Tournament>("Fixtures/Json/Tournaments.json");
+
             _fixture = fixture;
-            // var options = new DbContextOptionsBuilder<PredictionsContext>()
-            //     .UseSqlite("Data Source=predictions_test.db")
-            //     .Options;
+            _fixture.Seed(initializer);
         }
 
         [Fact]
-        public void Something()
+        public void Should_Fetch_Tournaments_With_Nested_Entities_Correctly()
         {
-            // var score = new FootballScore("1:0");
-            // var match = new Match(1, 2, 3, DateTime.MinValue);
+            var tournaments = _fixture.Context.Tournaments.ToList();
+            var tours = tournaments[0].Tours.ToList();
+            var matches = tours[0].Matches.ToList();
 
-            var t = new Tournament("test", DateTime.MaxValue, DateTime.MaxValue);
+            tournaments.Count.ShouldBe(2);
+            tours.Count.ShouldBe(2);
+            matches.Count.ShouldBe(1);
+            matches[0].Score.ScoreValue.ShouldBe("0:0");
 
-            _fixture.Context.Tournaments.Add(t);
-            _fixture.Context.SaveChanges();
-
-            var x = 2 + 2;
-            x.ShouldBe(4);
+            Console.WriteLine("==============================================");
+            Console.WriteLine(tournaments[1].Id);
+            Console.WriteLine("==============================================");
         }
-
-
     }
 }

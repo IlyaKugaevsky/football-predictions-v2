@@ -1,9 +1,10 @@
 using System;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Xunit;
 using Predictions.Domain.Models;
 using Predictions.Persistence;
-using Xunit;
+using Predictions.PersistenceTests.DbInitializers;
 
 namespace Predictions.PersistenceTests
 {
@@ -30,16 +31,12 @@ namespace Predictions.PersistenceTests
         public DatabaseFixture(PredictionsContext context)
         {
             this.Context = context;
-
         }
         public PredictionsContext Context { get; private set; }
 
-        public void SeedDatabase()
+        public void Seed(IDbInitializer initializer)
         {
-            var tournament = new Tournament("test", DateTime.MinValue, DateTime.MaxValue);
-            var tour = new Tour(1, DateTime.MinValue, DateTime.MaxValue);
-
-            tournament.AddTour(tour);
+            initializer.SeedDatabase(Context);
         }
         public void Dispose()
         {

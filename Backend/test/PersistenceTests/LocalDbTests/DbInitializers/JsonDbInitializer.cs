@@ -2,12 +2,13 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 using Predictions.Persistence;
-using Predictions.PersistenceTests.DbInitializers;
+using Predictions.PersistenceTests.LocalDbTests.DbInitializers;
 using Predictions.Domain;
 using Predictions.Utils.Json;
 
-namespace Predictions.PersistenceTests.DbInitializers
+namespace Predictions.PersistenceTests.LocalDbTests.DbInitializers
 {
     public class JsonDbInitializer<T>: IDbInitializer
         where T: Entity
@@ -24,7 +25,7 @@ namespace Predictions.PersistenceTests.DbInitializers
             };
         }
         
-        public void SeedDatabase(PredictionsContext context)
+        public void SeedDatabase(DbContext context)
         {
             var entities = JsonConvert.DeserializeObject<IEnumerable<T>>(_jsonData, _settings);
 

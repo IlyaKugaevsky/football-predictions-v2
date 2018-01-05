@@ -11,7 +11,7 @@ using Predictions.Domain.Models;
 
 namespace Predictions.Persistence
 {
-    public class PredictionsContext : DbContext
+    public class PredictionsContext : DbContext, IReadOnlyPredictionsContext
     {
         private IDbContextTransaction _currentTransaction;
 

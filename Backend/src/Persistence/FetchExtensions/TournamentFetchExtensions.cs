@@ -23,6 +23,8 @@ namespace Predictions.Persistence.FetchExtensions
                     .Include(trn => trn.Tours)
                     .ThenInclude(t => t.Matches).ThenInclude(m => m.HomeTeam)
                     .Include(trn => trn.Tours)
-                    .ThenInclude(t => t.Matches).ThenInclude(m => m.AwayTeam);
+                    .ThenInclude(t => t.Matches).ThenInclude(m => m.AwayTeam)
+                    .Include(trn => trn.Tours)
+                    .ThenInclude(t => t.Matches).ThenInclude(m => m.Score);
     }
 }

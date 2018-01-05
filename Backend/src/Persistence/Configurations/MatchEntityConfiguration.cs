@@ -16,7 +16,10 @@ namespace Predictions.Persistence.Configurations
                 .WithMany(t => t.Matches)
                 .HasForeignKey(m => m.TourId);
             
-            matchConfiguration.OwnsOne(m => m.Score);
+            matchConfiguration
+                .OwnsOne(m => m.Score)
+                .Property(s => s.ScoreValue)
+                .HasColumnName("Score");
             
             // matchConfiguration
             //     .HasOne(m => m.HomeTeam)

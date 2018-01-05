@@ -6,17 +6,17 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Predictions.Domain.Models;
 using Predictions.Persistence;
-using Predictions.PersistenceTests.DbInitializers;
+using Predictions.PersistenceTests.LocalDbTests.DbInitializers;
 using Shouldly;
 using Xunit;
 
-namespace Predictions.PersistenceTests
+namespace Predictions.PersistenceTests.LocalDbTests
 {
     [Collection("Database collection")]
-    public class DataFetchingTests
+    public class LocalDbFetchingTests
     {
-        private DatabaseFixture _fixture;
-        public DataFetchingTests(DatabaseFixture fixture)
+        private DbFixture _fixture;
+        public LocalDbFetchingTests(DbFixture fixture)
         {
             IDbInitializer initializer
                 = new JsonDbInitializer<Tournament>("Fixtures/Json/Tournaments.json");
@@ -36,10 +36,6 @@ namespace Predictions.PersistenceTests
             tours.Count.ShouldBe(2);
             matches.Count.ShouldBe(1);
             matches[0].Score.ScoreValue.ShouldBe("0:0");
-
-            Console.WriteLine("==============================================");
-            Console.WriteLine(tournaments[1].Id);
-            Console.WriteLine("==============================================");
         }
     }
 }

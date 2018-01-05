@@ -4,20 +4,20 @@ using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Predictions.Domain.Models;
 using Predictions.Persistence;
-using Predictions.PersistenceTests.DbInitializers;
+using Predictions.PersistenceTests.LocalDbTests.DbInitializers;
 
-namespace Predictions.PersistenceTests
+namespace Predictions.PersistenceTests.LocalDbTests
 {
     [CollectionDefinition("Database collection")]
-    public class DatabaseCollection : ICollectionFixture<DatabaseFixture>
+    public class DatabaseCollection : ICollectionFixture<DbFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
-    public class DatabaseFixture : IDisposable
+    public class DbFixture : IDisposable
     {
-        public DatabaseFixture()
+        public DbFixture()
         {
             var options = new DbContextOptionsBuilder<PredictionsContext>()
                 .UseSqlite("Data Source=predictions_test.db")
@@ -28,7 +28,7 @@ namespace Predictions.PersistenceTests
             Context.Database.EnsureCreated();
         }
 
-        public DatabaseFixture(PredictionsContext context)
+        public DbFixture(PredictionsContext context)
         {
             this.Context = context;
         }
@@ -43,5 +43,4 @@ namespace Predictions.PersistenceTests
             Context.Database.EnsureDeleted();
         }
     }
-
 }

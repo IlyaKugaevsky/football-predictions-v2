@@ -10,32 +10,33 @@ namespace Predictions.Domain.Models
 {
     public class FootballScore
     {
-        private readonly string _score;
-
+        private string _scoreValue;
         public FootballScore()
         {
-            _score = string.Empty;
+            // ScoreValue = string.Empty;
         }
-
-        public FootballScore(string input)
+        public FootballScore(string score)
         {
-            var rgx = new Regex(FootballScore.Pattern);
-
-            if (rgx.IsMatch(input))
-            {
-                _score = input;
-            }
-            else
-            {
-                throw new ArgumentException("Invalide score.");
-            }
+            ScoreValue = score;
         }
-
-        public override string ToString()
+        public static readonly string ScorePattern = @"^$|^[0-9]{1,2}:[0-9]{1,2}$";
+        public string ScoreValue
         {
-            return _score;
+            get 
+            { 
+                return _scoreValue;
+            }
+            set
+            {
+                if (Regex.IsMatch(value, ScorePattern))
+                {
+                    _scoreValue = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalide score.");
+                }
+            }
         }
-
-        public static readonly string Pattern = @"^$|^[0-9]{1,2}:[0-9]{1,2}$";
     }
 }

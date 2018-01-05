@@ -5,41 +5,44 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Predictions.Domain.Models
 {
-    public class Tour
+    public class Tour: Entity
     {
-        public Tour() { }
+        private readonly List<Match> _matches = new List<Match>(); 
+        protected Tour() { }
+        public Tour (int number, DateTime startDate, DateTime endDate)
+        {
+            Number = number;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
+        internal Tour (int id, int number, DateTime startDate, DateTime endDate)
+            :this(number, startDate, endDate)
+        {
+            Id = id;
+        }
 
-        // public Tour(int tournamentId, int tourNumber)
-        // {
-        //     TournamentId = tournamentId;
-        //     TourNumber = tourNumber;
-        //     IsClosed = false;
-        // }
+        public Tournament Tournament { get; private set; }
+        public int TournamentId { get; private set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Number { get; private set; }
+        public bool IsClosed { get; private set; } = false;
+        public DateTime StartDate { get; private set; }
+        public DateTime EndDate { get; private set; }
 
-        [Key]
+        public IEnumerable<Match> Matches => _matches.AsReadOnly();
 
-        [Column("TourId")]
-        public int TourId { get; set; }
+        public void AttachToTournament(int tournamentId)
+        {
+            TournamentId = tournamentId;
+        }
 
-        public Tournament Tournament { get; set; }
-        public int TournamentId { get; set; }
-
-        public int TourNumber { get; set; }
-
-        public bool IsClosed { get; set; }
-
-        // [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
-
-        [Column(TypeName = "DateTime2")]
-        public DateTime StartDate { get; set; }
-
-        // [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd.MM.yyyy HH:mm}")]
-
-        [Column(TypeName = "DateTime2")]
-        public DateTime EndDate { get; set; }
-
-        public virtual List<Match> Matches { get; set; }
+        public void Close() 
+        {
+            if (IsClosed) 
+            {
+                throw new InvalidOperationException("The tour is already closed.");
+            }
+            IsClosed = true;
+        }
     }
 }

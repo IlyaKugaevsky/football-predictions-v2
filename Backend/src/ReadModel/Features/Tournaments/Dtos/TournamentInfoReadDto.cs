@@ -7,7 +7,7 @@ namespace Predictions.ReadModel.Features.Tournaments.Dtos
 {
     public class TournamentInfoReadDto
     {
-        public string Id { get; private set; }
+        public int Id { get; private set; }
         public string Title { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }

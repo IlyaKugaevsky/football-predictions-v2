@@ -26,7 +26,6 @@ namespace Predictions.Persistence
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
         public virtual DbSet<Prediction> Predictions { get; set; }
-        // public virtual DbSet<OldTour> OldTours { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)        

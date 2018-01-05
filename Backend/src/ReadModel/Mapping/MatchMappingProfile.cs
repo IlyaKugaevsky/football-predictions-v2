@@ -8,10 +8,8 @@ namespace Predictions.ReadModel.Mapping
     {
         public MatchMappingProfile()
         {
-            ShouldMapField = fieldInfo => true;
-            ShouldMapProperty = propertyInfo => true;
-
-            CreateMap<Match, MatchInfoReadDto>();
+            CreateMap<Match, MatchInfoReadDto>()
+                .ForMember(dto => dto.Score, opt => opt.MapFrom(m => m.Score.ScoreValue));
         }
     }
 }

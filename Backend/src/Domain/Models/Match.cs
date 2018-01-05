@@ -2,73 +2,42 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Predictions.Domain;
 
 namespace Predictions.Domain.Models
 {
-    public class Match
+    public class Match: Entity
     {
-        public int MatchId { get; set; }
-        public string Title { get; set; }
-        public string Score { get; set; } = string.Empty;
+        private readonly List<Prediction> _predictions 
+            = new List<Prediction>();
 
-        public DateTime Date { get; set; }
-
-        public int HomeTeamId { get; set; }
+        protected Match() { }
+        public Match(int tourId, int homeTeamId, int awayTeamId, DateTime date)
+        {
+            TourId = tourId;
+            Date = date;
+            HomeTeamId = homeTeamId;
+            AwayTeamId = awayTeamId;
+            // Score = new FootballScore();
+        }
+        internal Match(int matchId, int tourId, int homeTeamId, int awayTeamId, DateTime date)
+            :this(tourId, homeTeamId, awayTeamId, date)
+        {
+            Id = matchId;
+        }
+        public int HomeTeamId { get; private set; }
         public Team HomeTeam { get; set; }
 
-        public int AwayTeamId { get; set; }
+        public int AwayTeamId { get; private set; }
         public Team AwayTeam { get; set; }
 
         public int TourId { get; set; }
         public Tour Tour { get; set; }
 
+        public FootballScore Score { get; private set; } = new FootballScore();
+        public DateTime Date { get; private set; }
+
         public virtual List<Prediction> Predictions { get; set; }
-
-        public Match() { }
-
-        public Match(DateTime date, Team homeTeam, Team awayTeam, Tour tour)
-        {
-            if (homeTeam == null)
-                throw new ArgumentNullException("HomeTeam");
-
-            if (awayTeam == null)
-                throw new ArgumentNullException("AwayTeam");
-
-            Date = date;
-            HomeTeam = homeTeam;
-            AwayTeam = awayTeam;
-            Tour = tour;
-            Score = string.Empty;
-        }
-
-        public Match(DateTime date, Team homeTeam, Team awayTeam, int tourId)
-        {
-            if (homeTeam == null)
-                throw new ArgumentNullException("HomeTeam");
-
-            if (awayTeam == null)
-                throw new ArgumentNullException("AwayTeam");
-
-            Date = date;
-            HomeTeam = homeTeam;
-            AwayTeam = awayTeam;
-            TourId = tourId;
-            Score = string.Empty;
-        }
-
-        public Match(DateTime date, int homeTeamId, int awayTeamId, int tourId)
-        {
-            Date = date;
-            HomeTeamId = homeTeamId;
-            AwayTeamId = awayTeamId;
-            TourId = tourId;
-            Score = string.Empty;
-        }
-
-        public FootballScore GetFootballScore()
-        {
-            return new FootballScore(Score);
-        }
 
         public int GetPredictionsSum()
         {

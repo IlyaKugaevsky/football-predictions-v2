@@ -41,7 +41,9 @@ namespace Predictions.WebApi
             services.AddMediatR();
             services.AddMediatR(Assembly.Load("ReadModel")); 
             
-            services.AddAutoMapper(Assembly.Load("ReadModel"));
+            services.AddAutoMapper(
+                Assembly.Load("ReadModel"),
+                Assembly.Load("WriteModel"));
 
             var connectionString =
                 Configuration.GetSection("DbConnections:Predictions:Somee:ConnectionString").Value;

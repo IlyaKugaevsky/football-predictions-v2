@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using MediatR;
+// using MediatR;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Predictions.Persistence;
-using Predictions.ReadModel.Features.Tournaments.Queries;
+// using Predictions.Persistence;
+// using Predictions.ReadModel.Features.Tournaments.Queries;
 using Shouldly;
 using Xunit;
 
@@ -19,8 +19,8 @@ namespace Predictions.ReadModelTests.Handlers
 {
     public class TournamentHandlers
     {
-        private IMediator _mediator;
-        private PredictionsContext _context;
+        // private IMediator _mediator;
+        // private PredictionsContext _context;
 
         //     private void SeedDatabase()
         //     {

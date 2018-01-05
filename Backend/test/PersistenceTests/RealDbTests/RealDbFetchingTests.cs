@@ -58,7 +58,7 @@ namespace Predictions.PersistenceTests.RealDbTests
                             .AsNoTracking()
                             .LastStartedAsync();
 
-            schedule.Tours.First().Matches.ShouldAllBe(m => m.Score.ScoreValue != null);
+            schedule.Tours.First().Matches.ShouldAllBe(m => m.Score.Value != null);
         }
     }
 }

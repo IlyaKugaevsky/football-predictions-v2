@@ -41,7 +41,7 @@ namespace Predictions.DomainTests.JsonDeserializationTests
             matches[0].HomeTeamId.ShouldBe(1);
             matches[1].HomeTeamId.ShouldBe(2);
 
-            matches[0].Score.ScoreValue.ShouldBe("0:0");
+            matches[0].Score.Value.ShouldBe("0:0");
         }
     }
 }

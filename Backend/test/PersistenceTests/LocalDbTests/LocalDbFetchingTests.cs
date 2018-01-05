@@ -35,7 +35,7 @@ namespace Predictions.PersistenceTests.LocalDbTests
             tournaments.Count.ShouldBe(2);
             tours.Count.ShouldBe(2);
             matches.Count.ShouldBe(1);
-            matches[0].Score.ScoreValue.ShouldBe("0:0");
+            matches[0].Score.Value.ShouldBe("0:0");
         }
     }
 }

@@ -13,14 +13,14 @@ namespace Predictions.Domain.Models
         private string _scoreValue;
         public FootballScore()
         {
-            // ScoreValue = string.Empty;
+            Value = string.Empty;
         }
         public FootballScore(string score)
         {
-            ScoreValue = score;
+            Value = score;
         }
         public static readonly string ScorePattern = @"^$|^[0-9]{1,2}:[0-9]{1,2}$";
-        public string ScoreValue
+        public string Value
         {
             get 
             { 

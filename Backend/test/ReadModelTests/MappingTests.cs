@@ -75,8 +75,7 @@ namespace Predictions.ReadModelTests
             var matchDto = Mapper.Map<MatchInfoReadDto>(match);
 
             matchDto.Id.ShouldBe(match.Id);
-            matchDto.Score.ShouldBe(match.Score.ScoreValue);
-            // matchDto.Date.ShouldBe(match.Date);
+            matchDto.Score.ShouldBe(match.Score.Value);
         }
     }
 }

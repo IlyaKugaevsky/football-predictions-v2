@@ -9,7 +9,7 @@ namespace Predictions.ReadModel.Mapping
         public MatchMappingProfile()
         {
             CreateMap<Match, MatchInfoReadDto>()
-                .ForMember(dto => dto.Score, opt => opt.MapFrom(m => m.Score.ScoreValue));
+                .ForMember(dto => dto.Score, opt => opt.MapFrom(m => m.Score.Value));
         }
     }
 }

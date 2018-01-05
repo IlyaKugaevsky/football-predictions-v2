@@ -18,7 +18,7 @@ namespace Predictions.Persistence.Configurations
             
             matchConfiguration
                 .OwnsOne(m => m.Score)
-                .Property(s => s.ScoreValue)
+                .Property(s => s.Value)
                 .HasColumnName("Score");
             
             // matchConfiguration
@@ -30,7 +30,6 @@ namespace Predictions.Persistence.Configurations
             // matchConfiguration.HasForeignKey(m => m.AwayTeamId);
             
             // matchConfiguration
-                
             //     .HasForeignKey(m => m.AwayTeamId);
 
             matchConfiguration.Property(m => m.Date).HasColumnType("DateTime2");

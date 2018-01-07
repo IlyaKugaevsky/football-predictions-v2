@@ -1,0 +1,522 @@
+{
+  "tourSchedules": [
+    {
+      "matchInfos": [
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Олимпиакос",
+          "awayTeamTitle": "Спортинг",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Барселона",
+          "awayTeamTitle": "Ювентус",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Манчестер Юнайтед",
+          "awayTeamTitle": "Базель",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Бенфика",
+          "awayTeamTitle": "ЦСКА",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Рома",
+          "awayTeamTitle": "Атлетико",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Челси",
+          "awayTeamTitle": "Карабах",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Селтик",
+          "awayTeamTitle": "ПСЖ",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-12T21:45:00",
+          "homeTeamTitle": "Бавария",
+          "awayTeamTitle": "Андерлехт",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "Шахтер",
+          "awayTeamTitle": "Наполи",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "Фейеноорд",
+          "awayTeamTitle": "Манчестер Сити",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "Тоттенхэм",
+          "awayTeamTitle": "Боруссия Д",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "Реал Мадрид",
+          "awayTeamTitle": "АПОЭЛ",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "Порту",
+          "awayTeamTitle": "Бешикташ",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "РБ Лейпциг",
+          "awayTeamTitle": "Монако",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "Ливерпуль",
+          "awayTeamTitle": "Севилья",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-13T21:45:00",
+          "homeTeamTitle": "Марибор",
+          "awayTeamTitle": "Спартак",
+          "result": null
+        }
+      ],
+      "tourInfo": {
+        "id": null,
+        "tourNumber": 1,
+        "startDate": "2017-09-12T21:45:00",
+        "endDate": "2017-09-14T00:00:00",
+        "isClosed": true
+      }
+    },
+    {
+      "matchInfos": [
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "Манчестер Сити",
+          "awayTeamTitle": "Шахтер",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "Спартак",
+          "awayTeamTitle": "Ливерпуль",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "Севилья",
+          "awayTeamTitle": "Марибор",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "АПОЭЛ",
+          "awayTeamTitle": "Тоттенхэм",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "Боруссия Д",
+          "awayTeamTitle": "Реал Мадрид",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "Монако",
+          "awayTeamTitle": "Порту",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "Бешикташ",
+          "awayTeamTitle": "РБ Лейпциг",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-26T21:45:00",
+          "homeTeamTitle": "Наполи",
+          "awayTeamTitle": "Фейеноорд",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T19:00:00",
+          "homeTeamTitle": "Карабах",
+          "awayTeamTitle": "Рома",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T21:45:00",
+          "homeTeamTitle": "Андерлехт",
+          "awayTeamTitle": "Селтик",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T21:45:00",
+          "homeTeamTitle": "ЦСКА",
+          "awayTeamTitle": "Манчестер Юнайтед",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T21:45:00",
+          "homeTeamTitle": "Базель",
+          "awayTeamTitle": "Бенфика",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T21:45:00",
+          "homeTeamTitle": "Ювентус",
+          "awayTeamTitle": "Олимпиакос",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T21:45:00",
+          "homeTeamTitle": "Спортинг",
+          "awayTeamTitle": "Барселона",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T21:45:00",
+          "homeTeamTitle": "Атлетико",
+          "awayTeamTitle": "Челси",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-09-27T21:45:00",
+          "homeTeamTitle": "ПСЖ",
+          "awayTeamTitle": "Бавария",
+          "result": null
+        }
+      ],
+      "tourInfo": {
+        "id": null,
+        "tourNumber": 2,
+        "startDate": "2017-09-26T21:45:00",
+        "endDate": "2017-09-28T00:00:00",
+        "isClosed": true
+      }
+    },
+    {
+      "matchInfos": [
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "Марибор",
+          "awayTeamTitle": "Ливерпуль",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "Реал Мадрид",
+          "awayTeamTitle": "Тоттенхэм",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "АПОЭЛ",
+          "awayTeamTitle": "Боруссия Д",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "РБ Лейпциг",
+          "awayTeamTitle": "Порту",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "Монако",
+          "awayTeamTitle": "Бешикташ",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "Фейеноорд",
+          "awayTeamTitle": "Шахтер",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "Манчестер Сити",
+          "awayTeamTitle": "Наполи",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-17T21:45:00",
+          "homeTeamTitle": "Спартак",
+          "awayTeamTitle": "Севилья",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T19:00:00",
+          "homeTeamTitle": "Карабах",
+          "awayTeamTitle": "Атлетико",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T21:45:00",
+          "homeTeamTitle": "Барселона",
+          "awayTeamTitle": "Олимпиакос",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T21:45:00",
+          "homeTeamTitle": "Ювентус",
+          "awayTeamTitle": "Спортинг",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T21:45:00",
+          "homeTeamTitle": "Челси",
+          "awayTeamTitle": "Рома",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T21:45:00",
+          "homeTeamTitle": "Андерлехт",
+          "awayTeamTitle": "ПСЖ",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T21:45:00",
+          "homeTeamTitle": "Бенфика",
+          "awayTeamTitle": "Манчестер Юнайтед",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T21:45:00",
+          "homeTeamTitle": "ЦСКА",
+          "awayTeamTitle": "Базель",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-18T21:45:00",
+          "homeTeamTitle": "Бавария",
+          "awayTeamTitle": "Селтик",
+          "result": null
+        }
+      ],
+      "tourInfo": {
+        "id": null,
+        "tourNumber": 3,
+        "startDate": "2017-10-17T21:45:00",
+        "endDate": "2017-10-19T00:00:00",
+        "isClosed": true
+      }
+    },
+    {
+      "matchInfos": [
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "Атлетико",
+          "awayTeamTitle": "Карабах",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "Селтик",
+          "awayTeamTitle": "Бавария",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "Рома",
+          "awayTeamTitle": "Челси",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "ПСЖ",
+          "awayTeamTitle": "Андерлехт",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "Олимпиакос",
+          "awayTeamTitle": "Барселона",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "Спортинг",
+          "awayTeamTitle": "Ювентус",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "Манчестер Юнайтед",
+          "awayTeamTitle": "Бенфика",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-10-31T22:45:00",
+          "homeTeamTitle": "Базель",
+          "awayTeamTitle": "ЦСКА",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Бешикташ",
+          "awayTeamTitle": "Монако",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Тоттенхэм",
+          "awayTeamTitle": "Реал Мадрид",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Боруссия Д",
+          "awayTeamTitle": "АПОЭЛ",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Порту",
+          "awayTeamTitle": "РБ Лейпциг",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Шахтер",
+          "awayTeamTitle": "Фейеноорд",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Наполи",
+          "awayTeamTitle": "Манчестер Сити",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Ливерпуль",
+          "awayTeamTitle": "Марибор",
+          "result": null
+        },
+        {
+          "id": null,
+          "date": "2017-11-01T20:00:00",
+          "homeTeamTitle": "Севилья",
+          "awayTeamTitle": "Спартак",
+          "result": null
+        }
+      ],
+      "tourInfo": {
+        "id": null,
+        "tourNumber": 4,
+        "startDate": "2017-10-31T22:45:00",
+        "endDate": "2017-11-02T00:00:00",
+        "isClosed": true
+      }
+    },
+    {
+      "matchInfos": [],
+      "tourInfo": {
+        "id": null,
+        "tourNumber": 5,
+        "startDate": "0001-01-01T00:00:00",
+        "endDate": "0001-01-01T00:00:00",
+        "isClosed": false
+      }
+    },
+    {
+      "matchInfos": [],
+      "tourInfo": {
+        "id": null,
+        "tourNumber": 6,
+        "startDate": "0001-01-01T00:00:00",
+        "endDate": "0001-01-01T00:00:00",
+        "isClosed": false
+      }
+    }
+  ],
+  "tournamentInfo": {
+    "id": "4",
+    "title": "Лига чемпионов 2017-2018",
+    "startDate": "2017-09-12T21:45:00",
+    "endDate": "2018-05-27T00:00:00"
+  }
+}

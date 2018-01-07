@@ -6,15 +6,17 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
-using Predictions.Persistence.Entities;
+using Predictions.Persistence.Configurations;
+using Predictions.Domain.Models;
 
 namespace Predictions.Persistence
 {
-    public class PredictionsContext : DbContext
+    public class PredictionsContext : DbContext, IReadOnlyPredictionsContext
     {
         private IDbContextTransaction _currentTransaction;
 
-        public PredictionsContext(DbContextOptions<PredictionsContext> options) : base(options) { }
+        public PredictionsContext(DbContextOptions<PredictionsContext> options) 
+            : base(options) { }
 
         public static readonly LoggerFactory MyLoggerFactory
             = new LoggerFactory(new [] { new ConsoleLoggerProvider((_, __) => true, true) });
@@ -24,7 +26,6 @@ namespace Predictions.Persistence
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
         public virtual DbSet<Prediction> Predictions { get; set; }
-        public virtual DbSet<OldTour> OldTours { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)        
@@ -33,9 +34,14 @@ namespace Predictions.Persistence
                 .UseLoggerFactory(MyLoggerFactory);
         }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.RemovePluralizingTableNameConvention();
+
+            modelBuilder.ApplyConfiguration(new TournamentEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new MatchEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new TourEntityConfiguration());
         }
 
         public void BeginTransaction()

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.JsonPatch;
 using MediatR;
 using AutoMapper;
 using Predictions.ReadModel.Features.Tournaments.Dtos;
 using Predictions.ReadModel.Features.Tournaments.Queries;
+using Predictions.WriteModel.Features.Tournaments.Dtos;
 
 namespace Predictions.WebApi.Controllers
 {
@@ -21,7 +23,6 @@ namespace Predictions.WebApi.Controllers
         }
 
         // GET api/tournaments/
-
         [HttpGet()]
         public async Task<IEnumerable<TournamentInfoReadDto>> GetTournaments()
         {
@@ -30,7 +31,6 @@ namespace Predictions.WebApi.Controllers
         }
 
         // GET api/tournaments/:id
-
         [HttpGet("{id}")]
         public async Task<TournamentInfoReadDto> GetTournamentint(int id)
         {
@@ -39,13 +39,21 @@ namespace Predictions.WebApi.Controllers
         }        
 
         // GET api/tournaments/latest/schedule
-
         [HttpGet("latest/schedule")]
         public async Task<TournamentScheduleReadDto> GetLatestTournamentSchedule()
         {
             var getSchedule = new GetSchedule();
             return await _mediator.Send(getSchedule);
-
         }
+
+        // PATCH api/tournaments/
+        // [HttpPost("latest/schedule")]
+        // public async Task<TournamentScheduleReadDto> UpdateTournament(int tournamentId, 
+        //     [FromBody] TournamentInfoWriteDto tournamentInfo)
+        // {
+        //     var 
+        //     var getSchedule = new GetSchedule();
+        //     return await _mediator.Send(getSchedule);
+        // }
     }
 }

@@ -1,25 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Predictions.Domain;
 
 namespace Predictions.Domain.Models
 {
-    public class Expert
+    public class Expert: Entity
     {
-        public int ExpertId { get; set; }
-        public string Nickname { get; set; }
-
-        public int Outcomes { get; set; }
-        public int Differences { get; set; }
-        public int Scores { get; set; }
-        public int Sum { get; set; }
-
-        public virtual List<Prediction> Predictions { get; set; }
-
-        public int GetPredictionsSum()
-        {
-            if (Predictions == null) throw new NullReferenceException(Nickname + " predictions");
-            return Predictions.Select(p => p.Sum).Sum();
-        }
+        private readonly List<Prediction> _predictions 
+            = new List<Prediction>();
+        public string Nickname { get; private set; }
+        
+        public IEnumerable<Prediction> Predictions => _predictions.AsReadOnly();
     }
 }

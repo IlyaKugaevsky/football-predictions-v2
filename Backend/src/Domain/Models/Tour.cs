@@ -44,5 +44,10 @@ namespace Predictions.Domain.Models
             }
             IsClosed = true;
         }
+
+        public void Rollback()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

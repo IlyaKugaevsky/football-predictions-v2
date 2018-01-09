@@ -1,8 +1,10 @@
+using Predictions.Domain;
+
 namespace Predictions.Domain.Models
 {
-    public class Team
+    public class Team: Entity
     {
-        public int TeamId { get; set; }
-        public string Title { get; set; }
+        public int TeamId { get; private set; }
+        public string Title { get; private set; }
     }
 }

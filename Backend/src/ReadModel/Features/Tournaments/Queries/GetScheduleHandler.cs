@@ -17,7 +17,7 @@ using Predictions.ReadModel.Features.Matches.Dtos;
 
 namespace Predictions.ReadModel.Features.Tournaments.Queries
 {
-    public class GetScheduleHandler : IRequestHandler<GetSchedule, TournamentScheduleReadDto>
+    public class GetScheduleHandler : IRequestHandler<GetSchedule, TournamentScheduleDto>
     {
         private readonly PredictionsContext _context;
 
@@ -26,7 +26,7 @@ namespace Predictions.ReadModel.Features.Tournaments.Queries
             _context = context;
         }
         
-        public async Task<TournamentScheduleReadDto> Handle(GetSchedule request,
+        public async Task<TournamentScheduleDto> Handle(GetSchedule request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var tournamentWithScheduleInfo = 
@@ -42,7 +42,7 @@ namespace Predictions.ReadModel.Features.Tournaments.Queries
                                         Mapper.Map<TourInfoReadDto>(t),
                                         Mapper.Map<IEnumerable<MatchInfoReadDto>>(t.Matches)));
             
-            return new TournamentScheduleReadDto(tournamentInfo, tournamentSchedules);
+            return new TournamentScheduleDto(tournamentInfo, tournamentSchedules);
         }
     }
 }

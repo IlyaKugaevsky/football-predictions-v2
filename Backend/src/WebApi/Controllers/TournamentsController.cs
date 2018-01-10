@@ -40,7 +40,7 @@ namespace Predictions.WebApi.Controllers
 
         // GET api/tournaments/latest/schedule
         [HttpGet("latest/schedule")]
-        public async Task<TournamentScheduleReadDto> GetLatestTournamentSchedule()
+        public async Task<TournamentScheduleDto> GetLatestTournamentSchedule()
         {
             var getSchedule = new GetSchedule();
             return await _mediator.Send(getSchedule);

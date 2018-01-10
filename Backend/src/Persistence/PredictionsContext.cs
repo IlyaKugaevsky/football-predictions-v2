@@ -42,6 +42,9 @@ namespace Predictions.Persistence
             modelBuilder.ApplyConfiguration(new TournamentEntityConfiguration());
             modelBuilder.ApplyConfiguration(new MatchEntityConfiguration());
             modelBuilder.ApplyConfiguration(new TourEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new TeamEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new PredictionEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ExpertEntityConfiguration());
         }
 
         public void BeginTransaction()

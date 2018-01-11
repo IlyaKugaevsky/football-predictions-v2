@@ -1,47 +1,45 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.XpressionMapper.Extensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Predictions.Domain.Models;
-using Predictions.Persistence;
-using Predictions.Persistence.FetchExtensions;
-using Predictions.Persistence.QueryExtensions;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
-using Predictions.ReadModel.Features.Tours.Dtos;
-using Predictions.ReadModel.Features.Matches.Dtos;
+using Persistence;
+using Persistence.FetchExtensions;
+using Persistence.QueryExtensions;
+using ReadModel.Features.Matches.Dtos;
+using ReadModel.Features.Tournaments.Dtos;
+using ReadModel.Features.Tours.Dtos;
 
-namespace Predictions.ReadModel.Features.Tournaments.Queries
+namespace ReadModel.Features.Tournaments.Queries
 {
     public class GetScheduleHandler : IRequestHandler<GetSchedule, TournamentScheduleDto>
     {
         private readonly PredictionsContext _context;
 
-        public GetScheduleHandler(PredictionsContext context, IMediator mediator)
+        public GetScheduleHandler(PredictionsContext context)
         {
             _context = context;
         }
-        
+
         public async Task<TournamentScheduleDto> Handle(GetSchedule request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tournamentWithScheduleInfo = 
+            var tournamentWithScheduleInfo =
                 await _context.Tournaments
-                        .FetchWithScheduleInfo()
-                        .AsNoTracking()
-                        .LastStartedAsync();
+                    .FetchWithScheduleInfo()
+                    .AsNoTracking()
+                    .LastStartedAsync();
 
             var tournamentInfo = Mapper.Map<TournamentInfoReadDto>(tournamentWithScheduleInfo);
             var tours = tournamentWithScheduleInfo.Tours;
 
             var tournamentSchedules = tours.Select(t => new TourScheduleReadDto(
-                                        Mapper.Map<TourInfoReadDto>(t),
-                                        Mapper.Map<IEnumerable<MatchInfoReadDto>>(t.Matches)));
-            
+                Mapper.Map<TourInfoReadDto>(t),
+                Mapper.Map<IEnumerable<MatchInfoReadDto>>(t.Matches)));
+
             return new TournamentScheduleDto(tournamentInfo, tournamentSchedules);
         }
     }

@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using Predictions.Domain;
 
-namespace Predictions.Domain.Models
+namespace Domain.Models
 {
-    public class Match: Entity
+    public class Match : Entity
     {
-        private readonly List<Prediction> _predictions 
+        private readonly List<Prediction> _predictions
             = new List<Prediction>();
 
-        protected Match() { }
+        protected Match()
+        {
+        }
+
         public Match(int tourId, int homeTeamId, int awayTeamId, DateTime date)
         {
             TourId = tourId;
@@ -19,11 +20,18 @@ namespace Predictions.Domain.Models
             HomeTeamId = homeTeamId;
             AwayTeamId = awayTeamId;
         }
-        internal Match(int matchId, int tourId, int homeTeamId, int awayTeamId, DateTime date)
-            :this(tourId, homeTeamId, awayTeamId, date)
+
+        internal Match(int matchId, int tourId, Team homeTeam, Team awayTeam, DateTime date)
         {
             Id = matchId;
+            TourId = tourId;
+            HomeTeam = homeTeam ?? throw new NullReferenceException($"{nameof(homeTeam)} cannot be null.");
+            HomeTeamId = homeTeam.Id;
+            AwayTeam = awayTeam ?? throw new NullReferenceException($"{nameof(awayTeam)} cannot be null.");
+            AwayTeamId = awayTeam.Id;
+            Date = date;
         }
+
         public int HomeTeamId { get; private set; }
         public Team HomeTeam { get; private set; }
 
@@ -34,7 +42,8 @@ namespace Predictions.Domain.Models
         public Tour Tour { get; private set; }
 
         public DateTime Date { get; private set; }
-        public FootballScore Score { get; private set; } 
+
+        public FootballScore Score { get; private set; }
             = new FootballScore();
 
         public IEnumerable<Prediction> Predictions => _predictions.AsReadOnly();

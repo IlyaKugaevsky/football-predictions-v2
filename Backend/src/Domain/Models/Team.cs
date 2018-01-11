@@ -1,10 +1,20 @@
-using Predictions.Domain;
-
-namespace Predictions.Domain.Models
+namespace Domain.Models
 {
-    public class Team: Entity
+    public class Team : Entity
     {
-        // public int TeamId { get; private set; }
+        protected Team() {}
+
+        public Team(string title)
+        {
+            Title = title;
+        }
+
+        internal Team(int id, string title)
+        {
+            Id = id;
+            Title = title;
+        }
+
         public string Title { get; private set; }
     }
 }

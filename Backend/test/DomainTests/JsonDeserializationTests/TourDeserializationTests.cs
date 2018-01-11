@@ -1,24 +1,23 @@
-using System;
 using System.IO;
-using System.Reflection;
+using Domain.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Predictions.Domain.Models;
 using Shouldly;
 using Xunit;
 
-namespace Predictions.DomainTests.JsonDeserializationTests
+namespace DomainTests.JsonDeserializationTests
 {
     public class TourDeserializationTests
     {
-        private JsonSerializerSettings _settings;
         public TourDeserializationTests()
         {
-            _settings = new JsonSerializerSettings()
+            _settings = new JsonSerializerSettings
             {
                 ContractResolver = new PrivateSetterContractResolver()
             };
         }
+
+        private readonly JsonSerializerSettings _settings;
 
         [Fact]
         public void Should_Deserialize_Tour_Correctly()

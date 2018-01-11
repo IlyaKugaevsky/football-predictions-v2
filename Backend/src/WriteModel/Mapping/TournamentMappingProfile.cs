@@ -1,9 +1,9 @@
 using AutoMapper;
-using Predictions.Domain;
-using Predictions.Domain.Models;
-using Predictions.WriteModel.Features.Tournaments.Dtos;
+using Domain;
+using Domain.Models;
+using WriteModel.Features.Tournaments.Dtos;
 
-namespace Predictions.WriteModel.Mapping
+namespace WriteModel.Mapping
 {
     public class TournamentMappingProfile : Profile
     {

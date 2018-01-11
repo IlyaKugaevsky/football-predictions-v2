@@ -1,15 +1,15 @@
 using AutoMapper;
-using Predictions.Domain.Models;
-using Predictions.ReadModel.Features.Matches.Dtos;
+using Domain.Models;
+using ReadModel.Features.Matches.Dtos;
 
-namespace Predictions.ReadModel.Mapping
+namespace ReadModel.Mapping
 {
     public class MatchMappingProfile : Profile
     {
         public MatchMappingProfile()
         {
             CreateMap<Match, MatchInfoReadDto>()
-                .ForMember(dto => dto.Score, opt => opt.MapFrom(m => m.Score.Value));
+                .ConstructUsing(m => new MatchInfoReadDto(m.Id, m.Date, m.HomeTeam.Title, m.AwayTeam.Title, m.Score.Value));
         }
     }
 }

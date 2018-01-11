@@ -1,10 +1,10 @@
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Predictions.Domain.Models;
 
-namespace Predictions.Persistence.Configurations
+namespace Persistence.Configurations
 {
-    public class MatchEntityConfiguration: IEntityTypeConfiguration<Match>
+    public class MatchEntityConfiguration : IEntityTypeConfiguration<Match>
     {
         public void Configure(EntityTypeBuilder<Match> matchConfiguration)
         {
@@ -15,12 +15,12 @@ namespace Predictions.Persistence.Configurations
                 .HasOne(m => m.Tour)
                 .WithMany(t => t.Matches)
                 .HasForeignKey(m => m.TourId);
-            
+
             matchConfiguration
                 .OwnsOne(m => m.Score)
                 .Property(s => s.Value)
                 .HasColumnName("Score");
-            
+
             // matchConfiguration
             //     .HasOne(m => m.HomeTeam)
             //     .WithOne()
@@ -28,7 +28,7 @@ namespace Predictions.Persistence.Configurations
 
             // matchConfiguration.HasForeignKey(m => m.HomeTeamId);
             // matchConfiguration.HasForeignKey(m => m.AwayTeamId);
-            
+
             // matchConfiguration
             //     .HasForeignKey(m => m.AwayTeamId);
 

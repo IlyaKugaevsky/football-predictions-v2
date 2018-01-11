@@ -1,12 +1,7 @@
-namespace Predictions.Domain
+namespace Domain
 {
     public abstract class Entity
     {
-        private int _Id;
-        public virtual int Id
-        {
-            get { return _Id; }
-            protected set { _Id = value; }
-        }
+        public int Id { get; protected set; }
     }
 }

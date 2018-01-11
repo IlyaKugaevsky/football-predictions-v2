@@ -1,9 +1,8 @@
 using AutoMapper;
-using Predictions.Domain.Models;
-using Predictions.Domain;
-using Predictions.ReadModel.Features.Tours.Dtos;
+using Domain.Models;
+using ReadModel.Features.Tours.Dtos;
 
-namespace Predictions.ReadModel.Mapping
+namespace ReadModel.Mapping
 {
     public class TourMappingProfile : Profile
     {

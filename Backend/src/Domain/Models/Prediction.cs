@@ -1,11 +1,10 @@
-using Predictions.Domain.Models;
-using Predictions.Domain;
-
-namespace Predictions.Domain.Models
+namespace Domain.Models
 {
-    public class Prediction: Entity
+    public class Prediction : Entity
     {
-        protected Prediction() { }
+        protected Prediction()
+        {
+        }
 
         public Prediction(int expertId, int matchId, string value)
         {

@@ -1,25 +1,21 @@
-using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using Predictions.Domain.Models;
-using Predictions.Domain.QueryExtensions;
-using Predictions.Persistence;
-using Predictions.Persistence.FetchExtensions;
-using Predictions.Persistence.QueryExtensions;
+using Persistence;
+using Persistence.FetchExtensions;
+using Persistence.QueryExtensions;
 using Shouldly;
 using Xunit;
 
-namespace Predictions.PersistenceTests.RealDbTests
+namespace PersistenceTests.RealDbTests
 {
     public class RealDbFetchingTests
     {
-        IReadOnlyPredictionsContext _context;
         public RealDbFetchingTests()
         {
-            var connectionString = "workstation id=Predictions.mssql.somee.com;packet size=4096;user id=cherocky_SQLLogin_1;pwd=fg6ejtwfks;data source=Predictions.mssql.somee.com;persist security info=False;initial catalog=Predictions";
+            var connectionString =
+                "workstation id=Predictions.mssql.somee.com;packet size=4096;user id=cherocky_SQLLogin_1;pwd=fg6ejtwfks;data source=Predictions.mssql.somee.com;persist security info=False;initial catalog=Predictions";
 
             var options = new DbContextOptionsBuilder<PredictionsContext>()
                 .UseSqlServer(connectionString)
@@ -28,7 +24,10 @@ namespace Predictions.PersistenceTests.RealDbTests
             _context = new PredictionsContext(options);
         }
 
+        private readonly IReadOnlyPredictionsContext _context;
+
         [Fact]
+        [SuppressMessage("ReSharper", "UnusedVariable")]
         public void Should_Fetch_All_Entity_Types_Without_Errors()
         {
             Should.NotThrow(() =>
@@ -53,10 +52,10 @@ namespace Predictions.PersistenceTests.RealDbTests
         [Fact]
         public async Task Should_Fetch_Schedule_Correctly()
         {
-            var schedule =  await _context.Tournaments
-                            .FetchWithScheduleInfo()
-                            .AsNoTracking()
-                            .LastStartedAsync();
+            var schedule = await _context.Tournaments
+                .FetchWithScheduleInfo()
+                .AsNoTracking()
+                .LastStartedAsync();
 
             schedule.Tours.First().Matches.ShouldAllBe(m => m.Score.Value != null);
         }

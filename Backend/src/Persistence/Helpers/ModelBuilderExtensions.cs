@@ -1,15 +1,14 @@
-using System;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-public static class ModelBuilderExtensions
+namespace Persistence.Helpers
 {
-    public static void RemovePluralizingTableNameConvention(this ModelBuilder modelBuilder)
+    public static class ModelBuilderExtensions
     {
-        foreach (IMutableEntityType entity in modelBuilder.Model.GetEntityTypes())
+        public static void RemovePluralizingTableNameConvention(this ModelBuilder modelBuilder)
         {
-            entity.Relational().TableName = entity.DisplayName();
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+                entity.Relational().TableName = entity.DisplayName();
         }
     }
 }

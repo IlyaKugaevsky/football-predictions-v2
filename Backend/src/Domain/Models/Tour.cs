@@ -1,22 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Predictions.Domain.Models
+namespace Domain.Models
 {
-    public class Tour: Entity
+    public class Tour : Entity
     {
-        private readonly List<Match> _matches = new List<Match>(); 
-        protected Tour() { }
-        public Tour (int number, DateTime startDate, DateTime endDate)
+        private readonly List<Match> _matches = new List<Match>();
+
+        protected Tour()
+        {
+        }
+
+        public Tour(int number, DateTime startDate, DateTime endDate)
         {
             Number = number;
             StartDate = startDate;
             EndDate = endDate;
         }
-        internal Tour (int id, int number, DateTime startDate, DateTime endDate)
-            :this(number, startDate, endDate)
+
+        internal Tour(int id, int number, DateTime startDate, DateTime endDate)
+            : this(number, startDate, endDate)
         {
             Id = id;
         }
@@ -25,7 +28,7 @@ namespace Predictions.Domain.Models
         public int TournamentId { get; private set; }
 
         public int Number { get; private set; }
-        public bool IsClosed { get; private set; } = false;
+        public bool IsClosed { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
 
@@ -36,12 +39,9 @@ namespace Predictions.Domain.Models
             TournamentId = tournamentId;
         }
 
-        public void Close() 
+        public void Close()
         {
-            if (IsClosed) 
-            {
-                throw new InvalidOperationException("The tour is already closed.");
-            }
+            if (IsClosed) throw new InvalidOperationException("The tour is already closed.");
             IsClosed = true;
         }
 

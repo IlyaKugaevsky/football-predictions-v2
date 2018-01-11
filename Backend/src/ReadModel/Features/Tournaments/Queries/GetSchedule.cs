@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
 using MediatR;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
+using ReadModel.Features.Tournaments.Dtos;
 
-namespace Predictions.ReadModel.Features.Tournaments.Queries
+namespace ReadModel.Features.Tournaments.Queries
 {
-    public class GetSchedule: IRequest<TournamentScheduleDto> { }
-
+    public class GetSchedule : IRequest<TournamentScheduleDto>
+    {
+    }
 }

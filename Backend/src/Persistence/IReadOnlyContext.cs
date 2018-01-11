@@ -1,15 +1,7 @@
-using System;
-using System.Data;
-using System.Threading.Tasks;
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
-using Predictions.Domain.Models;
-using Predictions.Persistence.Configurations;
 
-namespace Predictions.Persistence
+namespace Persistence
 {
     public interface IReadOnlyPredictionsContext
     {

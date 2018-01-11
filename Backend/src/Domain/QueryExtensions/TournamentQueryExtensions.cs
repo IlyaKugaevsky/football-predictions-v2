@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using Predictions.Domain.Models;
+using Domain.Models;
 
-namespace Predictions.Domain.QueryExtensions
+namespace Domain.QueryExtensions
 {
     public static class TournamentQueryExtensions
     {
-        public static Tournament LastStarted(this IEnumerable<Tournament> tournaments) 
-            => tournaments.OrderByDescending(t => t.StartDate).First();
+        public static Tournament LastStarted(this IEnumerable<Tournament> tournaments)
+        {
+            return tournaments.OrderByDescending(t => t.StartDate).First();
+        }
     }
 }

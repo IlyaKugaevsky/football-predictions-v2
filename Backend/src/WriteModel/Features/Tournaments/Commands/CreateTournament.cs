@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
 using MediatR;
-using Predictions.WriteModel.Features.Tournaments.Dtos;
+using WriteModel.Features.Tournaments.Dtos;
 
-namespace Predictions.WriteModel.Features.Tournaments.Commands
+namespace WriteModel.Features.Tournaments.Commands
 {
-    public class CreateTournament: IRequest<bool> 
-    { 
-        public TournamentInfoWriteDto tournamentInfo { get; private set; }
+    public class CreateTournament : IRequest<bool>
+    {
+        public TournamentInfoWriteDto TournamentInfo { get; private set; }
     }
 }

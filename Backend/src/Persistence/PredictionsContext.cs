@@ -1,25 +1,26 @@
-using System;
 using System.Data;
 using System.Threading.Tasks;
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
-using Predictions.Persistence.Configurations;
-using Predictions.Domain.Models;
+using Persistence.Configurations;
+using Persistence.Helpers;
 
-namespace Predictions.Persistence
+namespace Persistence
 {
     public class PredictionsContext : DbContext, IReadOnlyPredictionsContext
     {
+        public static readonly LoggerFactory MyLoggerFactory
+            = new LoggerFactory(new[] {new ConsoleLoggerProvider((_, __) => true, true)});
+
         private IDbContextTransaction _currentTransaction;
 
-        public PredictionsContext(DbContextOptions<PredictionsContext> options) 
-            : base(options) { }
-
-        public static readonly LoggerFactory MyLoggerFactory
-            = new LoggerFactory(new [] { new ConsoleLoggerProvider((_, __) => true, true) });
+        public PredictionsContext(DbContextOptions<PredictionsContext> options)
+            : base(options)
+        {
+        }
 
         public virtual DbSet<Tournament> Tournaments { get; set; }
         public virtual DbSet<Expert> Experts { get; set; }
@@ -28,7 +29,7 @@ namespace Predictions.Persistence
         public virtual DbSet<Prediction> Predictions { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
                 .UseLoggerFactory(MyLoggerFactory);
@@ -49,10 +50,7 @@ namespace Predictions.Persistence
 
         public void BeginTransaction()
         {
-            if (_currentTransaction != null)
-            {
-                return;
-            }
+            if (_currentTransaction != null) return;
 
             _currentTransaction = Database.BeginTransaction(IsolationLevel.ReadCommitted);
         }
@@ -95,6 +93,5 @@ namespace Predictions.Persistence
                 }
             }
         }
-
     }
 }

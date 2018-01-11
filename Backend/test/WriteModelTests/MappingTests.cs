@@ -1,12 +1,12 @@
 using System;
 using AutoMapper;
-using Xunit;
+using Domain.Models;
 using Shouldly;
-using Predictions.Domain.Models;
-using Predictions.WriteModel.Features.Tournaments.Dtos;
-using Predictions.WriteModel.Mapping;
+using WriteModel.Features.Tournaments.Dtos;
+using WriteModel.Mapping;
+using Xunit;
 
-namespace Predictions.WriteModelTests
+namespace WriteModelTests
 {
     public class MappingTests
     {
@@ -32,6 +32,5 @@ namespace Predictions.WriteModelTests
             tournament.EndDate.ShouldBe(tournamentInfo.EndDate);
             tournament.Tours.ShouldBeEmpty();
         }
-
     }
 }

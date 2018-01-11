@@ -1,16 +1,22 @@
 using System;
-using System.Collections.Generic;
-using Predictions.Domain;
-using Predictions.Domain.Models;
 
-namespace Predictions.ReadModel.Features.Matches.Dtos
+namespace ReadModel.Features.Matches.Dtos
 {
     public class MatchInfoReadDto
     {
-        public int Id { get; private set; }
-        public DateTime Date { get; private set; }
-        public string HomeTeamTitle { get; private set; }
-        public string AwayTeamTitle { get; private set; }
-        public string Score { get; private set; }
+        public MatchInfoReadDto(int id, DateTime date, string homeTeamTitle, string awayTeamTitle, string score)
+        {
+            Id = id;
+            Date = date;
+            HomeTeamTitle = homeTeamTitle;
+            AwayTeamTitle = awayTeamTitle;
+            Score = score;
+        }
+
+        public int Id { get; set; }
+        public DateTime Date { get; }
+        public string HomeTeamTitle { get; }
+        public string AwayTeamTitle { get; }
+        public string Score { get; }
     }
 }

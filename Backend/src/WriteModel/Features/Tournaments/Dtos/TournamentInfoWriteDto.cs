@@ -1,6 +1,6 @@
 using System;
 
-namespace Predictions.WriteModel.Features.Tournaments.Dtos
+namespace WriteModel.Features.Tournaments.Dtos
 {
     public class TournamentInfoWriteDto
     {
@@ -10,8 +10,9 @@ namespace Predictions.WriteModel.Features.Tournaments.Dtos
             StartDate = startDate;
             EndDate = endDate;
         }
-        public string Title { get; private set; }
-        public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
+
+        public string Title { get; }
+        public DateTime StartDate { get; }
+        public DateTime EndDate { get; }
     }
 }

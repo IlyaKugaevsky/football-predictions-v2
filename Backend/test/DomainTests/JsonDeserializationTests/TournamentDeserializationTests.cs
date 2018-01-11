@@ -1,27 +1,24 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
+using Domain.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Shouldly;
+using Utils.Json;
 using Xunit;
-using Predictions.Domain.Models;
-using Predictions.Utils.Json;
 
-namespace Predictions.DomainTests.JsonDeserializationTests
+namespace DomainTests.JsonDeserializationTests
 {
     public class TournamentDeserializationTests
     {
-        private JsonSerializerSettings _settings;
         public TournamentDeserializationTests()
         {
-            _settings = new JsonSerializerSettings()
+            _settings = new JsonSerializerSettings
             {
                 ContractResolver = new AllPropsAndFieldsContractResolver()
             };
         }
+
+        private readonly JsonSerializerSettings _settings;
 
         [Fact]
         public void Should_Deserialize_Tournament_Correctly()

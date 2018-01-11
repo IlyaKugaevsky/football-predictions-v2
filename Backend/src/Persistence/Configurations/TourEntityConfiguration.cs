@@ -1,10 +1,10 @@
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Predictions.Domain.Models;
 
-namespace Predictions.Persistence.Configurations
+namespace Persistence.Configurations
 {
-    public class TourEntityConfiguration: IEntityTypeConfiguration<Tour>
+    public class TourEntityConfiguration : IEntityTypeConfiguration<Tour>
     {
         public void Configure(EntityTypeBuilder<Tour> tourConfiguration)
         {
@@ -19,12 +19,11 @@ namespace Predictions.Persistence.Configurations
             tourConfiguration
                 .HasOne(t => t.Tournament)
                 .WithMany(tnm => tnm.Tours)
-                .HasForeignKey(m => m.TournamentId);   
+                .HasForeignKey(m => m.TournamentId);
 
-            var navigation 
+            var navigation
                 = tourConfiguration.Metadata.FindNavigation(nameof(Tour.Matches));
             navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
-        
     }
 }

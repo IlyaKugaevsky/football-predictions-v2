@@ -1,25 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Reflection;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using AutoMapper;
-using Predictions.Persistence;
+using Persistence;
 
-namespace Predictions.WebApi
+namespace WebApi
 {
     public class Startup
     {
@@ -29,7 +21,7 @@ namespace Predictions.WebApi
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddJsonOptions(options =>
@@ -39,8 +31,8 @@ namespace Predictions.WebApi
             });
 
             services.AddMediatR();
-            services.AddMediatR(Assembly.Load("ReadModel")); 
-            
+            services.AddMediatR(Assembly.Load("ReadModel"));
+
             services.AddAutoMapper(
                 Assembly.Load("ReadModel"),
                 Assembly.Load("WriteModel"));
@@ -55,10 +47,7 @@ namespace Predictions.WebApi
             IHostingEnvironment env,
             ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseMvc();
         }

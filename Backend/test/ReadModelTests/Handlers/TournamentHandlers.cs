@@ -1,21 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 // using MediatR;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 // using Predictions.Persistence;
 // using Predictions.ReadModel.Features.Tournaments.Queries;
-using Shouldly;
-using Xunit;
 
-namespace Predictions.ReadModelTests.Handlers
+namespace ReadModelTests.Handlers
 {
     public class TournamentHandlers
     {

@@ -1,16 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.JsonPatch;
 using MediatR;
-using AutoMapper;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
-using Predictions.ReadModel.Features.Tournaments.Queries;
-using Predictions.WriteModel.Features.Tournaments.Dtos;
+using Microsoft.AspNetCore.Mvc;
+using ReadModel.Features.Tournaments.Dtos;
+using ReadModel.Features.Tournaments.Queries;
 
-namespace Predictions.WebApi.Controllers
+namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class TournamentsController : Controller
@@ -23,7 +18,7 @@ namespace Predictions.WebApi.Controllers
         }
 
         // GET api/tournaments/
-        [HttpGet()]
+        [HttpGet]
         public async Task<IEnumerable<TournamentInfoReadDto>> GetTournaments()
         {
             var getTournaments = new GetTournaments();
@@ -36,7 +31,7 @@ namespace Predictions.WebApi.Controllers
         {
             var getTournament = new GetTournament(id);
             return await _mediator.Send(getTournament);
-        }        
+        }
 
         // GET api/tournaments/latest/schedule
         [HttpGet("latest/schedule")]

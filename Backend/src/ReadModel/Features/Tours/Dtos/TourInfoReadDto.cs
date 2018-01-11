@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using Predictions.Domain;
-using Predictions.Domain.Models;
 
-namespace Predictions.ReadModel.Features.Tours.Dtos
+namespace ReadModel.Features.Tours.Dtos
 {
     public class TourInfoReadDto
     {

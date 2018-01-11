@@ -1,19 +1,15 @@
-using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
-using Predictions.Domain;
-using Predictions.Domain.Models;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
-using Predictions.ReadModel.Features.Tours.Dtos;
+using ReadModel.Features.Tours.Dtos;
 
-namespace Predictions.ReadModel.Features.Tournaments.Dtos
+namespace ReadModel.Features.Tournaments.Dtos
 {
     public class TournamentScheduleDto
     {
         [JsonProperty(PropertyName = "tourSchedules")]
         private readonly List<TourScheduleReadDto> _tourSchedules;
-    
+
         public TournamentScheduleDto(TournamentInfoReadDto tournamentInfo,
             IEnumerable<TourScheduleReadDto> tourSchedules)
         {
@@ -22,7 +18,10 @@ namespace Predictions.ReadModel.Features.Tournaments.Dtos
         }
 
         public TournamentInfoReadDto TournamentInfo { get; private set; }
-        public IReadOnlyCollection<TourScheduleReadDto> TourSchedules() 
-            => _tourSchedules.AsReadOnly();
+
+        public IReadOnlyCollection<TourScheduleReadDto> TourSchedules()
+        {
+            return _tourSchedules.AsReadOnly();
+        }
     }
 }

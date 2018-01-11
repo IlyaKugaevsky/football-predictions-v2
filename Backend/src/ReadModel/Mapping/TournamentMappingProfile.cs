@@ -1,8 +1,8 @@
 using AutoMapper;
-using Predictions.Domain.Models;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
+using Domain.Models;
+using ReadModel.Features.Tournaments.Dtos;
 
-namespace Predictions.ReadModel.Mapping
+namespace ReadModel.Mapping
 {
     public class TournamentMappingProfile : Profile
     {

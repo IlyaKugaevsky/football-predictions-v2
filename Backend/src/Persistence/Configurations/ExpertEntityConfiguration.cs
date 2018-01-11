@@ -1,10 +1,10 @@
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Predictions.Domain.Models;
 
-namespace Predictions.Persistence.Configurations
+namespace Persistence.Configurations
 {
-    public class ExpertEntityConfiguration: IEntityTypeConfiguration<Expert>
+    public class ExpertEntityConfiguration : IEntityTypeConfiguration<Expert>
     {
         public void Configure(EntityTypeBuilder<Expert> predictionConfiguration)
         {

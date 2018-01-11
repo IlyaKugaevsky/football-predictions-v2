@@ -1,45 +1,51 @@
 using System;
 using System.Reflection;
 using AutoMapper;
-using AutoMapper.Configuration;
-using Microsoft.Extensions.Configuration;
+using Domain.Models;
+using FakeItEasy;
 using Microsoft.Extensions.DependencyInjection;
-using Predictions.Domain.Models;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
-using Predictions.ReadModel.Features.Tours.Dtos;
-using Predictions.ReadModel.Features.Matches.Dtos;
-using Predictions.ReadModel.Mapping;
+using ReadModel.Features.Matches.Dtos;
+using ReadModel.Features.Tournaments.Dtos;
+using ReadModel.Features.Tours.Dtos;
 using Shouldly;
 using Xunit;
 
-namespace Predictions.ReadModelTests
+namespace ReadModelTests
 {
     public class MappingTests
     {
+        private IMapper _mapper;
+
         public MappingTests()
         {
             var services = new ServiceCollection();
 
-            AutoMapper.Mapper.Reset();
+            Mapper.Reset();
             services.AddAutoMapper(Assembly.Load("ReadModel"));
             Mapper.AssertConfigurationIsValid();
         }
 
         [Fact]
-        public void Should_Map_Tournament_To_Dto_Correctly()
+        public void Should_Map_Match_To_Dto_Correctly()
         {
-            var tournament = new Tournament(
+            var homeTeam = new Team(1, "Spartak");
+            var awayTeam = new Team(2, "CSKA");
+
+            var match = new Match(
+                100500,
                 1,
-                "TestTitle",
-                DateTime.MinValue,
-                DateTime.MaxValue);
+                homeTeam,
+                awayTeam,
+                DateTime.MinValue
+            );
 
-            var tournamentDto = Mapper.Map<TournamentInfoReadDto>(tournament);
+            var mps = Mapper.Configuration.GetAllTypeMaps();
 
-            tournamentDto.Id.ShouldBe(tournament.Id);
-            tournamentDto.Title.ShouldBe(tournament.Title);
-            tournamentDto.StartDate.ShouldBe(tournament.StartDate);
-            tournamentDto.EndDate.ShouldBe(tournament.EndDate);
+            var score = match.Score.Value;
+            var matchDto = Mapper.Map<MatchInfoReadDto>(match);
+
+            matchDto.Id.ShouldBe(match.Id);
+            matchDto.Score.ShouldBe(match.Score.Value);
         }
 
         [Fact]
@@ -62,20 +68,20 @@ namespace Predictions.ReadModelTests
         }
 
         [Fact]
-        public void Should_Map_Match_To_Dto_Correctly()
+        public void Should_Map_Tournament_To_Dto_Correctly()
         {
-            var match = new Match(
+            var tournament = new Tournament(
                 1,
-                2,
-                3,
-                4,
-                DateTime.MinValue
-            );
+                "TestTitle",
+                DateTime.MinValue,
+                DateTime.MaxValue);
 
-            var matchDto = Mapper.Map<MatchInfoReadDto>(match);
+            var tournamentDto = Mapper.Map<TournamentInfoReadDto>(tournament);
 
-            matchDto.Id.ShouldBe(match.Id);
-            matchDto.Score.ShouldBe(match.Score.Value);
+            tournamentDto.Id.ShouldBe(tournament.Id);
+            tournamentDto.Title.ShouldBe(tournament.Title);
+            tournamentDto.StartDate.ShouldBe(tournament.StartDate);
+            tournamentDto.EndDate.ShouldBe(tournament.EndDate);
         }
     }
 }

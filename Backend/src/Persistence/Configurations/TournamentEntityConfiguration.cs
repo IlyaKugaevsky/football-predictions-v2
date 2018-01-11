@@ -1,8 +1,8 @@
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Predictions.Domain.Models;
 
-namespace Predictions.Persistence.Configurations
+namespace Persistence.Configurations
 {
     public class TournamentEntityConfiguration : IEntityTypeConfiguration<Tournament>
     {
@@ -15,7 +15,7 @@ namespace Predictions.Persistence.Configurations
             tournamentConfiguration.Property(tnm => tnm.StartDate).HasColumnType("DateTime2");
             tournamentConfiguration.Property(tnm => tnm.EndDate).HasColumnType("DateTime2");
 
-            var navigation 
+            var navigation
                 = tournamentConfiguration.Metadata.FindNavigation(nameof(Tournament.Tours));
             navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }

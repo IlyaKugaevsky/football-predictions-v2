@@ -1,12 +1,10 @@
 using System;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Persistence;
+using PersistenceTests.LocalDbTests.DbInitializers;
 using Xunit;
-using Predictions.Domain.Models;
-using Predictions.Persistence;
-using Predictions.PersistenceTests.LocalDbTests.DbInitializers;
 
-namespace Predictions.PersistenceTests.LocalDbTests
+namespace PersistenceTests.LocalDbTests
 {
     [CollectionDefinition("Database collection")]
     public class DatabaseCollection : ICollectionFixture<DbFixture>
@@ -15,6 +13,7 @@ namespace Predictions.PersistenceTests.LocalDbTests
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
     public class DbFixture : IDisposable
     {
         public DbFixture()
@@ -30,17 +29,19 @@ namespace Predictions.PersistenceTests.LocalDbTests
 
         public DbFixture(PredictionsContext context)
         {
-            this.Context = context;
+            Context = context;
         }
+
         public PredictionsContext Context { get; private set; }
+
+        public void Dispose()
+        {
+            Context.Database.EnsureDeleted();
+        }
 
         public void Seed(IDbInitializer initializer)
         {
             initializer.SeedDatabase(Context);
-        }
-        public void Dispose()
-        {
-            Context.Database.EnsureDeleted();
         }
     }
 }

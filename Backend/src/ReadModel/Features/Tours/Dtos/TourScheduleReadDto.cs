@@ -1,13 +1,8 @@
-using System;
-using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Predictions.Domain;
-using Predictions.Domain.Models;
-using Predictions.ReadModel.Features.Matches.Dtos;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
+using ReadModel.Features.Matches.Dtos;
 
-namespace Predictions.ReadModel.Features.Tours.Dtos
+namespace ReadModel.Features.Tours.Dtos
 {
     public class TourScheduleReadDto
     {
@@ -18,11 +13,14 @@ namespace Predictions.ReadModel.Features.Tours.Dtos
             IEnumerable<MatchInfoReadDto> matchInfos)
         {
             TourInfo = tourtInfo;
-            _matchInfos = matchInfos.ToList();
+            _matchInfos.AddRange(matchInfos);
         }
 
         public TourInfoReadDto TourInfo { get; private set; }
-        public IReadOnlyCollection<MatchInfoReadDto> MatchInfo() 
-            => _matchInfos.AsReadOnly();
+
+        public IReadOnlyCollection<MatchInfoReadDto> MatchInfo()
+        {
+            return _matchInfos.AsReadOnly();
+        }
     }
 }

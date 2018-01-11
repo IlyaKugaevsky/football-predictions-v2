@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Predictions.Persistence;
-using Predictions.Domain.Models;
-using Predictions.ReadModel.Features.Tournaments.Dtos;
 using MediatR;
+using ReadModel.Features.Tournaments.Dtos;
 
-namespace Predictions.ReadModel.Features.Tournaments.Queries
+namespace ReadModel.Features.Tournaments.Queries
 {
-    public class GetTournament: IRequest<TournamentInfoReadDto> 
+    public class GetTournament : IRequest<TournamentInfoReadDto>
     {
         public int TournamentId;
 

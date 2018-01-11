@@ -1,30 +1,27 @@
-using System;
-using System.IO;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.IO;
+using Domain;
 using Microsoft.EntityFrameworkCore;
-using Predictions.Persistence;
-using Predictions.PersistenceTests.LocalDbTests.DbInitializers;
-using Predictions.Domain;
-using Predictions.Utils.Json;
+using Newtonsoft.Json;
+using Utils.Json;
 
-namespace Predictions.PersistenceTests.LocalDbTests.DbInitializers
+namespace PersistenceTests.LocalDbTests.DbInitializers
 {
-    public class JsonDbInitializer<T>: IDbInitializer
-        where T: Entity
+    public class JsonDbInitializer<T> : IDbInitializer
+        where T : Entity
     {
-        private string _jsonData;
-        private JsonSerializerSettings _settings; 
+        private readonly string _jsonData;
+        private readonly JsonSerializerSettings _settings;
 
         public JsonDbInitializer(string jsonFilePath)
         {
             _jsonData = File.ReadAllText(jsonFilePath);
-            _settings = new JsonSerializerSettings()
+            _settings = new JsonSerializerSettings
             {
                 ContractResolver = new AllPropsAndFieldsContractResolver()
             };
         }
-        
+
         public void SeedDatabase(DbContext context)
         {
             var entities = JsonConvert.DeserializeObject<IEnumerable<T>>(_jsonData, _settings);

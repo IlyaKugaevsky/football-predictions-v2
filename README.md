@@ -6,9 +6,9 @@ Web application for organizing score prediction games and handling football stat
 >   - [Core parts](#core-parts-1)
 >   - [Additional tools](#additional-tools-1)
 > - **[API server overview](#api-server-overview)**
-> 	- [Global architectural patterns and design decisions](#global-architectural-patterns-and-design-decisions-1)
->   	- [Layers](#layers)
->   	- [Testing](#testing)
+>   - [Global architectural patterns and design decisions](#global-architectural-patterns-and-design-decisions-1)
+>   - [Layers](#layers)
+>   - [Testing](#testing)
 > - **[Client web application overview](#client-web-application-overview)**
 >   - [Implemented features](#implemented-features)
 

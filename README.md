@@ -1,5 +1,5 @@
 # Football predictions
-Web application for organizing score prediction games and handling football statistics. This is an (uncompleted) upgrade of previous MVC-based application, see [football-predictions-webapp](https://github.com/IlyaKugaevsky/football-predictions-webapp).
+Web application for organizing score prediction games and handling football statistics. This is an (uncompleted) upgrade of previous MVC-based application, see [football-predictions](https://github.com/IlyaKugaevsky/football-predictions).
 
 ## Table of contents
 > - **[Tech stack](#tech-stack)**

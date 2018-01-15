@@ -2,14 +2,14 @@
 Web application for organizing score prediction games and handling football statistics. This is an (uncompleted) upgrade of previous MVC-based application, see [football-predictions-webapp](https://github.com/IlyaKugaevsky/football-predictions-webapp).
 
 ## Table of contents
-> - **[Tech stack](#tech-stack-1)**
+> - **[Tech stack](#tech-stack)**
 >   - [Core parts](#core-parts-1)
 >   - [Additional tools](#additional-tools-1)
-> - **[API server overview](#api-server-overview-1)**
+> - **[API server overview](#api-server-overview)**
 > 	- [Global architectural patterns and design decisions](#global-architectural-patterns-and-design-decisions-1)
->   - [Layers](#layers)
->   - [Testing](#testing)
-> - **[Client web application overview](#client-web-application-overview-1)**
+>   	- [Layers](#layers)
+>   	- [Testing](#testing)
+> - **[Client web application overview](#client-web-application-overview)**
 >   - [Implemented features](#implemented-features)
 
 ## Tech stack

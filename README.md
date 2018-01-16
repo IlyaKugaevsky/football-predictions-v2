@@ -3,8 +3,9 @@ Web application for organizing score prediction games and handling football stat
 
 ## Table of contents
 > - **[Tech stack](#tech-stack)**
->   - [Core parts](#core-parts)
->   - [Additional tools](#additional-tools)
+>   - [Backend](#backend)
+>   - [Frontend](#frontend)
+>   - [DevOps](#devops)
 > - **[API server overview](#api-server-overview)**
 >   - [Global architectural patterns and design decisions](#global-architectural-patterns-and-design-decisions)
 >   - [Layers](#layers)
@@ -13,7 +14,7 @@ Web application for organizing score prediction games and handling football stat
 >   - [Implemented features](#implemented-features)
 
 ## Tech stack
-### Core parts
+### Backend
 - Data stores
 	- Microsoft SQL Server
 	- SQLite
@@ -21,17 +22,21 @@ Web application for organizing score prediction games and handling football stat
 - API server 
 	- ASP.NET Core Web API
 	- Entity Framework Core
+- Message queue (under consideration)
+	- RabbitMQ
+	
+### Frontend
 - Client web application
 	- Angular 5
-	- Node.js 
-### Additional tools
+- Server prerendering
+	- Node.js
+	- Webpack
+- Reverse proxy (in progress)
+	- Nginx
+### DevOps
 - DevOps
 	- Docker
 	- Ansible (in progress)
-- Reverse proxy (in progress)
-	- Nginx
-- Message queue (under consideration)
-	- RabbitMQ
 
 ## API server overview
 ### Global architectural patterns and design decisions

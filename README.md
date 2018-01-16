@@ -34,9 +34,8 @@ Web application for organizing score prediction games and handling football stat
 - Reverse proxy (in progress)
 	- Nginx
 ### DevOps
-- DevOps
-	- Docker
-	- Ansible (in progress)
+- Docker
+- Ansible (in progress)
 
 ## API server overview
 ### Global architectural patterns and design decisions

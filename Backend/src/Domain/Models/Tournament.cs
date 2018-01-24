@@ -30,6 +30,15 @@ namespace Domain.Models
 
         public IEnumerable<Tour> Tours => _tours.AsReadOnly();
 
+        public void UpdateInfo(string title, DateTime startDate, DateTime endDate)
+        {
+            //validation?
+
+            Title = title;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
+
         public void AddTours(IEnumerable<Tour> tours)
         {
             _tours.AddRange(tours);
@@ -39,5 +48,6 @@ namespace Domain.Models
         {
             _tours.Add(tour);
         }
+
     }
 }

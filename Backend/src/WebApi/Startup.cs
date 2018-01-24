@@ -38,7 +38,7 @@ namespace WebApi
                 Assembly.Load("WriteModel"));
 
             var connectionString =
-                Configuration.GetSection("DbConnections:Predictions:Somee:ConnectionString").Value;
+                Configuration.GetSection("DbConnections:Predictions:AWS:ConnectionString").Value;
             services.AddDbContext<PredictionsContext>(options =>
                 options.UseSqlServer(connectionString));
         }

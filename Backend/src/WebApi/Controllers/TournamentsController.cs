@@ -2,8 +2,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using ReadModel.Features.Tournaments.Dtos;
 using ReadModel.Features.Tournaments.Queries;
+using WriteModel.Features.Tournaments.Dtos;
+using WriteModel.Features.Tournaments.Commands;
 
 namespace WebApi.Controllers
 {
@@ -41,14 +44,18 @@ namespace WebApi.Controllers
             return await _mediator.Send(getSchedule);
         }
 
-        // PATCH api/tournaments/
-        // [HttpPost("latest/schedule")]
-        // public async Task<TournamentScheduleReadDto> UpdateTournament(int tournamentId, 
-        //     [FromBody] TournamentInfoWriteDto tournamentInfo)
-        // {
-        //     var 
-        //     var getSchedule = new GetSchedule();
-        //     return await _mediator.Send(getSchedule);
-        // }
+        // PATCH api/tournaments/:id
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateTournament(int id, 
+            [FromBody] TournamentInfoWriteDto tournamentInfo)
+        {
+            var UpdateTournament = new UpdateTournamentInfo(id, tournamentInfo.Title, 
+                tournamentInfo.StartDate, tournamentInfo.EndDate);
+
+            var isCompletedSuccessfully = await _mediator.Send(UpdateTournament);
+
+            if (isCompletedSuccessfully) return Ok();
+            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
     }
 }

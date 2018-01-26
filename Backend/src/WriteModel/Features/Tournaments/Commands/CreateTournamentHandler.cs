@@ -19,7 +19,8 @@ namespace WriteModel.Features.Tournaments.Commands
         public async Task<bool> Handle(CreateTournament command,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tournament = Mapper.Map<Tournament>(command.TournamentInfo);
+            var tournament = new Tournament(command.Title, command.StartDate, command.EndDate);
+            
             await _context.Tournaments.AddAsync(tournament, cancellationToken);
             return await _context.SaveChangesAsync(cancellationToken) > 0;
         }

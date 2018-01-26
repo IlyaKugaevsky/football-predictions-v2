@@ -32,6 +32,7 @@ namespace WebApi
 
             services.AddMediatR();
             services.AddMediatR(Assembly.Load("ReadModel"));
+            services.AddMediatR(Assembly.Load("WriteModel"));
 
             services.AddAutoMapper(
                 Assembly.Load("ReadModel"),

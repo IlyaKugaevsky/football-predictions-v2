@@ -32,8 +32,6 @@ namespace Domain.Models
 
         public void UpdateInfo(string title, DateTime startDate, DateTime endDate)
         {
-            //validation?
-
             Title = title;
             StartDate = startDate;
             EndDate = endDate;

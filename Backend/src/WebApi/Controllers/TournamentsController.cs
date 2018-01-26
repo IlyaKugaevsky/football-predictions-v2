@@ -22,26 +22,35 @@ namespace WebApi.Controllers
 
         // GET api/tournaments/
         [HttpGet]
-        public async Task<IEnumerable<TournamentInfoReadDto>> GetTournaments()
+        public async Task<IActionResult> GetTournaments()
         {
             var getTournaments = new GetTournaments();
-            return await _mediator.Send(getTournaments);
+            var tournaments = await _mediator.Send(getTournaments);
+
+            return Ok(tournaments);
         }
 
         // GET api/tournaments/:id
         [HttpGet("{id}")]
-        public async Task<TournamentInfoReadDto> GetTournamentint(int id)
+        public async Task<IActionResult> GetTournament(int id)
         {
             var getTournament = new GetTournament(id);
-            return await _mediator.Send(getTournament);
+
+            var tournament = await _mediator.Send(getTournament);
+
+            if (tournament == null) return NotFound();
+            else return Ok(tournament);
         }
 
         // GET api/tournaments/latest/schedule
         [HttpGet("latest/schedule")]
-        public async Task<TournamentScheduleDto> GetLatestTournamentSchedule()
+        public async Task<IActionResult> GetLatestTournamentSchedule()
         {
             var getSchedule = new GetSchedule();
-            return await _mediator.Send(getSchedule);
+
+            var schedule =  await _mediator.Send(getSchedule);
+
+            return Ok(schedule);
         }
 
         // PATCH api/tournaments/:id
@@ -55,6 +64,19 @@ namespace WebApi.Controllers
             var isCompletedSuccessfully = await _mediator.Send(UpdateTournament);
 
             if (isCompletedSuccessfully) return Ok();
+            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+
+        // DELETE api/tournaments/:id
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTournament(int id, 
+            [FromBody] TournamentInfoWriteDto tournamentInfo)
+        {
+            var DeleteTournament = new DeleteTournament(id);
+
+            var isCompletedSuccessfully = await _mediator.Send(DeleteTournament);
+
+            if (isCompletedSuccessfully) return NoContent();
             else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
     }

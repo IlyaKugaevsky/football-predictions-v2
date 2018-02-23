@@ -13,8 +13,9 @@ namespace ReadModel.Features.Experts.Queries
         IRequestHandler<GetExperts, IEnumerable<ExpertInfoReadDto>>
     {
         private readonly PredictionsContext _context;
+        private readonly IMapper _mapper;
 
-        public GetExpertsHandler(PredictionsContext context)
+        public GetExpertsHandler(PredictionsContext context, IMapper mapper)
         {
             _context = context;
         }
@@ -23,7 +24,7 @@ namespace ReadModel.Features.Experts.Queries
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var experts = await _context.Experts.ToListAsync(cancellationToken: cancellationToken);
-            return Mapper.Map<IEnumerable<ExpertInfoReadDto>>(experts);
+            return _mapper.Map<IEnumerable<ExpertInfoReadDto>>(experts);
         }
 
     }

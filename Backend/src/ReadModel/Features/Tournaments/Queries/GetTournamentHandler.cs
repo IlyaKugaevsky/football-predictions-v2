@@ -11,10 +11,12 @@ namespace ReadModel.Features.Tournaments.Queries
     public class GetTournamentHandler : IRequestHandler<GetTournament, TournamentInfoReadDto>
     {
         private readonly PredictionsContext _context;
+        private readonly IMapper _mapper;
 
-        public GetTournamentHandler(PredictionsContext context)
+        public GetTournamentHandler(PredictionsContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<TournamentInfoReadDto> Handle(GetTournament request,
@@ -22,7 +24,7 @@ namespace ReadModel.Features.Tournaments.Queries
         {
             var id = request.TournamentId;
             var tournament = await _context.Tournaments.ByIdAsync(id);
-            return Mapper.Map<TournamentInfoReadDto>(tournament);
+            return _mapper.Map<TournamentInfoReadDto>(tournament);
         }
     }
 }

@@ -13,17 +13,19 @@ namespace ReadModel.Features.Tournaments.Queries
         IRequestHandler<GetTournaments, IEnumerable<TournamentInfoReadDto>>
     {
         private readonly PredictionsContext _context;
+        private readonly IMapper _mapper;
 
-        public GetTournamentsHandler(PredictionsContext context)
+        public GetTournamentsHandler(PredictionsContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<TournamentInfoReadDto>> Handle(GetTournaments request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var tournaments = await _context.Tournaments.ToListAsync(cancellationToken: cancellationToken);
-            return Mapper.Map<IEnumerable<TournamentInfoReadDto>>(tournaments);
+            return _mapper.Map<IEnumerable<TournamentInfoReadDto>>(tournaments);
         }
     }
 }

@@ -30,13 +30,9 @@ namespace WebApi
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
 
-            services.AddMediatR();
-            services.AddMediatR(Assembly.Load("ReadModel"));
-            services.AddMediatR(Assembly.Load("WriteModel"));
+            services.AddMediatR(Assembly.Load("ReadModel"), Assembly.Load("WriteModel"));
 
-            services.AddAutoMapper(
-                Assembly.Load("ReadModel"),
-                Assembly.Load("WriteModel"));
+            services.AddAutoMapper(Assembly.Load("ReadModel"), Assembly.Load("WriteModel"));
 
             var connectionString =
                 Configuration.GetSection("DbConnections:Predictions:AWS:ConnectionString").Value;

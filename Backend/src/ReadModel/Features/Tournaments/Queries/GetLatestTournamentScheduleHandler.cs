@@ -15,16 +15,18 @@ using ReadModel.Features.Tours.Dtos;
 
 namespace ReadModel.Features.Tournaments.Queries
 {
-    public class GetScheduleHandler : IRequestHandler<GetSchedule, TournamentScheduleDto>
+    public class GetLatestTournamentScheduleHandler : IRequestHandler<GetLatestTournamentSchedule, TournamentScheduleDto>
     {
         private readonly PredictionsContext _context;
+        private readonly IMapper _mapper;
 
-        public GetScheduleHandler(PredictionsContext context)
+        public GetLatestTournamentScheduleHandler(PredictionsContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public async Task<TournamentScheduleDto> Handle(GetSchedule request,
+        public async Task<TournamentScheduleDto> Handle(GetLatestTournamentSchedule request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var tournamentWithScheduleInfo =
@@ -33,12 +35,12 @@ namespace ReadModel.Features.Tournaments.Queries
                     .AsNoTracking()
                     .LastStartedAsync();
 
-            var tournamentInfo = Mapper.Map<TournamentInfoReadDto>(tournamentWithScheduleInfo);
+            var tournamentInfo = _mapper.Map<TournamentInfoReadDto>(tournamentWithScheduleInfo);
             var tours = tournamentWithScheduleInfo.Tours;
 
             var tournamentSchedules = tours.Select(t => new TourScheduleReadDto(
-                Mapper.Map<TourInfoReadDto>(t),
-                Mapper.Map<IEnumerable<MatchInfoReadDto>>(t.Matches)));
+                _mapper.Map<TourInfoReadDto>(t),
+                _mapper.Map<IEnumerable<MatchInfoReadDto>>(t.Matches)));
 
             return new TournamentScheduleDto(tournamentInfo, tournamentSchedules);
         }

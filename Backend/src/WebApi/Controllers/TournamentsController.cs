@@ -47,9 +47,9 @@ namespace WebApi.Controllers
         [HttpGet("latest/schedule")]
         public async Task<IActionResult> GetLatestTournamentSchedule()
         {
-            var getSchedule = new GetSchedule();
+            var getLatestTournamentSchedule = new GetLatestTournamentSchedule();
 
-            var schedule =  await _mediator.Send(getSchedule);
+            var schedule =  await _mediator.Send(getLatestTournamentSchedule);
 
             return Ok(schedule);
         }

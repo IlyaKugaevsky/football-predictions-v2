@@ -12,17 +12,31 @@ using Xunit;
 
 namespace ReadModelTests
 {
-    public class MappingTests
+    public class MappingConfig
     {
-        private IMapper _mapper;
-
-        public MappingTests()
+        public MappingConfig()
         {
             var services = new ServiceCollection();
-
-            Mapper.Reset();
             services.AddAutoMapper(Assembly.Load("ReadModel"));
-            Mapper.AssertConfigurationIsValid();
+
+            var provider = services.BuildServiceProvider();
+            GlobalMapper = provider.GetService<IMapper>();
+        }
+
+        public IMapper GlobalMapper { get; private set; }
+    }
+
+    public class MappingTests : IClassFixture<MappingConfig>
+    {
+        private IMapper _mapper;
+        private MappingConfig _mappingConfig;
+
+        public MappingTests(MappingConfig mappingConfig)
+        {
+            _mappingConfig = mappingConfig;
+
+            _mapper = mappingConfig.GlobalMapper;
+            _mapper.ConfigurationProvider.AssertConfigurationIsValid();
         }
 
         [Fact]
@@ -39,10 +53,8 @@ namespace ReadModelTests
                 DateTime.MinValue
             );
 
-            var mps = Mapper.Configuration.GetAllTypeMaps();
-
             var score = match.Score.Value;
-            var matchDto = Mapper.Map<MatchInfoReadDto>(match);
+            var matchDto = _mapper.Map<MatchInfoReadDto>(match);
 
             matchDto.Id.ShouldBe(match.Id);
             matchDto.Score.ShouldBe(match.Score.Value);
@@ -58,7 +70,7 @@ namespace ReadModelTests
                 DateTime.MaxValue
             );
 
-            var tourDto = Mapper.Map<TourInfoReadDto>(tour);
+            var tourDto = _mapper.Map<TourInfoReadDto>(tour);
 
             tourDto.Id.ShouldBe(tour.Id);
             tourDto.Number.ShouldBe(tour.Number);
@@ -76,7 +88,7 @@ namespace ReadModelTests
                 DateTime.MinValue,
                 DateTime.MaxValue);
 
-            var tournamentDto = Mapper.Map<TournamentInfoReadDto>(tournament);
+            var tournamentDto = _mapper.Map<TournamentInfoReadDto>(tournament);
 
             tournamentDto.Id.ShouldBe(tournament.Id);
             tournamentDto.Title.ShouldBe(tournament.Title);

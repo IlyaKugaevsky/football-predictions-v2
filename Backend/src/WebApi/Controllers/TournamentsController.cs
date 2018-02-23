@@ -8,6 +8,7 @@ using ReadModel.Features.Tournaments.Dtos;
 using ReadModel.Features.Tournaments.Queries;
 using WriteModel.Features.Tournaments.Dtos;
 using WriteModel.Features.Tournaments.Commands;
+using ReadModel.Features.Tours.Queries;
 
 namespace WebApi.Controllers
 {
@@ -99,6 +100,18 @@ namespace WebApi.Controllers
         // public async Task<IActionResult> AddTours()
         // {
         // }
+
+
+        // GET api/tournaments/:id/tours
+        [HttpGet("{id}/tours")]
+        public async Task<IActionResult> GetTournamentTours(int id)
+        {
+            var getTournamentTours = new GetTournamentTours(id);
+            var tours = await _mediator.Send(getTournamentTours);
+
+            if (tours == null) return NotFound();
+            else return Ok(tours);
+        }
 
 
     }

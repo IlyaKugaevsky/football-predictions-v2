@@ -2,12 +2,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 using MediatR;
+using ReadModel.Features.Tours.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
 namespace WebApi.Controllers
 {
-    public class ToursController
+    [Route("api/[controller]")]
+    public class ToursController : Controller
     {
         private readonly IMediator _mediator;
 
@@ -16,11 +18,5 @@ namespace WebApi.Controllers
             _mediator = mediator;
         }
 
-        // GET api/tournaments/:id/tours
-        [HttpGet]
-        public async Task<IActionResult> GetTournamentTours()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

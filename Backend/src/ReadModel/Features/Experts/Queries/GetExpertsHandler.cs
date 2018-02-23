@@ -18,6 +18,7 @@ namespace ReadModel.Features.Experts.Queries
         public GetExpertsHandler(PredictionsContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<ExpertInfoReadDto>> Handle(GetExperts request,

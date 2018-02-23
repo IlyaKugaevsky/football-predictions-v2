@@ -7,9 +7,7 @@ namespace Domain.Models
     {
         private readonly List<Match> _matches = new List<Match>();
 
-        protected Tour()
-        {
-        }
+        protected Tour() { }
 
         public Tour(int number, DateTime startDate, DateTime endDate)
         {
@@ -37,6 +35,13 @@ namespace Domain.Models
         public void AttachToTournament(int tournamentId)
         {
             TournamentId = tournamentId;
+        }
+
+        public void UpdateInfo(int number, DateTime startDate, DateTime endDate)
+        {
+            Number = number;
+            StartDate = startDate;
+            EndDate = endDate;
         }
 
         public void Close()

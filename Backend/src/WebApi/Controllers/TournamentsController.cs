@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
@@ -53,12 +54,25 @@ namespace WebApi.Controllers
             return Ok(schedule);
         }
 
-        // PATCH api/tournaments/:id
-        [HttpPatch("{id}")]
+        // POST api/tournaments/
+        [HttpPost()]
         public async Task<IActionResult> UpdateTournament(int id, 
             [FromBody] TournamentInfoWriteDto tournamentInfo)
         {
             var UpdateTournament = new UpdateTournamentInfo(id, tournamentInfo.Title, 
+                tournamentInfo.StartDate, tournamentInfo.EndDate);
+
+            var isCompletedSuccessfully = await _mediator.Send(UpdateTournament);
+
+            if (isCompletedSuccessfully) return new StatusCodeResult(StatusCodes.Status201Created);
+            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+
+        // PATCH api/tournaments/:id
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> CreateTournament([FromBody] TournamentInfoWriteDto tournamentInfo)
+        {
+            var UpdateTournament = new CreateTournament(tournamentInfo.Title, 
                 tournamentInfo.StartDate, tournamentInfo.EndDate);
 
             var isCompletedSuccessfully = await _mediator.Send(UpdateTournament);
@@ -79,5 +93,13 @@ namespace WebApi.Controllers
             if (isCompletedSuccessfully) return NoContent();
             else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
+
+        // // POST api/tournaments/:id/tours
+        // [HttpDelete("{id}")]
+        // public async Task<IActionResult> AddTours()
+        // {
+        // }
+
+
     }
 }

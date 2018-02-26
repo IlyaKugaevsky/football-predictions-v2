@@ -9,6 +9,8 @@ using ReadModel.Features.Tournaments.Queries;
 using WriteModel.Features.Tournaments.Dtos;
 using WriteModel.Features.Tournaments.Commands;
 using ReadModel.Features.Tours.Queries;
+using ReadModel.Features.Tours.Dtos;
+using WriteModel.Features.Tours.Dtos;
 
 namespace WebApi.Controllers
 {
@@ -55,53 +57,6 @@ namespace WebApi.Controllers
             return Ok(schedule);
         }
 
-        // POST api/tournaments/
-        [HttpPost()]
-        public async Task<IActionResult> UpdateTournament(int id, 
-            [FromBody] TournamentInfoWriteDto tournamentInfo)
-        {
-            var UpdateTournament = new UpdateTournamentInfo(id, tournamentInfo.Title, 
-                tournamentInfo.StartDate, tournamentInfo.EndDate);
-
-            var isCompletedSuccessfully = await _mediator.Send(UpdateTournament);
-
-            if (isCompletedSuccessfully) return new StatusCodeResult(StatusCodes.Status201Created);
-            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-        }
-
-        // PATCH api/tournaments/:id
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> CreateTournament([FromBody] TournamentInfoWriteDto tournamentInfo)
-        {
-            var UpdateTournament = new CreateTournament(tournamentInfo.Title, 
-                tournamentInfo.StartDate, tournamentInfo.EndDate);
-
-            var isCompletedSuccessfully = await _mediator.Send(UpdateTournament);
-
-            if (isCompletedSuccessfully) return Ok();
-            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-        }
-
-        // DELETE api/tournaments/:id
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTournament(int id, 
-            [FromBody] TournamentInfoWriteDto tournamentInfo)
-        {
-            var DeleteTournament = new DeleteTournament(id);
-
-            var isCompletedSuccessfully = await _mediator.Send(DeleteTournament);
-
-            if (isCompletedSuccessfully) return NoContent();
-            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-        }
-
-        // // POST api/tournaments/:id/tours
-        // [HttpDelete("{id}")]
-        // public async Task<IActionResult> AddTours()
-        // {
-        // }
-
-
         // GET api/tournaments/:id/tours
         [HttpGet("{id}/tours")]
         public async Task<IActionResult> GetTournamentTours(int id)
@@ -113,6 +68,57 @@ namespace WebApi.Controllers
             else return Ok(tours);
         }
 
+        // POST api/tournaments/
+        [HttpPost()]
+        public async Task<IActionResult> CreateTournament([FromBody] TournamentInfoWriteDto tournamentInfo)
+        {
+            var createTournament = new CreateTournament(tournamentInfo.Title,
+                tournamentInfo.StartDate, tournamentInfo.EndDate);
+
+            var isCompletedSuccessfully = await _mediator.Send(createTournament);
+
+            if (isCompletedSuccessfully) return Ok();
+            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+
+        // POST api/tournaments/:id/tours
+        [HttpPost("{id}/tours")]
+        public async Task<IActionResult> AddTours(int tournamentId, [FromBody] IEnumerable<TourInfoWriteDto> tours)
+        {
+            var addTours = new AddTours(tournamentId, tours);
+
+            var isCompletedSuccessfully = await _mediator.Send(addTours);
+
+            if (isCompletedSuccessfully) return new StatusCodeResult(StatusCodes.Status201Created);
+            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+
+        // PATCH api/tournaments/:id
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateTournament(int id,
+            [FromBody] TournamentInfoWriteDto tournamentInfo)
+        {
+            var updateTournament = new UpdateTournamentInfo(id, tournamentInfo.Title,
+                tournamentInfo.StartDate, tournamentInfo.EndDate);
+
+            var isCompletedSuccessfully = await _mediator.Send(updateTournament);
+
+            if (isCompletedSuccessfully) return new StatusCodeResult(StatusCodes.Status201Created);
+            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+
+        // DELETE api/tournaments/:id
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTournament(int id, 
+            [FromBody] TournamentInfoWriteDto tournamentInfo)
+        {
+            var deleteTournament = new DeleteTournament(id);
+
+            var isCompletedSuccessfully = await _mediator.Send(deleteTournament);
+
+            if (isCompletedSuccessfully) return NoContent();
+            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
 
     }
 }

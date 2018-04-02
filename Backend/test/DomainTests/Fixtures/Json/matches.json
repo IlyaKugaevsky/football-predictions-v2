@@ -1,0 +1,69 @@
+﻿// matches: 2, experts: 2, predictions: 4
+
+// overall
+//  scores: 1, differences: 1, outcomes: 1
+
+// Mike
+//  scores: 1, differences: 1, outcomes: 0
+
+// John:
+//  scores: 0, differences: 0, outcomes: 1
+
+[
+  {
+    "_predictions": [
+      {
+        "isCLosed": "true",
+
+        "score": "true",
+        "difference": "false",
+        "outcome": "false",
+
+        "expert": {
+          "id": "1",
+          "nickname": "Mike"
+        }
+      },
+      {
+        "isCLosed": "true",
+
+        "score": "false",
+        "difference": "false",
+        "outcome": "true",
+
+        "expert": {
+          "id": "2",
+          "nickname": "John"
+        }
+      }
+    ]
+  },
+  {
+    "_predictions": [
+      {
+        "isCLosed": "true",
+
+        "score": "false",
+        "difference": "true",
+        "outcome": "false",
+
+        "expert": {
+          "id": "1",
+          "nickname": "Mike"
+        }
+      },
+      {
+        "isCLosed": "true",
+
+        "score": "false",
+        "difference": "false",
+        "outcome": "false",
+
+        "expert": {
+          "id": "2",
+          "nickname": "John"
+        }
+      }
+    ]
+  }
+]

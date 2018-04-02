@@ -3,21 +3,22 @@ using Domain.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Shouldly;
+using Utils.Json;
 using Xunit;
 
 namespace DomainTests.JsonDeserializationTests
 {
     public class TourDeserializationTests
     {
+        private readonly JsonSerializerSettings _settings;
+
         public TourDeserializationTests()
         {
             _settings = new JsonSerializerSettings
             {
-                ContractResolver = new PrivateSetterContractResolver()
+                ContractResolver = new AllPropsAndFieldsContractResolver()
             };
         }
-
-        private readonly JsonSerializerSettings _settings;
 
         [Fact]
         public void Should_Deserialize_Tour_Correctly()

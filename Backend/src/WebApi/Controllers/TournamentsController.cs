@@ -26,7 +26,7 @@ namespace WebApi.Controllers
 
         // GET api/tournaments/
         [HttpGet]
-        public async Task<IActionResult> GetTournaments()
+        public async Task<IActionResult> GetAllTournaments()
         {
             var getTournaments = new GetTournaments();
             var tournaments = await _mediator.Send(getTournaments);
@@ -67,6 +67,13 @@ namespace WebApi.Controllers
             if (tours == null) return NotFound();
             else return Ok(tours);
         }
+
+        // GET api/tournaments/:id/tours/:number/
+        //[HttpGet("{id}/tours/{number}/prediction-results")]
+        //public async Task<IActionResult> GetPredictionTourResults(int id, int number)
+        //{
+        //    var getPredictionTourResults = new GetTourPredictionResults(id, number);
+        //}
 
         // POST api/tournaments/
         [HttpPost()]
@@ -119,6 +126,7 @@ namespace WebApi.Controllers
             if (isCompletedSuccessfully) return NoContent();
             else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
+
 
     }
 }

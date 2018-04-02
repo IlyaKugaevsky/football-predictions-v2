@@ -1,3 +1,5 @@
+using Domain.PointSystems;
+
 namespace Domain.Models
 {
     public class Prediction : Entity
@@ -27,5 +29,16 @@ namespace Domain.Models
 
         public int ExpertId { get; private set; }
         public Expert Expert { get; private set; }
+
+        public int GetSum(IPointSystem pointSystem)
+        {
+            var sum = 0;
+
+            if (Outcome) sum += pointSystem.OutcomeWeight;
+            if (Difference) sum += pointSystem.DifferenceWeight;
+            if (Score) sum += pointSystem.ScoreWeight;
+
+            return sum;
+        }
     }
 }

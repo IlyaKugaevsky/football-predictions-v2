@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Domain.Models;
 using MediatR;
 using Persistence;
@@ -16,8 +15,13 @@ namespace WriteModel.Features.Tournaments.Commands
     {
         private readonly PredictionsContext _context;
 
+        public AddToursHandler(PredictionsContext context)
+        {
+            _context = context;
+        }
+
         public async Task<bool> Handle(AddTours command,
-    CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var tournament = await _context.Tournaments.FindAsync(command.TournamentId);
             if (tournament == null)

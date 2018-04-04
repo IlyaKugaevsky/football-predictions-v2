@@ -5,20 +5,28 @@ using System.Text;
 
 namespace Domain.Models
 {
-    public class PredictionsResult
+    public class LegacyDbPredictionsResult
     {
+        public LegacyDbPredictionsResult(int outcomes = 0, int differences = 0, int scores = 0)
+        {
+            Outcomes = outcomes;
+            Differences = differences;
+            Scores = scores;
+        }
+
         public int Outcomes { get; private set; }
         public int Differences { get; private set; }
         public int Scores { get; private set; }
 
-        public void Add(Prediction prediction)
+        // In old database if guessed Score (Score equals true), then guessed everything (Difference and Outcome equals true)
+        public void LegacyDbAdd(Prediction prediction)
         {
-            if (prediction.Outcome) Outcomes++;
-            if (prediction.Difference) Differences++;
             if (prediction.Score) Scores++;
+            else if (prediction.Difference) Differences++;
+            else if (prediction.Outcome) Outcomes++;
         }
 
-        public int GetSum(IPointSystem pointSystem)
+        public int GetPointsSum(IPointSystem pointSystem)
             => Outcomes * pointSystem.OutcomeWeight + Differences * pointSystem.DifferenceWeight + Scores * pointSystem.ScoreWeight;
     }
 }

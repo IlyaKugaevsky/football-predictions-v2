@@ -6,10 +6,14 @@ namespace Persistence.Configurations
 {
     public class ExpertEntityConfiguration : IEntityTypeConfiguration<Expert>
     {
-        public void Configure(EntityTypeBuilder<Expert> predictionConfiguration)
+        public void Configure(EntityTypeBuilder<Expert> expertConfiguration)
         {
-            predictionConfiguration.HasKey(e => e.Id);
-            predictionConfiguration.Property(e => e.Id).HasColumnName("ExpertId");
+            expertConfiguration.HasKey(e => e.Id);
+            expertConfiguration.Property(e => e.Id).HasColumnName("ExpertId");
+
+            var navigation
+                = expertConfiguration.Metadata.FindNavigation(nameof(Expert.Predictions));
+            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

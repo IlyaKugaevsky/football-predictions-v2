@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Shouldly;
-using Xunit;
+﻿using Domain.Models;
 using Domain.Services;
-using Domain.Models;
 using Newtonsoft.Json;
-using Utils.Json;
+using Shouldly;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using Utils.Json;
+using Xunit;
 
-namespace DomainTests
+namespace ReadModelTests.ServiceTests
 {
     public class PredictionServiceTests
     {
@@ -41,10 +41,10 @@ namespace DomainTests
             var expert1 = experts[0];
             var expert2 = experts[1];
 
-            var expertResults = _predictionService.EvaluatePredictionResultsForExperts(matches);
+            var expertResults = _predictionService.GroupPredictionsResultsByExpert(matches);
             expertResults.Count().ShouldBe(2);
 
-            expert1.Nickname.ShouldBe("Mike"); 
+            expert1.Nickname.ShouldBe("Mike");
             expertResults[expert1].Scores.ShouldBe(1);
             expertResults[expert1].Differences.ShouldBe(1);
             expertResults[expert1].Outcomes.ShouldBe(0);

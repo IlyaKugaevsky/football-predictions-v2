@@ -69,11 +69,14 @@ namespace WebApi.Controllers
         }
 
         // GET api/tournaments/:id/tours/:number/
-        //[HttpGet("{id}/tours/{number}/prediction-results")]
-        //public async Task<IActionResult> GetPredictionTourResults(int id, int number)
-        //{
-        //    var getPredictionTourResults = new GetTourPredictionResults(id, number);
-        //}
+        [HttpGet("{id}/tours/{number}/expert-stats")]
+        public async Task<IActionResult> GetExpertStats(int id, int number)
+        {
+            var getExpertStats = new GetExpertStats(id, number);
+            var expertStats = await _mediator.Send(getExpertStats);
+
+            return Ok(expertStats);
+        }
 
         // POST api/tournaments/
         [HttpPost()]

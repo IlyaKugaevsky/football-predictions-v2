@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Domain.PointSystems;
-using Domain.PredictionEvalSystems;
 
-namespace Domain.PredictionEvalSystems
+namespace Domain.PointSystems
 {
     public class ThreePointSystem: IPointSystem
     {

@@ -33,6 +33,10 @@ namespace Persistence.Configurations
             //     .HasForeignKey(m => m.AwayTeamId);
 
             matchConfiguration.Property(m => m.Date).HasColumnType("DateTime2");
+
+            var navigation
+                = matchConfiguration.Metadata.FindNavigation(nameof(Match.Predictions));
+            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using Domain.Models;
-using Domain.PointSystems;
 using Utils.Common;
 
-namespace Domain.Services
+namespace ReadModel.Features.Predictions
 {
-    public class PredictionService
+    class PredictionService
     {
         public IReadOnlyDictionary<Expert, LegacyDbPredictionsResult> GroupPredictionsResultsByExpert(IEnumerable<Match> matches)
         {

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using Domain.Models;
 
-namespace ReadModel.Features.Experts.Dtos
+namespace ReadModel.Features.Stats.Dtos
 {
-    public class ExpertTourResultsReadDto
+    public class ExpertStatsReadDto
     {
+        public int ExpertId { get; }
         public string Nickname { get; }
 
         public int Outcomes { get; }
@@ -14,9 +15,10 @@ namespace ReadModel.Features.Experts.Dtos
         public int Scores { get; }
         public int Sum { get; }
 
-        public ExpertTourResultsReadDto(int tourNumber, string nickname, PredictionsResult predictionsResult, int sum)
+        public ExpertStatsReadDto(Expert expert, LegacyDbPredictionsResult predictionsResult, int sum)
         {
-            Nickname = nickname;
+            ExpertId = expert.Id;
+            Nickname = expert.Nickname;
 
             Outcomes = predictionsResult.Outcomes;
             Differences = predictionsResult.Differences;

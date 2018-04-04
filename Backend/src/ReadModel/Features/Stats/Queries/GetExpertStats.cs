@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using MediatR;
 using ReadModel.Features.Experts.Dtos;
-
+using ReadModel.Features.Stats.Dtos;
 
 namespace ReadModel.Features.Stats.Queries
 {
-    public class GetTourPredictionResults: IRequest<IEnumerable<ExpertTourResultsReadDto>>
+    public class GetExpertStats: IRequest<IEnumerable<ExpertStatsReadDto>>
     {
         public int TourId { get; private set; }
 
-        public GetTourPredictionResults(int tourId)
+        public GetExpertStats(int tourId)
         {
             TourId = tourId;
         }

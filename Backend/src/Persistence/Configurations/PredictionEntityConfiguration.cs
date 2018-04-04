@@ -20,6 +20,11 @@ namespace Persistence.Configurations
                 .HasOne(p => p.Expert)
                 .WithMany(e => e.Predictions)
                 .HasForeignKey(p => p.ExpertId);
+
+            var navigation
+                = predictionConfiguration.Metadata.FindNavigation(nameof(Prediction.Expert));
+            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+
         }
     }
 }

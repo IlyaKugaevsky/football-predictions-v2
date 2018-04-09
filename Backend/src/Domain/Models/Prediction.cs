@@ -8,6 +8,18 @@ namespace Domain.Models
         {
         }
 
+        internal Prediction(int id, string value, int sum, bool score, bool difference, bool outcome, bool isClosed)
+        {
+            Id = id;
+            Value = value;
+            Sum = sum;
+            Score = score;
+            Difference = difference;
+            Outcome = outcome;
+            IsClosed = isClosed;
+        }
+
+
         public Prediction(int expertId, int matchId, string value)
         {
             ExpertId = expertId;

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ReadModel.Features.Matches.Dtos;
 using ReadModel.Features.Tournaments.Dtos;
 using ReadModel.Features.Tours.Dtos;
+using ReadModel.Features.Predictions.Dtos;
 using Shouldly;
 using Xunit;
 
@@ -95,5 +96,25 @@ namespace ReadModelTests
             tournamentDto.StartDate.ShouldBe(tournament.StartDate);
             tournamentDto.EndDate.ShouldBe(tournament.EndDate);
         }
+
+        [Fact]
+        public void Should_Map_Prediction_To_Dto_Correctly()
+        {
+            var prediction = new Prediction(1, "2:0", 1, false, false, true, true);
+
+            var predictionDto = _mapper.Map<PredictionMinimalInfoReadDto>(prediction);
+
+            predictionDto.Id.ShouldBe(prediction.Id);
+            predictionDto.Value.ShouldBe(prediction.Value);
+
+            predictionDto.Sum.ShouldBe(prediction.Sum);
+
+            predictionDto.Score.ShouldBe(prediction.Score);
+            predictionDto.Difference.ShouldBe(prediction.Difference);
+            predictionDto.Outcome.ShouldBe(prediction.Outcome);
+
+            predictionDto.IsClosed.ShouldBe(prediction.IsClosed);
+        }
+
     }
 }

@@ -36,9 +36,15 @@ namespace ReadModel.Features.Tournaments.Queries
         public async Task<IEnumerable<ExpertStatsReadDto>> Handle(GetExpertStats request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tourId = await _context.GetTourIdFromNumberAndTournamentId(request.TourNumber, request.TournamentId);
+            var tourNumber = request.TourNumber;
+            var tournamentId = request.TournamentId;
 
-            var tour = (await _context.Tours.FetchWithMatchesAndPredictionsAndExperts().ByIdAsync(tourId)) as Tour;
+            var tourId = await _context.GetTourId(tourNumber, tournamentId, cancellationToken);
+
+            var tour = await _context
+                .Tours
+                .FetchWithBasePredictionsInfo(FetchMode.ForRead)
+                .WithIdAsync(tourId, cancellationToken);
 
             var matches = tour.Matches;
             var threePointSystem = new ThreePointSystem();

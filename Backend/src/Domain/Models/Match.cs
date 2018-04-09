@@ -13,14 +13,6 @@ namespace Domain.Models
         {
         }
 
-        public Match(int tourId, int homeTeamId, int awayTeamId, DateTime date)
-        {
-            TourId = tourId;
-            Date = date;
-            HomeTeamId = homeTeamId;
-            AwayTeamId = awayTeamId;
-        }
-
         internal Match(int matchId, int tourId, Team homeTeam, Team awayTeam, DateTime date)
         {
             Id = matchId;
@@ -30,6 +22,15 @@ namespace Domain.Models
             AwayTeam = awayTeam ?? throw new NullReferenceException($"{nameof(awayTeam)} cannot be null.");
             AwayTeamId = awayTeam.Id;
             Date = date;
+        }
+
+
+        public Match(int tourId, int homeTeamId, int awayTeamId, DateTime date)
+        {
+            TourId = tourId;
+            Date = date;
+            HomeTeamId = homeTeamId;
+            AwayTeamId = awayTeamId;
         }
 
         public int HomeTeamId { get; private set; }

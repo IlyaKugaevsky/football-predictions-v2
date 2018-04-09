@@ -11,7 +11,4 @@
     <PackageReference Include="MediatR" Version="4.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\Predictions\Dtos\" />
-  </ItemGroup>
 </Project>

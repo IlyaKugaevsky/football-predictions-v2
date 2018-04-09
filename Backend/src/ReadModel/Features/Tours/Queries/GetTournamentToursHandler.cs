@@ -11,6 +11,7 @@ using ReadModel.Features.Tours.Queries;
 using Persistence.QueryExtensions;
 using Persistence.FetchExtensions;
 using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ReadModel.Features.Tours.Queries
 {
@@ -28,8 +29,12 @@ namespace ReadModel.Features.Tours.Queries
         public async Task<IEnumerable<TourInfoReadDto>> Handle(GetTournamentTours request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var id = request.TournamentId;
-            var tournament = (await _context.Tournaments.FetchWithTours().ByIdAsync(id)) as Tournament;
+            var tournamentId = request.TournamentId;
+            var tournament = await _context
+                .Tournaments
+                .FetchWithTours(FetchMode.ForRead)
+                .WithIdAsync(tournamentId, cancellationToken);
+
             var tours = tournament.Tours;
 
             return _mapper.Map<IEnumerable<TourInfoReadDto>>(tours);

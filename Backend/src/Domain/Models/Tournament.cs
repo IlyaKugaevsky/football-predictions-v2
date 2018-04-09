@@ -11,17 +11,17 @@ namespace Domain.Models
         {
         }
 
+        internal Tournament(int id, string title, DateTime startDate, DateTime endDate) : this(title, startDate, endDate)
+        {
+            Id = id;
+        }
+
+
         public Tournament(string title, DateTime startDate, DateTime endDate)
         {
             Title = title;
             StartDate = startDate;
             EndDate = endDate;
-        }
-
-        internal Tournament(int id, string title, DateTime startDate, DateTime endDate)
-            : this(title, startDate, endDate)
-        {
-            Id = id;
         }
 
         public string Title { get; private set; }

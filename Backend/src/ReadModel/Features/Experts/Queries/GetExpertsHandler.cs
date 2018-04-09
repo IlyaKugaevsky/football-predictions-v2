@@ -5,6 +5,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Persistence.FetchExtensions;
 using ReadModel.Features.Experts.Dtos;
 
 namespace ReadModel.Features.Experts.Queries
@@ -24,7 +25,10 @@ namespace ReadModel.Features.Experts.Queries
         public async Task<IEnumerable<ExpertInfoReadDto>> Handle(GetExperts request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var experts = await _context.Experts.ToListAsync(cancellationToken: cancellationToken);
+            var experts = await _context
+                .Experts
+                .Fetch(FetchMode.ForRead)
+                .ToListAsync(cancellationToken);
             return _mapper.Map<IEnumerable<ExpertInfoReadDto>>(experts);
         }
 

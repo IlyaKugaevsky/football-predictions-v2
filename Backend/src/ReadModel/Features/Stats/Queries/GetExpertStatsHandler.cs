@@ -15,6 +15,7 @@ using Persistence.QueryExtensions;
 using ReadModel.Features.Experts.Dtos;
 using ReadModel.Features.Stats.Queries;
 using ReadModel.Features.Stats.Dtos;
+using Microsoft.EntityFrameworkCore;
 
 namespace ReadModel.Features.Stats.Queries
 {
@@ -36,7 +37,12 @@ namespace ReadModel.Features.Stats.Queries
         public async Task<IEnumerable<ExpertStatsReadDto>> Handle(GetExpertStats request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tour = (await _context.Tours.FetchWithMatchesAndPredictionsAndExperts().ByIdAsync(request.TourId)) as Tour;
+            var tourId = request.TourId;
+            var tour = await _context
+                .Tours
+                .FetchWithBasePredictionsInfo(FetchMode.ForRead)
+                .WithIdAsync(tourId, cancellationToken);
+
             var matches = tour.Matches;
             var threePointSystem = new ThreePointSystem();
 

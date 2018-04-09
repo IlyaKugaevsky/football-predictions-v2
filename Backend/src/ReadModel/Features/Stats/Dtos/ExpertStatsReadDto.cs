@@ -15,7 +15,7 @@ namespace ReadModel.Features.Stats.Dtos
         public int Scores { get; }
         public int Sum { get; }
 
-        public ExpertStatsReadDto(Expert expert, LegacyDbPredictionsResult predictionsResult, int sum)
+        public ExpertStatsReadDto(Expert expert, LegacyDbPredictionsResultAccumulator predictionsResult, int sum)
         {
             ExpertId = expert.Id;
             Nickname = expert.Nickname;

@@ -8,16 +8,7 @@ namespace ReadModel.Mapping
     {
         public TourMappingProfile()
         {
-            // ShouldMapField = fieldInfo => true;
-            // ShouldMapProperty = propertyInfo => true;
-
             CreateMap<Tour, TourInfoReadDto>();
-
-            // CreateMap<TourInfoReadDto, Entity>()
-            //     .Include<TourInfoReadDto, Tour>()
-            //     .ForMember(e => e.Id, opt => opt.Ignore());
-
-            // CreateMap<Tour, TourInfoReadDto>();
         }
     }
 }

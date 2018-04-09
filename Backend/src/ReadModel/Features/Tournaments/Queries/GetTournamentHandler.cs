@@ -2,7 +2,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Persistence.FetchExtensions;
 using Persistence.QueryExtensions;
 using ReadModel.Features.Tournaments.Dtos;
 
@@ -22,8 +24,12 @@ namespace ReadModel.Features.Tournaments.Queries
         public async Task<TournamentInfoReadDto> Handle(GetTournament request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var id = request.TournamentId;
-            var tournament = await _context.Tournaments.ByIdAsync(id);
+            var tournamentId = request.TournamentId;
+            var tournament = await _context
+                .Tournaments
+                .Fetch(FetchMode.ForRead)
+                .WithIdAsync(tournamentId, cancellationToken);
+
             return _mapper.Map<TournamentInfoReadDto>(tournament);
         }
     }

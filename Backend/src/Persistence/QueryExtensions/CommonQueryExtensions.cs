@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Domain;
 using Domain.Models;
@@ -9,16 +11,21 @@ namespace Persistence.QueryExtensions
 {
     public static class CommonQueryExtensions
     {
-        public static async Task<Entity> ByIdAsync(this IQueryable<Entity> entities, int id)
+        public static async Task<T> WithIdAsync<T>(this IQueryable<T> entities, int id, CancellationToken cancellationToken)
+            where T : Entity
         {
-            return await entities.SingleAsync(e => e.Id == id);
+            return await entities.SingleAsync(e => e.Id == id, cancellationToken);
         }
 
-        public static async Task<int> GetTourIdFromNumberAndTournamentId(this PredictionsContext context, int tourNumber, int tournamentId)
+        public static IQueryable<T> ApplyFetchMode<T>(this IQueryable<T> entities, FetchMode fetchMode)
+            where T : Entity
         {
-            var tournament = await context.Tournaments.FetchWithTours().ByIdAsync(tournamentId) as Tournament;
-            var tour = tournament.Tours.Single(t => t.Number == tourNumber);
-            return tour.Id;
+            if (fetchMode == FetchMode.ForRead)
+            {
+                entities = entities.AsNoTracking();
+            }
+
+            return entities;
         }
     }
 }

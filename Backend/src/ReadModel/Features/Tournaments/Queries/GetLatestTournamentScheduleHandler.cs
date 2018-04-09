@@ -29,11 +29,10 @@ namespace ReadModel.Features.Tournaments.Queries
         public async Task<TournamentScheduleDto> Handle(GetLatestTournamentSchedule request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tournamentWithScheduleInfo =
-                await _context.Tournaments
-                    .FetchWithScheduleInfo()
-                    .AsNoTracking()
-                    .LastStartedAsync();
+            var tournamentWithScheduleInfo = await _context
+                .Tournaments
+                .FetchWithScheduleInfo(FetchMode.ForRead)
+                .LastStartedAsync(cancellationToken);
 
             var tournamentInfo = _mapper.Map<TournamentInfoReadDto>(tournamentWithScheduleInfo);
             var tours = tournamentWithScheduleInfo.Tours;

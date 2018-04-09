@@ -9,17 +9,16 @@ namespace Domain.Models
 
         protected Tour() { }
 
+        internal Tour(int id, int number, DateTime startDate, DateTime endDate) : this(number, startDate, endDate)
+        {
+            Id = id;
+        }
+
         public Tour(int number, DateTime startDate, DateTime endDate)
         {
             Number = number;
             StartDate = startDate;
             EndDate = endDate;
-        }
-
-        internal Tour(int id, int number, DateTime startDate, DateTime endDate)
-            : this(number, startDate, endDate)
-        {
-            Id = id;
         }
 
         public Tournament Tournament { get; private set; }

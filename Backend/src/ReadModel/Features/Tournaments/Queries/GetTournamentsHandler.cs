@@ -5,6 +5,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Persistence.FetchExtensions;
 using ReadModel.Features.Tournaments.Dtos;
 
 namespace ReadModel.Features.Tournaments.Queries
@@ -24,7 +25,11 @@ namespace ReadModel.Features.Tournaments.Queries
         public async Task<IEnumerable<TournamentInfoReadDto>> Handle(GetTournaments request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tournaments = await _context.Tournaments.ToListAsync(cancellationToken: cancellationToken);
+            var tournaments = await _context
+                .Tournaments
+                .Fetch(FetchMode.ForRead)
+                .ToListAsync(cancellationToken);
+
             return _mapper.Map<IEnumerable<TournamentInfoReadDto>>(tournaments);
         }
     }

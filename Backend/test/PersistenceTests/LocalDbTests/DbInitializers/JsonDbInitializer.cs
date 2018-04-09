@@ -8,7 +8,7 @@ using Utils.Json;
 namespace PersistenceTests.LocalDbTests.DbInitializers
 {
     public class JsonDbInitializer<T> : IDbInitializer
-        where T : Entity
+        where T : Domain.Entity
     {
         private readonly string _jsonData;
         private readonly JsonSerializerSettings _settings;

@@ -10,9 +10,9 @@ namespace Domain.Services
 {
     public class PredictionService
     {
-        public IReadOnlyDictionary<Expert, LegacyDbPredictionsResult> GroupPredictionsResultsByExpert(IEnumerable<Match> matches)
+        public IReadOnlyDictionary<Expert, LegacyDbPredictionsResultAccumulator> GroupPredictionsResultsByExpert(IEnumerable<Match> matches)
         {
-            var predictionResultsByExpert = new Dictionary<Expert, LegacyDbPredictionsResult>();
+            var predictionResultsByExpert = new Dictionary<Expert, LegacyDbPredictionsResultAccumulator>();
 
             foreach (var match in matches)
             {
@@ -33,7 +33,7 @@ namespace Domain.Services
                     }
                     else
                     {
-                        var predictionsResult = new LegacyDbPredictionsResult();
+                        var predictionsResult = new LegacyDbPredictionsResultAccumulator();
                         predictionsResult.LegacyDbAdd(prediction);
 
                         predictionResultsByExpert[expert] = predictionsResult;

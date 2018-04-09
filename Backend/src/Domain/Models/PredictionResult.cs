@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Domain.Models
 {
-    public class LegacyDbPredictionsResult
+    public class LegacyDbPredictionsResultAccumulator
     {
-        public LegacyDbPredictionsResult(int outcomes = 0, int differences = 0, int scores = 0)
+        public LegacyDbPredictionsResultAccumulator(int outcomes = 0, int differences = 0, int scores = 0)
         {
             Outcomes = outcomes;
             Differences = differences;

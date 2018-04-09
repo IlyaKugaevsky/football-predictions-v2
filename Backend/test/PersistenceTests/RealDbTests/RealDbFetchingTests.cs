@@ -53,8 +53,7 @@ namespace PersistenceTests.RealDbTests
         public async Task Should_Fetch_Schedule_Correctly()
         {
             var schedule = await _context.Tournaments
-                .FetchWithScheduleInfo()
-                .AsNoTracking()
+                .FetchWithScheduleInfo(FetchMode.ForRead)
                 .LastStartedAsync();
 
             schedule.Tours.First().Matches.ShouldAllBe(m => m.Score.Value != null);

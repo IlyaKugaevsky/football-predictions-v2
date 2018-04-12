@@ -19,6 +19,11 @@ namespace Domain.Models
             IsClosed = isClosed;
         }
 
+        internal void AttachMatch(Match match)
+        {
+            Match = match;
+        }
+
 
         public Prediction(int expertId, int matchId, string value)
         {

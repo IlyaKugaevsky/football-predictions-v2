@@ -38,6 +38,8 @@ namespace ReadModelTests
 
             _mapper = mappingConfig.GlobalMapper;
             _mapper.ConfigurationProvider.AssertConfigurationIsValid();
+
+
         }
 
         [Fact]
@@ -53,6 +55,8 @@ namespace ReadModelTests
                 awayTeam,
                 DateTime.MinValue
             );
+
+            match.Score.Value = "1:0";
 
             var score = match.Score.Value;
             var matchDto = _mapper.Map<MatchInfoReadDto>(match);
@@ -115,6 +119,40 @@ namespace ReadModelTests
 
             predictionDto.IsClosed.ShouldBe(prediction.IsClosed);
         }
+
+        [Fact]
+        public void Should_Map_Prediction_To_Full_Dto_Correctly()
+        {
+            var homeTeam = new Team(1, "Spartak");
+            var awayTeam = new Team(2, "CSKA");
+
+            var match = new Match(
+                100500,
+                1,
+                homeTeam,
+                awayTeam,
+                DateTime.MinValue
+            );
+
+
+            var prediction = new Prediction(1, "2:0", 1, false, false, true, true);
+
+            prediction.AttachMatch(match);
+
+            var predictionDto = _mapper.Map<PredictionFullInfoReadDto>(prediction);
+
+            //predictionDto.Id.ShouldBe(prediction.Id);
+            //predictionDto.Value.ShouldBe(prediction.Value);
+
+            //predictionDto.Sum.ShouldBe(prediction.Sum);
+
+            //predictionDto.Score.ShouldBe(prediction.Score);
+            //predictionDto.Difference.ShouldBe(prediction.Difference);
+            //predictionDto.Outcome.ShouldBe(prediction.Outcome);
+
+            //predictionDto.IsClosed.ShouldBe(prediction.IsClosed);
+        }
+
 
     }
 }

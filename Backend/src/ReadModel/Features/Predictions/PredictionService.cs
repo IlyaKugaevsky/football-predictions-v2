@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Utils.Common;
+using ReadModel.Features.Predictions.Dtos;
+using AutoMapper;
+using ReadModel.Features.Matches.Dtos;
 
 namespace ReadModel.Features.Predictions
 {
@@ -40,6 +43,14 @@ namespace ReadModel.Features.Predictions
                 }
             }
             return predictionResultsByExpert;
+        }
+
+        public IEnumerable<PredictionFullInfoReadDto> ConvertToFullInfoDtos(IEnumerable<Prediction> predictions, IMapper mapper)
+        {
+            return predictions.Select(p => new PredictionFullInfoReadDto(
+                    mapper.Map<MatchInfoReadDto>(p.Match),
+                    mapper.Map<PredictionMinimalInfoReadDto>(p)
+                ));
         }
     }
 }

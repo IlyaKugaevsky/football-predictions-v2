@@ -10,5 +10,10 @@ namespace Domain.QueryExtensions
         {
             return tours.Single(t => t.Number == tourNumber);
         }
+
+        public static IEnumerable<Prediction> GetPredictionsForExpert(this Tour tour, int expertId)
+        {
+            return tour.Matches.SelectMany(m => m.Predictions).Where(p => p.ExpertId == expertId);
+        }
     }
 }

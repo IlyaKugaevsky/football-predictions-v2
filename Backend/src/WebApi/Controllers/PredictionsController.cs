@@ -27,5 +27,19 @@ namespace WebApi.Controllers
 
             return Ok(predictions);
         }
+
+        // GET api/predictions/tour/:tourId/expert/:expertId
+        [HttpGet("tour/{tourId}/expert/{expertId}")]
+        public async Task<IActionResult> GetPredictions(int tourId, int expertId)
+        {
+            var getPredictions = new GetPredictionsByTourAndExpert(tourId, expertId);
+            var predictions = await _mediator.Send(getPredictions);
+
+            return Ok(predictions);
+        }
+
+
+
+
     }
 }

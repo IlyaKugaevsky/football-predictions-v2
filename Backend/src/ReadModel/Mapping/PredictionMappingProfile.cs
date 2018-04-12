@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Models;
+using ReadModel.Features.Matches.Dtos;
 using ReadModel.Features.Predictions.Dtos;
 
 namespace ReadModel.Mapping

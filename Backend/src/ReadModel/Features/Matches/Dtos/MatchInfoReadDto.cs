@@ -13,9 +13,9 @@ namespace ReadModel.Features.Matches.Dtos
             Score = score;
         }
 
-        public int Id { get; set; }
-        public DateTime Date { get; }
-        public string HomeTeamTitle { get; }
+        public int Id { get; }
+        public DateTime Date { get;  }
+        public string HomeTeamTitle { get;  }
         public string AwayTeamTitle { get; }
         public string Score { get; }
     }

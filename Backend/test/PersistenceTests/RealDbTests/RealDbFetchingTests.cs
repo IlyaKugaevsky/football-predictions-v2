@@ -1,15 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
-using Persistence.FetchExtensions;
-using Persistence.QueryExtensions;
 using Shouldly;
 using Xunit;
 
 namespace PersistenceTests.RealDbTests
 {
+    [SuppressMessage("ReSharper", "UnusedVariable")]
     public class RealDbFetchingTests
     {
         public RealDbFetchingTests()
@@ -27,7 +25,6 @@ namespace PersistenceTests.RealDbTests
         private readonly IReadOnlyPredictionsContext _context;
 
         [Fact]
-        [SuppressMessage("ReSharper", "UnusedVariable")]
         public void Should_Fetch_All_Entity_Types_Without_Errors()
         {
             Should.NotThrow(() =>
@@ -39,24 +36,6 @@ namespace PersistenceTests.RealDbTests
                 var experts = _context.Experts.AsNoTracking().Take(2);
                 var teams = _context.Teams.AsNoTracking().Take(2);
             });
-        }
-
-        [Fact]
-        public async Task Should_Fetch_Matches_With_Score_Values()
-        {
-            var matches = await _context.Matches.AsNoTracking().Take(2).ToListAsync();
-
-            matches.ShouldAllBe(m => m.Score != null);
-        }
-
-        [Fact]
-        public async Task Should_Fetch_Schedule_Correctly()
-        {
-            var schedule = await _context.Tournaments
-                .FetchWithScheduleInfo(FetchMode.ForRead)
-                .LastStartedAsync();
-
-            schedule.Tours.First().Matches.ShouldAllBe(m => m.Score.Value != null);
         }
     }
 }

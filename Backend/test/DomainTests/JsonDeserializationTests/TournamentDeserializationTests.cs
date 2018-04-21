@@ -38,7 +38,8 @@ namespace DomainTests.JsonDeserializationTests
             matches[0].HomeTeamId.ShouldBe(1);
             matches[1].HomeTeamId.ShouldBe(2);
 
-            matches[0].Score.Value.ShouldBe("0:0");
+            matches[0].HomeGoals.ShouldBe(1);
+            matches[0].AwayGoals.ShouldBe(3);
         }
     }
 }

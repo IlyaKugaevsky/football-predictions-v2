@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using AutoMapper;
 using Domain.Models;
+using Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
 using ReadModel.Features.Matches.Dtos;
 using ReadModel.Features.Tournaments.Dtos;
@@ -34,8 +35,6 @@ namespace ReadModelTests
         {
             _mapper = mappingConfig.GlobalMapper;
             _mapper.ConfigurationProvider.AssertConfigurationIsValid();
-
-
         }
 
         [Fact]
@@ -50,13 +49,18 @@ namespace ReadModelTests
                 homeTeam,
                 awayTeam,
                 DateTime.MinValue
-            ) {Score = {Value = "1:0"}};
+            );
+
+            match.SetScore(1, 2);
 
 
             var matchDto = _mapper.Map<MatchInfoReadDto>(match);
 
             matchDto.Id.ShouldBe(match.Id);
-            matchDto.Score.ShouldBe(match.Score.Value);
+            matchDto.HomeTeamTitle.ShouldBe(match.HomeTeam.Title);
+            matchDto.AwayTeamTitle.ShouldBe(match.AwayTeam.Title);
+            FootballScoreProcessor.CreateScoreExpr(match.HomeGoals, match.AwayGoals).ShouldBe(matchDto.Score);
+
         }
 
         [Fact]

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Domain.Models
 {
@@ -10,7 +9,8 @@ namespace Domain.Models
 
         protected Tour() { }
 
-        internal Tour(int id, int number, DateTime startDate, DateTime endDate) : this(number, startDate, endDate)
+        internal Tour(int id, int number, DateTime startDate, DateTime endDate) 
+            : this(number, startDate, endDate)
         {
             Id = id;
         }
@@ -22,7 +22,7 @@ namespace Domain.Models
             EndDate = endDate;
         }
 
-        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         public Tournament Tournament { get; private set; }
         public int TournamentId { get; private set; }
 

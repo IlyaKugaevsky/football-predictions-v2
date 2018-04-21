@@ -17,8 +17,7 @@ namespace Persistence.Configurations
                 .HasForeignKey(m => m.TourId);
 
             matchConfiguration
-                .OwnsOne(m => m.Score)
-                .Property(s => s.Value)
+                .Property("_score")
                 .HasColumnName("Score");
 
             // matchConfiguration

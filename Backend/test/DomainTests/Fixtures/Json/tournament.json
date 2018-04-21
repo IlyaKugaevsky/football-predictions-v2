@@ -8,9 +8,7 @@
       "_matches": [
         {
           "homeTeamId": "1",
-          "score": {
-            "_scoreValue": "0:0"
-          }
+          "_score": "1:3"
         },
         {
           "homeTeamId": "2"

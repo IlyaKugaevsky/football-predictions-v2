@@ -39,7 +39,6 @@ namespace Persistence.FetchExtensions
                     .ThenInclude(m => m.AwayTeam)
                 .Include(trn => trn.Tours)
                     .ThenInclude(t => t.Matches)
-                    .ThenInclude(m => m.Score)
                 .ApplyFetchMode(fetchMode);
         }
     }

@@ -30,8 +30,6 @@ namespace Persistence.FetchExtensions
                 .Include(t => t.Matches)
                     .ThenInclude(m => m.AwayTeam)
                 .Include(t => t.Matches)
-                    .ThenInclude(m => m.Score)
-                .Include(t => t.Matches)
                     .ThenInclude(m => m.Predictions)
                 .ApplyFetchMode(fetchMode);
         }
@@ -43,8 +41,6 @@ namespace Persistence.FetchExtensions
                     .ThenInclude(m => m.HomeTeam)
                 .Include(t => t.Matches)
                     .ThenInclude(m => m.AwayTeam)
-                .Include(t => t.Matches)
-                    .ThenInclude(m => m.Score)
                 .Include(t => t.Matches)
                     .ThenInclude(m => m.Predictions)
                         .ThenInclude(p => p.Expert)
@@ -59,8 +55,6 @@ namespace Persistence.FetchExtensions
                     .ThenInclude(m => m.HomeTeam)
                 .Include(t => t.Matches)
                     .ThenInclude(m => m.AwayTeam)
-                .Include(t => t.Matches)
-                    .ThenInclude(m => m.Score)
                 .Include(t => t.Matches)
                     .ThenInclude(m => m.Predictions)
                         .ThenInclude(p => p.Expert)

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Domain.Services;
 
 namespace Domain.Models
 {
@@ -11,21 +12,19 @@ namespace Domain.Models
         private readonly List<Prediction> _predictions
             = new List<Prediction>();
 
+        private string _score = string.Empty;
+
         protected Match()
         {
         }
 
         internal Match(int matchId, int tourId, Team homeTeam, Team awayTeam, DateTime date)
+            : this(tourId, homeTeam.Id, awayTeam.Id, date)
         {
             Id = matchId;
-            TourId = tourId;
-            HomeTeam = homeTeam ?? throw new NullReferenceException($"{nameof(homeTeam)} cannot be null.");
-            HomeTeamId = homeTeam.Id;
-            AwayTeam = awayTeam ?? throw new NullReferenceException($"{nameof(awayTeam)} cannot be null.");
-            AwayTeamId = awayTeam.Id;
-            Date = date;
+            HomeTeam = homeTeam;
+            AwayTeam = awayTeam;
         }
-
 
         public Match(int tourId, int homeTeamId, int awayTeamId, DateTime date)
         {
@@ -47,10 +46,20 @@ namespace Domain.Models
 
         public DateTime Date { get; private set; }
 
-        public FootballScore Score { get; private set; }
-            = new FootballScore();
+        public bool IsOver => _score.Length != 0;
+
+        public int HomeGoals => IsOver ? FootballScoreProcessor.ExtractHomeGoals(_score) : 0;
+        public int AwayGoals => IsOver ? FootballScoreProcessor.ExtractAwayGoals(_score) : 0;
 
         public IEnumerable<Prediction> Predictions => _predictions.AsReadOnly();
+
+        public void SetScore(int homeGoals, int awayGoals)
+        {
+            _score = FootballScoreProcessor.CreateScoreExpr(homeGoals, awayGoals);
+        }
+
+        public void Close() => throw new NotImplementedException();
+        public void Rollback() => throw new NotImplementedException();
 
         public int GetPredictionsSum()
         {

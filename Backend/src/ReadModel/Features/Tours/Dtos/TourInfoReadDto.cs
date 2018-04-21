@@ -13,10 +13,10 @@ namespace ReadModel.Features.Tours.Dtos
             IsClosed = isClosed;
         }
 
-        public int Id { get; private set; }
-        public int Number { get; private set; }
-        public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
-        public bool IsClosed { get; private set; }
+        public int Id { get; }
+        public int Number { get; }
+        public DateTime StartDate { get; }
+        public DateTime EndDate { get; }
+        public bool IsClosed { get; }
     }
 }

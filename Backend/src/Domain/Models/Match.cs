@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Domain.Models
 {
+    [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Local")]
     public class Match : Entity
     {
         private readonly List<Prediction> _predictions
@@ -33,14 +35,15 @@ namespace Domain.Models
             AwayTeamId = awayTeamId;
         }
 
-        public int HomeTeamId { get; private set; }
         public Team HomeTeam { get; private set; }
+        public int HomeTeamId { get; private set; }
 
-        public int AwayTeamId { get; private set; }
         public Team AwayTeam { get; private set; }
+        public int AwayTeamId { get; private set; }
 
-        public int TourId { get; private set; }
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
         public Tour Tour { get; private set; }
+        public int TourId { get; private set; }
 
         public DateTime Date { get; private set; }
 
@@ -51,7 +54,11 @@ namespace Domain.Models
 
         public int GetPredictionsSum()
         {
-            if (Predictions == null) throw new NullReferenceException(nameof(Predictions));
+            if (Predictions == null)
+            {
+                throw new NullReferenceException(nameof(Predictions));
+            }
+
             return Predictions.Select(p => p.Sum).Sum();
         }
     }

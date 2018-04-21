@@ -4,10 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.FetchExtensions;
 using ReadModel.Features.Predictions.Dtos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

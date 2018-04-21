@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.Models;
+﻿using Domain.Models;
 
 namespace ReadModel.Features.Stats.Dtos
 {

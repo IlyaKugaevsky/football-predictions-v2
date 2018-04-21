@@ -1,20 +1,10 @@
-﻿using Domain.Models;
-using Domain.Services;
-using Newtonsoft.Json;
-using ReadModel.Features.Stats;
-using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Utils.Json;
-using Xunit;
+﻿using ReadModel.Features.Stats;
 
 namespace ReadModelTests.ServiceTests
 {
     public class StatServiceTests
     {
+        // ReSharper disable once NotAccessedField.Local
         private readonly StatService _statService;
 
         public StatServiceTests()

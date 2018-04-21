@@ -1,17 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Domain;
 using Persistence;
 using ReadModel.Features.Tours.Dtos;
-using ReadModel.Features.Tours.Queries;
 using Persistence.QueryExtensions;
 using Persistence.FetchExtensions;
-using Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace ReadModel.Features.Tours.Queries
 {

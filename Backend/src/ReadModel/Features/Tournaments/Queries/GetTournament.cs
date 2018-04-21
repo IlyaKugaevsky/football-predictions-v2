@@ -5,7 +5,7 @@ namespace ReadModel.Features.Tournaments.Queries
 {
     public class GetTournament : IRequest<TournamentInfoReadDto>
     {
-        public int TournamentId { get; private set; }
+        public int TournamentId { get; }
 
         public GetTournament(int id)
         {

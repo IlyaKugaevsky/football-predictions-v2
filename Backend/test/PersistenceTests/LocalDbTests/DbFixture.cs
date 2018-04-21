@@ -32,7 +32,7 @@ namespace PersistenceTests.LocalDbTests
             Context = context;
         }
 
-        public PredictionsContext Context { get; private set; }
+        public PredictionsContext Context { get; }
 
         public void Dispose()
         {

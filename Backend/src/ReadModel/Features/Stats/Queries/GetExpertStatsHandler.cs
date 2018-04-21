@@ -1,35 +1,26 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
-using Domain.Models;
 using Domain.Services;
 using Domain.PointSystems;
 using MediatR;
 using Persistence;
 using Persistence.FetchExtensions;
 using Persistence.QueryExtensions;
-using ReadModel.Features.Experts.Dtos;
-using ReadModel.Features.Stats.Queries;
 using ReadModel.Features.Stats.Dtos;
-using Microsoft.EntityFrameworkCore;
 
 namespace ReadModel.Features.Stats.Queries
 {
     public class GetExpertStatsHandler : IRequestHandler<GetExpertStats, IEnumerable<ExpertStatsReadDto>>
     {
         private readonly PredictionsContext _context;
-        private readonly IMapper _mapper;
         private readonly PredictionService _predictionService;
         private readonly StatService _statService;
 
-        public GetExpertStatsHandler(PredictionsContext context, IMapper mapper)
+        public GetExpertStatsHandler(PredictionsContext context)
         {
             _context = context;
-            _mapper = mapper;
             _predictionService = new PredictionService();
             _statService = new StatService();
         }

@@ -16,7 +16,7 @@ namespace ReadModel.Features.Tours.Dtos
             _matchInfos.AddRange(matchInfos);
         }
 
-        public TourInfoReadDto TourInfo { get; private set; }
+        public TourInfoReadDto TourInfo { get; }
 
         public IReadOnlyCollection<MatchInfoReadDto> MatchInfo()
         {

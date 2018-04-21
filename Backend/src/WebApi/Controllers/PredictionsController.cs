@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using MediatR;
 using ReadModel.Features.Predictions.Queries;

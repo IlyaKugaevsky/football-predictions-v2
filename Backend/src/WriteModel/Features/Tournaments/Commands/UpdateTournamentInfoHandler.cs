@@ -1,7 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
-using Domain.Models;
 using MediatR;
 using Persistence;
 
@@ -9,7 +7,7 @@ namespace WriteModel.Features.Tournaments.Commands
 {
    public class UpdateTournamentInfoHandler : IRequestHandler<UpdateTournamentInfo, bool>
    {
-       private PredictionsContext _context;
+       private readonly PredictionsContext _context;
        public UpdateTournamentInfoHandler(PredictionsContext context)
        {
            _context = context;

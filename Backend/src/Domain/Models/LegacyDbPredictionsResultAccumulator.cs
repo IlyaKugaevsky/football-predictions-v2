@@ -1,7 +1,4 @@
 ﻿using Domain.PointSystems;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Models
 {
@@ -21,9 +18,18 @@ namespace Domain.Models
         // In old database if guessed Score (Score equals true), then guessed everything (Difference and Outcome equals true)
         public void LegacyDbAdd(Prediction prediction)
         {
-            if (prediction.Score) Scores++;
-            else if (prediction.Difference) Differences++;
-            else if (prediction.Outcome) Outcomes++;
+            if (prediction.Score)
+            {
+                Scores++;
+            }
+            else if (prediction.Difference)
+            {
+                Differences++;
+            }
+            else if (prediction.Outcome)
+            {
+                Outcomes++;
+            }
         }
 
         public int GetPointsSum(IPointSystem pointSystem)

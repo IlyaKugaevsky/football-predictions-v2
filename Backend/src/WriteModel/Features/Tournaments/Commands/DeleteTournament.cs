@@ -1,6 +1,4 @@
-using System;
 using MediatR;
-using WriteModel.Features.Tournaments.Dtos;
 
 namespace WriteModel.Features.Tournaments.Commands
 {
@@ -11,6 +9,6 @@ namespace WriteModel.Features.Tournaments.Commands
             TournamentId = tournamentId;
         }
 
-        public int TournamentId { get; private set; }
+        public int TournamentId { get; }
     }
 }

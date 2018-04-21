@@ -1,9 +1,7 @@
 ﻿using Domain.Models;
 using Domain.PointSystems;
 using ReadModel.Features.Stats.Dtos;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ReadModel.Features.Stats
 {

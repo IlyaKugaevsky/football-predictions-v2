@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using MediatR;
 using WriteModel.Features.Tours.Dtos;
 
@@ -14,7 +12,7 @@ namespace WriteModel.Features.Tournaments.Commands
             Tours = tours;
         }
 
-        public int TournamentId { get; private set; }
-        public IEnumerable<TourInfoWriteDto> Tours { get; private set; }
+        public int TournamentId { get; }
+        public IEnumerable<TourInfoWriteDto> Tours { get; }
     }
 }

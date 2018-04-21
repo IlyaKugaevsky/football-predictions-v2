@@ -1,7 +1,6 @@
 using System.IO;
 using Domain.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Shouldly;
 using Utils.Json;
 using Xunit;

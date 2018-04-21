@@ -1,15 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using ReadModel.Features.Tournaments.Dtos;
 using ReadModel.Features.Tournaments.Queries;
 using WriteModel.Features.Tournaments.Dtos;
 using WriteModel.Features.Tournaments.Commands;
 using ReadModel.Features.Tours.Queries;
-using ReadModel.Features.Tours.Dtos;
 using WriteModel.Features.Tours.Dtos;
 
 namespace WebApi.Controllers
@@ -42,8 +39,14 @@ namespace WebApi.Controllers
 
             var tournament = await _mediator.Send(getTournament);
 
-            if (tournament == null) return NotFound();
-            else return Ok(tournament);
+            if (tournament == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(tournament);
+            }
         }
 
         // GET api/tournaments/latest/schedule
@@ -64,8 +67,14 @@ namespace WebApi.Controllers
             var getTournamentTours = new GetTournamentTours(id);
             var tours = await _mediator.Send(getTournamentTours);
 
-            if (tours == null) return NotFound();
-            else return Ok(tours);
+            if (tours == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(tours);
+            }
         }
 
         // GET api/tournaments/:id/tours/:number/
@@ -87,8 +96,14 @@ namespace WebApi.Controllers
 
             var isCompletedSuccessfully = await _mediator.Send(createTournament);
 
-            if (isCompletedSuccessfully) return Ok();
-            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            if (isCompletedSuccessfully)
+            {
+                return Ok();
+            }
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
         // POST api/tournaments/:id/tours
@@ -99,8 +114,14 @@ namespace WebApi.Controllers
 
             var isCompletedSuccessfully = await _mediator.Send(addTours);
 
-            if (isCompletedSuccessfully) return new StatusCodeResult(StatusCodes.Status201Created);
-            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            if (isCompletedSuccessfully)
+            {
+                return new StatusCodeResult(StatusCodes.Status201Created);
+            }
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
         // PATCH api/tournaments/:id
@@ -113,8 +134,14 @@ namespace WebApi.Controllers
 
             var isCompletedSuccessfully = await _mediator.Send(updateTournament);
 
-            if (isCompletedSuccessfully) return new StatusCodeResult(StatusCodes.Status201Created);
-            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            if (isCompletedSuccessfully)
+            {
+                return new StatusCodeResult(StatusCodes.Status201Created);
+            }
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
         // DELETE api/tournaments/:id
@@ -126,8 +153,14 @@ namespace WebApi.Controllers
 
             var isCompletedSuccessfully = await _mediator.Send(deleteTournament);
 
-            if (isCompletedSuccessfully) return NoContent();
-            else return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            if (isCompletedSuccessfully)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
 
 

@@ -1,6 +1,5 @@
 using System;
 using MediatR;
-using WriteModel.Features.Tournaments.Dtos;
 
 namespace WriteModel.Features.Tournaments.Commands
 {
@@ -13,8 +12,8 @@ namespace WriteModel.Features.Tournaments.Commands
             EndDate = endDate;
         }
 
-        public string Title { get; private set; }
-        public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
+        public string Title { get; }
+        public DateTime StartDate { get; }
+        public DateTime EndDate { get; }
     }
 }

@@ -17,7 +17,7 @@ namespace ReadModel.Features.Tournaments.Dtos
             _tourSchedules = tourSchedules.ToList();
         }
 
-        public TournamentInfoReadDto TournamentInfo { get; private set; }
+        public TournamentInfoReadDto TournamentInfo { get; }
 
         public IReadOnlyCollection<TourScheduleReadDto> TourSchedules()
         {

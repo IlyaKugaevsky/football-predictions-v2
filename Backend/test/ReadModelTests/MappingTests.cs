@@ -2,7 +2,6 @@ using System;
 using System.Reflection;
 using AutoMapper;
 using Domain.Models;
-using FakeItEasy;
 using Microsoft.Extensions.DependencyInjection;
 using ReadModel.Features.Matches.Dtos;
 using ReadModel.Features.Tournaments.Dtos;
@@ -24,18 +23,15 @@ namespace ReadModelTests
             GlobalMapper = provider.GetService<IMapper>();
         }
 
-        public IMapper GlobalMapper { get; private set; }
+        public IMapper GlobalMapper { get; }
     }
 
     public class MappingTests : IClassFixture<MappingConfig>
     {
-        private IMapper _mapper;
-        private MappingConfig _mappingConfig;
+        private readonly IMapper _mapper;
 
         public MappingTests(MappingConfig mappingConfig)
         {
-            _mappingConfig = mappingConfig;
-
             _mapper = mappingConfig.GlobalMapper;
             _mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
@@ -54,11 +50,9 @@ namespace ReadModelTests
                 homeTeam,
                 awayTeam,
                 DateTime.MinValue
-            );
+            ) {Score = {Value = "1:0"}};
 
-            match.Score.Value = "1:0";
 
-            var score = match.Score.Value;
             var matchDto = _mapper.Map<MatchInfoReadDto>(match);
 
             matchDto.Id.ShouldBe(match.Id);
@@ -104,11 +98,12 @@ namespace ReadModelTests
         [Fact]
         public void Should_Map_Prediction_To_Dto_Correctly()
         {
-            var prediction = new Prediction(1, "2:0", 1, false, false, true, true);
+            var prediction = new Prediction(1, 2, "2:0", 1, false, false, true, true);
 
             var predictionDto = _mapper.Map<PredictionMinimalInfoReadDto>(prediction);
 
             predictionDto.Id.ShouldBe(prediction.Id);
+            predictionDto.ExpertId.ShouldBe(prediction.ExpertId);
             predictionDto.Value.ShouldBe(prediction.Value);
 
             predictionDto.Sum.ShouldBe(prediction.Sum);

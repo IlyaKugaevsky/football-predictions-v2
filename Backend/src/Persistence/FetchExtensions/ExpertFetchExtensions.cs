@@ -1,9 +1,6 @@
 ﻿using Domain.Models;
 using Persistence.QueryExtensions;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Persistence.FetchExtensions
 {

@@ -1,7 +1,4 @@
 ﻿using ReadModel.Features.Matches.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ReadModel.Features.Predictions.Dtos
 {

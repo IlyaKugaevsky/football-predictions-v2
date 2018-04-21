@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Domain.Models;
 using MediatR;
 using Persistence;

@@ -1,18 +1,13 @@
-﻿using AutoMapper;
-using Domain.Models;
-using Domain.PointSystems;
+﻿using Domain.PointSystems;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.FetchExtensions;
 using Persistence.QueryExtensions;
 using ReadModel.Features.Predictions;
 using ReadModel.Features.Stats;
 using ReadModel.Features.Stats.Dtos;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,14 +16,12 @@ namespace ReadModel.Features.Tournaments.Queries
     public class GetExpertStatsHandler: IRequestHandler<GetExpertStats, IEnumerable<ExpertStatsReadDto>>
     {
         private readonly PredictionsContext _context;
-        private readonly IMapper _mapper;
         private readonly PredictionService _predictionService;
         private readonly StatService _statService;
 
-        public GetExpertStatsHandler(PredictionsContext context, IMapper mapper)
+        public GetExpertStatsHandler(PredictionsContext context)
         {
             _context = context;
-            _mapper = mapper;
             _predictionService = new PredictionService();
             _statService = new StatService();
         }

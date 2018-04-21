@@ -1,16 +1,10 @@
 ﻿using AutoMapper;
-using Domain.Models;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.FetchExtensions;
 using Persistence.QueryExtensions;
 using ReadModel.Features.Predictions.Dtos;
 using Domain.QueryExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ReadModel.Features.Experts.Dtos;
@@ -30,8 +24,6 @@ namespace ReadModel.Features.Predictions.Queries
             _mapper = mapper;
             _predictionService = new PredictionService();
         }
-
-        public int TournamentInfo { get; private set; }
 
         public async Task<ExpertTourPredictionsReadDto> Handle(GetPredictionsByTourAndExpert request,
            CancellationToken cancellationToken = default(CancellationToken))

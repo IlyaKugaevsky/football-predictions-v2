@@ -2,11 +2,9 @@
 using Domain.Services;
 using Newtonsoft.Json;
 using Shouldly;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Utils.Json;
 using Xunit;
 
@@ -42,7 +40,7 @@ namespace ReadModelTests.ServiceTests
             var expert2 = experts[1];
 
             var expertResults = _predictionService.GroupPredictionsResultsByExpert(matches);
-            expertResults.Count().ShouldBe(2);
+            expertResults.Count.ShouldBe(2);
 
             expert1.Nickname.ShouldBe("Mike");
             expertResults[expert1].Scores.ShouldBe(1);

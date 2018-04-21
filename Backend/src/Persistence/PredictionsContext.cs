@@ -50,7 +50,10 @@ namespace Persistence
 
         public void BeginTransaction()
         {
-            if (_currentTransaction != null) return;
+            if (_currentTransaction != null)
+            {
+                return;
+            }
 
             _currentTransaction = Database.BeginTransaction(IsolationLevel.ReadCommitted);
         }

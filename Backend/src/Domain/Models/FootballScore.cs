@@ -24,9 +24,13 @@ namespace Domain.Models
             set
             {
                 if (Regex.IsMatch(value, ScorePattern))
+                {
                     _scoreValue = value;
+                }
                 else
+                {
                     throw new ArgumentException("Invalide score.");
+                }
             }
         }
     }

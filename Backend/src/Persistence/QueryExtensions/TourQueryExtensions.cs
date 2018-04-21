@@ -22,7 +22,7 @@ namespace Persistence.QueryExtensions
             var tournament = await context
                 .Tournaments
                 .FetchWithTours(FetchMode.ForRead)
-                .WithIdAsync<Tournament>(tournamentId, cancellationToken);
+                .WithIdAsync(tournamentId, cancellationToken);
 
             var tour = tournament
                 .Tours

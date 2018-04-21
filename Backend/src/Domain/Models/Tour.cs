@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Domain.Models
 {
@@ -21,6 +22,7 @@ namespace Domain.Models
             EndDate = endDate;
         }
 
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
         public Tournament Tournament { get; private set; }
         public int TournamentId { get; private set; }
 
@@ -45,13 +47,14 @@ namespace Domain.Models
 
         public void Close()
         {
-            if (IsClosed) throw new InvalidOperationException("The tour is already closed.");
+            if (IsClosed)
+            {
+                throw new InvalidOperationException("The tour is already closed.");
+            }
+
             IsClosed = true;
         }
 
-        public void Rollback()
-        {
-            throw new NotImplementedException();
-        }
+        public void Rollback() => throw new NotImplementedException();
     }
 }

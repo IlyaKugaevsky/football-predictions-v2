@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Persistence.FetchExtensions;
 
 namespace Persistence.QueryExtensions
 {

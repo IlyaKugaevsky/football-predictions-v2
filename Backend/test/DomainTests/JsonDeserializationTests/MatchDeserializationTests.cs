@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using Domain.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Shouldly;
 using Utils.Json;
 using Xunit;
@@ -12,7 +11,7 @@ namespace DomainTests.JsonDeserializationTests
 {
     public class MatchDeserializationTests
     {
-        private JsonSerializerSettings _settings;
+        private readonly JsonSerializerSettings _settings;
 
         public MatchDeserializationTests()
         {
@@ -33,8 +32,8 @@ namespace DomainTests.JsonDeserializationTests
             var match1 = matches[0];
             var match2 = matches[1];
 
-            match1.Predictions.ToList().Count().ShouldBe(2);
-            match2.Predictions.ToList().Count().ShouldBe(2);
+            match1.Predictions.ToList().Count.ShouldBe(2);
+            match2.Predictions.ToList().Count.ShouldBe(2);
 
             match1.Predictions.ToList()[0].Score.ShouldBeTrue();
             match1.Predictions.ToList()[0].Difference.ShouldBeFalse();

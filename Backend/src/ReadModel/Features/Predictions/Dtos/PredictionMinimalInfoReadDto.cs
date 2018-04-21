@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReadModel.Features.Predictions.Dtos
+﻿namespace ReadModel.Features.Predictions.Dtos
 {
     public class PredictionMinimalInfoReadDto
     {
-        public PredictionMinimalInfoReadDto(int id, string value, int sum, bool score, bool difference, bool outcome, bool isClosed)
+        public PredictionMinimalInfoReadDto(int id, int expertId, string value, int sum, bool score, bool difference, bool outcome, bool isClosed)
         {
             Id = id;
+            ExpertId = expertId;
             Value = value;
             Sum = sum;
             Score = score;
@@ -17,15 +14,16 @@ namespace ReadModel.Features.Predictions.Dtos
             IsClosed = isClosed;
         }
 
-        public int Id { get; private set; }
-        public string Value { get; private set; }
+        public int Id { get; }
+        public int ExpertId { get; }
+        public string Value { get; }
 
-        public int Sum { get; private set; }
-        public bool Score { get; private set; }
-        public bool Difference { get; private set; }
-        public bool Outcome { get; private set; }
+        public int Sum { get; }
+        public bool Score { get; }
+        public bool Difference { get; }
+        public bool Outcome { get; }
 
-        public bool IsClosed { get; private set; }
+        public bool IsClosed { get; }
     }
 
 }

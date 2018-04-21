@@ -44,7 +44,10 @@ namespace WebApi
             IHostingEnvironment env,
             ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             app.UseMvc();
         }

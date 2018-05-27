@@ -1,11 +1,55 @@
+using System;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Domain.PointSystems;
+using Domain.QueryExtensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Models
 {
     [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Local")]
     public class Prediction : Entity
     {
+        private PredictionResult GeneratePredictionResult()
+        {
+            if (!IsClosed) return PredictionResult.NotYetAssigned;
+            if (Score) return PredictionResult.ScoreGuessed;
+            if (Difference) return PredictionResult.DifferenceGuessed;
+            if (Outcome) return PredictionResult.OutcomeGuessed;
+            return PredictionResult.NothingGuessed;
+        }
+
+        private void UpdatePredictionParameters(PredictionResult predictionResult)
+        {
+            switch (predictionResult)
+            {
+                case PredictionResult.NothingGuessed:
+                    Score = false;
+                    Difference = false;
+                    Outcome = false;
+                    break;
+                case PredictionResult.OutcomeGuessed:
+                    Score = false;
+                    Difference = false;
+                    Outcome = true;
+                    break;
+                case PredictionResult.DifferenceGuessed:
+                    Score = false;
+                    Difference = true;
+                    Outcome = true;
+                    break;
+                case PredictionResult.ScoreGuessed:
+                    Score = true;
+                    Difference = true;
+                    Outcome = true;
+                    break;
+                case PredictionResult.NotYetAssigned:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(predictionResult), predictionResult, null);
+            }
+        }
+
         protected Prediction()
         {
         }
@@ -50,26 +94,6 @@ namespace Domain.Models
         public Expert Expert { get; private set; } = null;
         public int ExpertId { get; private set; }
 
-        public int GetSum(IPointSystem pointSystem)
-        {
-            var sum = 0;
-
-            if (Outcome)
-            {
-                sum += pointSystem.OutcomeWeight;
-            }
-
-            if (Difference)
-            {
-                sum += pointSystem.DifferenceWeight;
-            }
-
-            if (Score)
-            {
-                sum += pointSystem.ScoreWeight;
-            }
-
-            return sum;
-        }
+        public PredictionResult Result => GeneratePredictionResult();
     }
 }

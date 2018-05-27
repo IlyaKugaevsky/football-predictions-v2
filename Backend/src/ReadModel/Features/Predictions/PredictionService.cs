@@ -9,7 +9,7 @@ using ReadModel.Features.Matches.Dtos;
 
 namespace ReadModel.Features.Predictions
 {
-    class PredictionService
+    public class PredictionService
     {
         public IReadOnlyDictionary<Expert, LegacyDbPredictionsResultAccumulator> GroupPredictionsResultsByExpert(IEnumerable<Match> matches)
         {
@@ -30,12 +30,12 @@ namespace ReadModel.Features.Predictions
                     if (predictionResultsByExpert.ContainsKey(expert))
                     {
                         var predictionsResult = predictionResultsByExpert[expert];
-                        predictionsResult.LegacyDbAdd(prediction);
+                        predictionsResult.LegacyDbAdd(prediction.Result);
                     }
                     else
                     {
                         var predictionsResult = new LegacyDbPredictionsResultAccumulator();
-                        predictionsResult.LegacyDbAdd(prediction);
+                        predictionsResult.LegacyDbAdd(prediction.Result);
 
                         predictionResultsByExpert[expert] = predictionsResult;
                     }

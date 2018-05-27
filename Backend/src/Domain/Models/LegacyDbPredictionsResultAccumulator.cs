@@ -1,4 +1,5 @@
-﻿using Domain.PointSystems;
+﻿using System;
+using Domain.PointSystems;
 
 namespace Domain.Models
 {
@@ -14,25 +15,36 @@ namespace Domain.Models
         public int Outcomes { get; private set; }
         public int Differences { get; private set; }
         public int Scores { get; private set; }
+        public int PointSum { get; private set; }
 
-        // In old database if guessed Score (Score equals true), then guessed everything (Difference and Outcome equals true)
-        public void LegacyDbAdd(Prediction prediction)
+        public void LegacyDbAdd(PredictionResult predictionResult)
         {
-            if (prediction.Score)
+            switch (predictionResult)
             {
-                Scores++;
+                case PredictionResult.NothingGuessed:
+                    break;
+                case PredictionResult.OutcomeGuessed:
+                    Outcomes++;
+                    break;
+                case PredictionResult.DifferenceGuessed:
+                    Differences++;
+                    break;
+                case PredictionResult.ScoreGuessed:
+                    Scores++;
+                    break;
+                case PredictionResult.NotYetAssigned:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(predictionResult), predictionResult, null);
             }
-            else if (prediction.Difference)
-            {
-                Differences++;
-            }
-            else if (prediction.Outcome)
-            {
-                Outcomes++;
-            }
+
+            PointSum += PredictionResultConverter.FromThreePointSystem(predictionResult);
+
+
+
         }
 
-        public int GetPointsSum(IPointSystem pointSystem)
-            => Outcomes * pointSystem.OutcomeWeight + Differences * pointSystem.DifferenceWeight + Scores * pointSystem.ScoreWeight;
+        //public int GetPointsSum(IDeprecatedPointSystem deprecatedPointSystem)
+        //    => Outcomes * deprecatedPointSystem.OutcomeWeight + Differences * deprecatedPointSystem.DifferenceWeight + Scores * deprecatedPointSystem.ScoreWeight;
     }
 }

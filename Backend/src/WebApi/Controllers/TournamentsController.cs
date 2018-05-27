@@ -77,7 +77,7 @@ namespace WebApi.Controllers
             }
         }
 
-        // GET api/tournaments/:id/tours/:number/
+        // GET api/tournaments/:id/tours/:number/expert-stats
         [HttpGet("{id}/tours/{number}/expert-stats")]
         public async Task<IActionResult> GetExpertStats(int id, int number)
         {

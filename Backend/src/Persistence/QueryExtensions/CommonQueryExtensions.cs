@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,12 +19,15 @@ namespace Persistence.QueryExtensions
         public static IQueryable<T> ApplyFetchMode<T>(this IQueryable<T> entities, FetchMode fetchMode)
             where T : Entity
         {
-            if (fetchMode == FetchMode.ForRead)
+            switch (fetchMode)
             {
-                entities = entities.AsNoTracking();
+                case FetchMode.ForRead:
+                    return entities.AsNoTracking();
+                case FetchMode.ForModify:
+                    return entities;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fetchMode), fetchMode, "FetchMode must be either ForRead or ForModify");
             }
-
-            return entities;
         }
     }
 }

@@ -22,6 +22,17 @@ namespace Persistence.FetchExtensions
                 .ApplyFetchMode(fetchMode);
         }
 
+        public static IQueryable<Tour> FetchWithFullMatchesInfo(this IQueryable<Tour> tours, FetchMode fetchMode)
+        {
+            return tours
+                .Include(t => t.Matches)
+                .ThenInclude(m => m.HomeTeam)
+                .Include(t => t.Matches)
+                .ThenInclude(m => m.AwayTeam)
+                .Include(t => t.Matches)
+                .ApplyFetchMode(fetchMode);
+        }
+
         public static IQueryable<Tour> FetchWithFullMatchesInfoAndPredictions(this IQueryable<Tour> tours, FetchMode fetchMode)
         {
             return tours

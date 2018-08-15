@@ -13,11 +13,5 @@ namespace Domain.QueryExtensions
 
         public static bool IsAssigned(this PredictionResult predictionResult)
             => predictionResult != PredictionResult.NotYetAssigned;
-
-        //public static int GetPoints(this PredictionResult predictionResult, Func<PredictionResult, int> fromPointSystem) 
-        //    => fromPointSystem(predictionResult);
-
-        //public static int EvaluatePoints(this PredictionResult predictionResult, IPointSystem pointSystem) 
-        //    => pointSystem.ConvertToPoints(predictionResult);
     }
 }

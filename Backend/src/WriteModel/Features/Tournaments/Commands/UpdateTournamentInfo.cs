@@ -5,15 +5,15 @@ namespace WriteModel.Features.Tournaments.Commands
 {
     public class UpdateTournamentInfo : IRequest<bool>
     {
-        public UpdateTournamentInfo(int tournamentId, string title, DateTime startDate, DateTime endDate)
+        public UpdateTournamentInfo(int id, string title, DateTime startDate, DateTime endDate)
         {
-            TournamentId = tournamentId;
+            Id = id;
             Title = title;
             StartDate = startDate;
             EndDate = endDate;
         }
 
-        public int TournamentId { get; }
+        public int Id { get; }
         public string Title { get; }
         public DateTime StartDate { get; }
         public DateTime EndDate { get; }

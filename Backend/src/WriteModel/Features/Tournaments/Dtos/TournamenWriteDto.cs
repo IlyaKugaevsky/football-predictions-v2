@@ -2,9 +2,9 @@ using System;
 
 namespace WriteModel.Features.Tournaments.Dtos
 {
-    public class TournamentInfoWriteDto
+    public class TournamenWriteDto
     {
-        public TournamentInfoWriteDto(string title, DateTime startDate, DateTime endDate)
+        public TournamenWriteDto(string title, DateTime startDate, DateTime endDate)
         {
             Title = title;
             StartDate = startDate;

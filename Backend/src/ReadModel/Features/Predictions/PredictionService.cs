@@ -11,9 +11,9 @@ namespace ReadModel.Features.Predictions
 {
     public class PredictionService
     {
-        public IReadOnlyDictionary<Expert, LegacyDbPredictionsResultAccumulator> GroupPredictionsResultsByExpert(IEnumerable<Match> matches)
+        public IReadOnlyDictionary<Expert, PredictionsResultAccumulator> GroupPredictionsResultsByExpert(IEnumerable<Match> matches)
         {
-            var predictionResultsByExpert = new Dictionary<Expert, LegacyDbPredictionsResultAccumulator>();
+            var predictionResultsByExpert = new Dictionary<Expert, PredictionsResultAccumulator>();
 
             foreach (var match in matches)
             {
@@ -30,12 +30,12 @@ namespace ReadModel.Features.Predictions
                     if (predictionResultsByExpert.ContainsKey(expert))
                     {
                         var predictionsResult = predictionResultsByExpert[expert];
-                        predictionsResult.LegacyDbAdd(prediction.Result);
+                        predictionsResult.AddResult(prediction.Result);
                     }
                     else
                     {
-                        var predictionsResult = new LegacyDbPredictionsResultAccumulator();
-                        predictionsResult.LegacyDbAdd(prediction.Result);
+                        var predictionsResult = new PredictionsResultAccumulator();
+                        predictionsResult.AddResult(prediction.Result);
 
                         predictionResultsByExpert[expert] = predictionsResult;
                     }

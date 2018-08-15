@@ -15,7 +15,7 @@ namespace WriteModel.Features.Tournaments.Commands
        public async Task<bool> Handle(DeleteTournament command,
            CancellationToken cancellationToken = default(CancellationToken))
        {
-           var tournament = await _context.Tournaments.FindAsync(command.TournamentId);
+           var tournament = await _context.Tournaments.FindAsync(command.Id);
 
            _context.Remove(tournament); 
 

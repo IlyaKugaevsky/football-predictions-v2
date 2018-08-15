@@ -7,7 +7,7 @@ namespace ReadModel.Features.Stats
 {
     public class StatService
     {
-        public IEnumerable<ExpertStatsReadDto> DenormalizePredictionResultsToDto(IReadOnlyDictionary<Expert, LegacyDbPredictionsResultAccumulator> predictionResultsByExpert, ICommonPointSystem commonPointSystem)
+        public IEnumerable<ExpertStatsReadDto> DenormalizePredictionResultsToDto(IReadOnlyDictionary<Expert, PredictionsResultAccumulator> predictionResultsByExpert, ICommonPointSystem commonPointSystem)
         {
             var stats = new List<ExpertStatsReadDto>();
 

@@ -26,5 +26,10 @@ namespace Domain.Models
         public string Nickname { get; private set; }
 
         public IEnumerable<Prediction> Predictions => _predictions.AsReadOnly();
+
+        public void UpdateInfo(string nickname)
+        {
+            Nickname = nickname;
+        }
     }
 }

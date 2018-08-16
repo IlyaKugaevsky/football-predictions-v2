@@ -4,11 +4,11 @@ namespace WriteModel.Features.Tournaments.Commands
 {
     public class DeleteTournament : IRequest<bool>
     {
-        public DeleteTournament(int tournamentId)
+        public DeleteTournament(int id)
         {
-            TournamentId = tournamentId;
+            Id = id;
         }
 
-        public int TournamentId { get; }
+        public int Id { get; }
     }
 }

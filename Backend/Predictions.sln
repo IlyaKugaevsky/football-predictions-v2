@@ -1,31 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", ".\src\WebApi\WebApi.csproj", "{7843B80B-DF54-4CBE-AF8B-B4BE9BACA32E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\WebApi\WebApi.csproj", "{7843B80B-DF54-4CBE-AF8B-B4BE9BACA32E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF44ED05-0319-4035-B369-4408D0DF6847}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E22C8101-878B-4A9B-A471-989D76668AFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", ".\src\Domain\Domain.csproj", "{2BEDF547-FBE2-4E8D-A222-F86E0839E72B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{2BEDF547-FBE2-4E8D-A222-F86E0839E72B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", ".\src\Persistence\Persistence.csproj", "{87A449B5-2D71-4D8A-A935-E4FA0FCB2FA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "src\Persistence\Persistence.csproj", "{87A449B5-2D71-4D8A-A935-E4FA0FCB2FA9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadModel", ".\src\ReadModel\ReadModel.csproj", "{888FB85C-53CB-4B5F-8E0C-8631D3A0FB86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadModel", "src\ReadModel\ReadModel.csproj", "{888FB85C-53CB-4B5F-8E0C-8631D3A0FB86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", ".\src\Utils\Utils.csproj", "{076508AE-7A86-4414-A1AA-73ED5F77DAE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "src\Utils\Utils.csproj", "{076508AE-7A86-4414-A1AA-73ED5F77DAE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteModel", ".\src\WriteModel\WriteModel.csproj", "{F3802DD1-32FD-4D57-9C92-4C76E0FEF110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteModel", "src\WriteModel\WriteModel.csproj", "{F3802DD1-32FD-4D57-9C92-4C76E0FEF110}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainTests", ".\test\DomainTests\DomainTests.csproj", "{DDD3FBC6-C938-4A5B-8229-FA32E89E0EB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainTests", "test\DomainTests\DomainTests.csproj", "{DDD3FBC6-C938-4A5B-8229-FA32E89E0EB5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistenceTests", ".\test\PersistenceTests\PersistenceTests.csproj", "{6D853BC5-F7DE-4A45-AA06-D752277D06F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistenceTests", "test\PersistenceTests\PersistenceTests.csproj", "{6D853BC5-F7DE-4A45-AA06-D752277D06F2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadModelTests", ".\test\ReadModelTests\ReadModelTests.csproj", "{5B0AA64F-DEE6-4C6A-9DF4-B01CA3EDC540}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadModelTests", "test\ReadModelTests\ReadModelTests.csproj", "{5B0AA64F-DEE6-4C6A-9DF4-B01CA3EDC540}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteModelTests", ".\test\WriteModelTests\WriteModelTests.csproj", "{4A307BE8-07D3-4410-BEEE-D5750F6D435B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteModelTests", "test\WriteModelTests\WriteModelTests.csproj", "{4A307BE8-07D3-4410-BEEE-D5750F6D435B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

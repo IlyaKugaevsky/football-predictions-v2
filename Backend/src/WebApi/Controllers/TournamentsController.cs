@@ -89,10 +89,10 @@ namespace WebApi.Controllers
 
         // POST api/tournaments/
         [HttpPost()]
-        public async Task<IActionResult> CreateTournament([FromBody] TournamentInfoWriteDto tournamentInfo)
+        public async Task<IActionResult> CreateTournament([FromBody] TournamenWriteDto tournamen)
         {
-            var createTournament = new CreateTournament(tournamentInfo.Title,
-                tournamentInfo.StartDate, tournamentInfo.EndDate);
+            var createTournament = new CreateTournament(tournamen.Title,
+                tournamen.StartDate, tournamen.EndDate);
 
             var isCompletedSuccessfully = await _mediator.Send(createTournament);
 
@@ -127,10 +127,10 @@ namespace WebApi.Controllers
         // PATCH api/tournaments/:id
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateTournament(int id,
-            [FromBody] TournamentInfoWriteDto tournamentInfo)
+            [FromBody] TournamenWriteDto tournamen)
         {
-            var updateTournament = new UpdateTournamentInfo(id, tournamentInfo.Title,
-                tournamentInfo.StartDate, tournamentInfo.EndDate);
+            var updateTournament = new UpdateTournamentInfo(id, tournamen.Title,
+                tournamen.StartDate, tournamen.EndDate);
 
             var isCompletedSuccessfully = await _mediator.Send(updateTournament);
 
@@ -147,7 +147,7 @@ namespace WebApi.Controllers
         // DELETE api/tournaments/:id
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTournament(int id, 
-            [FromBody] TournamentInfoWriteDto tournamentInfo)
+            [FromBody] TournamenWriteDto tournamen)
         {
             var deleteTournament = new DeleteTournament(id);
 
@@ -162,7 +162,5 @@ namespace WebApi.Controllers
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
         }
-
-
     }
 }

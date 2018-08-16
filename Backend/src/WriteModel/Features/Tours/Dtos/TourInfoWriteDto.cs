@@ -4,14 +4,14 @@ namespace WriteModel.Features.Tours.Dtos
 {
     public class TourInfoWriteDto
     {
-        TourInfoWriteDto(int tourNumber, DateTime startDate, DateTime endDate)
+        public TourInfoWriteDto(int number, DateTime startDate, DateTime endDate)
         {
-            TourNumber = tourNumber;
+            Number = number;
             StartDate = startDate;
             EndDate = endDate;
         }
 
-        public int TourNumber { get;  }
+        public int Number { get;  }
         public DateTime StartDate { get; }
         public DateTime EndDate { get; }
     }

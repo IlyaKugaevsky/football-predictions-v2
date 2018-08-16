@@ -26,7 +26,7 @@ namespace WriteModel.Features.Tournaments.Commands
                 return false;
             }
 
-            var tours = command.Tours.Select(t => new Tour(t.TourNumber, t.StartDate, t.EndDate));
+            var tours = command.Tours.Select(t => new Tour(t.Number, t.StartDate, t.EndDate));
 
             tournament.AddTours(tours);
             return await _context.SaveChangesAsync(cancellationToken) > 0;

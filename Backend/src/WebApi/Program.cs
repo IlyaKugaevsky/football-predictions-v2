@@ -14,7 +14,6 @@ namespace WebApi
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:5000/")
                 .Build();
         }
     }

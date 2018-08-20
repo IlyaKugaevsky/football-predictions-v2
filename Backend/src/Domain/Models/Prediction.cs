@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Domain.PointSystems;
 using Domain.QueryExtensions;
+using Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Models
@@ -77,6 +78,11 @@ namespace Domain.Models
             ExpertId = expertId;
             MatchId = matchId;
             Value = value;
+        }
+
+        public void SetScore(int homeGoals, int awayGoals)
+        {
+            Value = FootballScoreProcessor.CreateScoreExpr(homeGoals, awayGoals);
         }
 
         public string Value { get; private set; }

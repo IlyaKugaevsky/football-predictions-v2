@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReadModel.Features.Tournaments.Queries;
 using ReadModel.Features.Tours.Queries;
+using WriteModel.Features.Predictions.Commands;
+using WriteModel.Features.Teams.Dtos;
 using WriteModel.Features.Tournaments.Commands;
 using WriteModel.Features.Tournaments.Dtos;
 using WriteModel.Features.Tours.Commands;
@@ -80,6 +82,28 @@ namespace WebApi.Controllers
                 return Ok(tour);
             }
         }
+
+        // POST api/tours/:id/expert-predictions
+        [HttpPost("{id}/expert-predictions")]
+        public async Task<IActionResult> AddExpertPredictions(int id, 
+            [FromBody] ExpertPredictionsWriteDto expertPredictions)
+        {
+            var addExpertTourPredictions =
+                new AddExpertTourPredictions(expertPredictions.ExpertId, id, expertPredictions.Predictions);
+
+            var isCompletedSuccessfully = await _mediator.Send(addExpertTourPredictions);
+
+
+            if (isCompletedSuccessfully)
+            {
+                return Ok();
+            }
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
+        }
+
 
     }
 }

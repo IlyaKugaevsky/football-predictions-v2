@@ -13,6 +13,14 @@ namespace Persistence.FetchExtensions
             return tours.ApplyFetchMode(fetchMode);
         }
 
+        public static IQueryable<Tour> FetchWitMatchesAndPredictions(this IQueryable<Tour> tours, FetchMode fetchMode)
+        {
+            return tours
+                .Include(t => t.Matches)
+                    .ThenInclude(m => m.Predictions)
+                .ApplyFetchMode(fetchMode);
+        }
+
         public static IQueryable<Tour> FetchWithBasePredictionsInfo(this IQueryable<Tour> tours, FetchMode fetchMode)
         {
             return tours
@@ -26,9 +34,9 @@ namespace Persistence.FetchExtensions
         {
             return tours
                 .Include(t => t.Matches)
-                .ThenInclude(m => m.HomeTeam)
+                    .ThenInclude(m => m.HomeTeam)
                 .Include(t => t.Matches)
-                .ThenInclude(m => m.AwayTeam)
+                    .ThenInclude(m => m.AwayTeam)
                 .Include(t => t.Matches)
                 .ApplyFetchMode(fetchMode);
         }

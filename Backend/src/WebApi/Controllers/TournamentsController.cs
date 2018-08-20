@@ -127,10 +127,10 @@ namespace WebApi.Controllers
         // PATCH api/tournaments/:id
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateTournament(int id,
-            [FromBody] TournamenWriteDto tournamen)
+            [FromBody] TournamenWriteDto tournament)
         {
-            var updateTournament = new UpdateTournamentInfo(id, tournamen.Title,
-                tournamen.StartDate, tournamen.EndDate);
+            var updateTournament = new UpdateTournamentInfo(id, tournament.Title,
+                tournament.StartDate, tournament.EndDate);
 
             var isCompletedSuccessfully = await _mediator.Send(updateTournament);
 

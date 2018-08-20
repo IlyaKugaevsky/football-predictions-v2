@@ -9,7 +9,6 @@ using Domain.Models;
 using Domain.QueryExtensions;
 using Domain.Services;
 using MediatR;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Persistence;
 using Persistence.FetchExtensions;
 using Persistence.QueryExtensions;

@@ -13,10 +13,4 @@
     <PackageReference Include="MediatR" Version="4.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Server.Kestrel.Core">
-      <HintPath>C:\Users\ilyak\.nuget\packages\microsoft.aspnetcore.server.kestrel.core\2.0.0\lib\netstandard2.0\Microsoft.AspNetCore.Server.Kestrel.Core.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

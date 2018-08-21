@@ -95,13 +95,12 @@ namespace WebApi.Controllers
         public async Task<IActionResult> AddExpertPredictions(int id, 
             [FromBody] ExpertPredictionsWriteDto expertPredictions)
         {
-            _tempData.AddPrediction(expertPredictions);
-
             var nickname = expertPredictions.Nickname;
             var expertId = await _mediator.Send(new GetIdByNickname(nickname));
 
             if (expertId == null) return NotFound();
 
+            _tempData.AddPrediction(expertPredictions);
 
             var addExpertTourPredictions =
                 new AddExpertTourPredictions(expertId.Value, id, expertPredictions.Predictions);

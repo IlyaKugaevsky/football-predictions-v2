@@ -64,8 +64,7 @@ namespace WriteModel.Features.Predictions.Commands
                 }
             }
 
-
-            return await _context.SaveChangesAsync(cancellationToken) > 0;
+            return await _context.SaveChangesAsync(cancellationToken) >= 0;
         }
     }
 }

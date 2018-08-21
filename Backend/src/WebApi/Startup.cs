@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Persistence;
+using WebApi.Helpers;
 
 namespace WebApi
 {
@@ -35,6 +36,8 @@ namespace WebApi
             services.AddMediatR(Assembly.Load("ReadModel"), Assembly.Load("WriteModel"));
 
             services.AddAutoMapper(Assembly.Load("ReadModel"), Assembly.Load("WriteModel"));
+
+            services.AddSingleton<TempData>();
 
             var connectionString =
                 Configuration.GetSection("DbConnections:Predictions:AWS:ConnectionString").Value;

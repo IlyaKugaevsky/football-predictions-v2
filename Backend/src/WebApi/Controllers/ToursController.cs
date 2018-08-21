@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -5,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using ReadModel.Features.Experts.Queries;
 using ReadModel.Features.Tournaments.Queries;
 using ReadModel.Features.Tours.Queries;
+using WebApi.Helpers;
 using WriteModel.Features.Predictions.Commands;
 using WriteModel.Features.Teams.Dtos;
 using WriteModel.Features.Tournaments.Commands;
@@ -19,10 +23,12 @@ namespace WebApi.Controllers
     {
         // ReSharper disable once NotAccessedField.Local
         private readonly IMediator _mediator;
+        private readonly TempData _tempData;
 
-        public ToursController(IMediator mediator)
+        public ToursController(IMediator mediator, TempData tempData)
         {
             _mediator = mediator;
+            _tempData = tempData;
         }
 
         // PATCH api/tours/:id
@@ -89,6 +95,8 @@ namespace WebApi.Controllers
         public async Task<IActionResult> AddExpertPredictions(int id, 
             [FromBody] ExpertPredictionsWriteDto expertPredictions)
         {
+            _tempData.AddPrediction(expertPredictions);
+
             var nickname = expertPredictions.Nickname;
             var expertId = await _mediator.Send(new GetIdByNickname(nickname));
 
@@ -109,6 +117,13 @@ namespace WebApi.Controllers
             {
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
+        }
+
+        // GET api/tours/adhoc
+        [HttpGet("ad-hoc")]
+        public IActionResult AdHoc()
+        {
+            return Ok(_tempData.GetPredictions());
         }
 
 

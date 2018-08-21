@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ReadModel.Features.Experts.Queries;
 using ReadModel.Features.Tournaments.Queries;
 using ReadModel.Features.Tours.Queries;
 using WriteModel.Features.Predictions.Commands;
@@ -88,8 +89,14 @@ namespace WebApi.Controllers
         public async Task<IActionResult> AddExpertPredictions(int id, 
             [FromBody] ExpertPredictionsWriteDto expertPredictions)
         {
+            var nickname = expertPredictions.Nickname;
+            var expertId = await _mediator.Send(new GetIdByNickname(nickname));
+
+            if (expertId == null) return NotFound();
+
+
             var addExpertTourPredictions =
-                new AddExpertTourPredictions(expertPredictions.ExpertId, id, expertPredictions.Predictions);
+                new AddExpertTourPredictions(expertId.Value, id, expertPredictions.Predictions);
 
             var isCompletedSuccessfully = await _mediator.Send(addExpertTourPredictions);
 

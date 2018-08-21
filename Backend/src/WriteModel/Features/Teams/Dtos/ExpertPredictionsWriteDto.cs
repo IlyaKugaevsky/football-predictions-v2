@@ -7,13 +7,13 @@ namespace WriteModel.Features.Teams.Dtos
 {
     public class ExpertPredictionsWriteDto
     {
-        public ExpertPredictionsWriteDto(int expertId, IEnumerable<PredictionWriteDto> predictions)
+        public ExpertPredictionsWriteDto(string nickname, IEnumerable<PredictionWriteDto> predictions)
         {
-            ExpertId = expertId;
+            Nickname = nickname;
             Predictions = predictions;
         }
 
-        public int ExpertId { get; }
+        public string Nickname { get; }
 
         public IEnumerable<PredictionWriteDto> Predictions { get; }
 

@@ -40,7 +40,8 @@ namespace WebApi
             services.AddSingleton<TempData>();
 
             var connectionString =
-                Configuration.GetSection("DbConnections:Predictions:AWS:ConnectionString").Value;
+                                //Configuration.GetSection("DbConnections:Predictions:AWS:ConnectionString").Value;
+                Configuration.GetSection("DbConnections:Predictions:Somee:ConnectionString").Value;
             services.AddDbContext<PredictionsContext>(options =>
                 options.UseSqlServer(connectionString));
         }

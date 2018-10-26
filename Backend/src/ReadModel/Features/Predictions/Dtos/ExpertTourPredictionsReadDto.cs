@@ -1,6 +1,9 @@
 ﻿using ReadModel.Features.Experts.Dtos;
 using ReadModel.Features.Tournaments.Dtos;
 using System.Collections.Generic;
+using System.Text;
+using System;
+
 
 namespace ReadModel.Features.Predictions.Dtos
 {
@@ -19,6 +22,21 @@ namespace ReadModel.Features.Predictions.Dtos
             TournamentInfo = tournamentInfo;
             TourNumber = tourNumber;
             Predictions = predictions;
+        }
+
+        public override string ToString()
+        {
+            var sbuilder = new StringBuilder($"{ExpertInfo.Nickname}{Environment.NewLine}");
+
+            foreach (var prediction in Predictions)
+            {
+                var homeTeamTitle = prediction.Matchinfo.HomeTeamTitle;
+                var awayTeamTitle = prediction.Matchinfo.AwayTeamTitle;
+                var predictionValue = prediction.PredictionInfo.Value;
+                sbuilder.Append($"{homeTeamTitle} - {awayTeamTitle} {predictionValue}{Environment.NewLine}");
+            }
+
+            return sbuilder.ToString();
         }
     }
 }

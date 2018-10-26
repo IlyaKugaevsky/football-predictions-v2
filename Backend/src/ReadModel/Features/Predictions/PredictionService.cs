@@ -44,6 +44,33 @@ namespace ReadModel.Features.Predictions
             return predictionResultsByExpert;
         }
 
+        public IReadOnlyDictionary<Expert, ICollection<Prediction>> GroupPredictionsByExpert(IEnumerable<Match> matches)
+        {
+            var predictionsByExpert = new Dictionary<Expert, ICollection<Prediction>>();
+
+            foreach (var match in matches)
+            {
+                foreach (var prediction in match.Predictions.OrEmptyIfNull())
+                {
+                    var expert = prediction.Expert;
+
+                    if (predictionsByExpert.ContainsKey(expert))
+                    {
+                        var expertPredictions = predictionsByExpert[expert];
+                        expertPredictions.Add(prediction);
+                    }
+                    else
+                    {
+                        var predictions = new List<Prediction>();
+                        predictions.Add(prediction);
+
+                        predictionsByExpert[expert] = predictions;
+                    }
+                }
+            }
+            return predictionsByExpert;
+        }
+
         public IEnumerable<PredictionFullInfoReadDto> ConvertToFullInfoDtos(IEnumerable<Prediction> predictions, IMapper mapper)
         {
             return predictions.Select(p => new PredictionFullInfoReadDto(

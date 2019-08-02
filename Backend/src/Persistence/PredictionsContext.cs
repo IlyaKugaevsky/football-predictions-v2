@@ -39,6 +39,9 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.RemovePluralizingTableNameConvention();
+            
+            modelBuilder.HasDefaultSchema("dbo");
+
 
             modelBuilder.ApplyConfiguration(new TournamentEntityConfiguration());
             modelBuilder.ApplyConfiguration(new MatchEntityConfiguration());

@@ -42,10 +42,16 @@ namespace WebApi
             var connectionString =
                                 //Configuration.GetSection("DbConnections:Predictions:AWS:ConnectionString").Value;
                 // Configuration.GetSection("DbConnections:Predictions:Somee:ConnectionString").Value;
-                Configuration.GetSection("DbConnections:Predictions:SomeeRecreated:ConnectionString").Value;
+//                Configuration.GetSection("DbConnections:Predictions:SomeeRecreated:ConnectionString").Value;
+                                Configuration.GetSection("DbConnections:Predictions:ElephantSql:ConnectionString").Value;
 
+//            services.AddDbContext<PredictionsContext>(options =>
+//                options.UseSqlServer(connectionString));
+            
             services.AddDbContext<PredictionsContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseNpgsql(connectionString));
+            
+            
         }
 
         public void Configure(IApplicationBuilder app,

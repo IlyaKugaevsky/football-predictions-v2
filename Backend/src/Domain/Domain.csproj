@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
@@ -17,6 +17,12 @@
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Stats\" />
+    <Compile Remove="Stats\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Stats\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Stats\**" />
   </ItemGroup>
 </Project>

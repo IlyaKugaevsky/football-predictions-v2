@@ -93,6 +93,7 @@ namespace Domain.Models
         public bool Outcome { get; private set; }
 
         public bool IsClosed { get; private set; }
+        public bool IsPlayoff { get; private set; } = false;
 
         public int MatchId { get; private set; }
         public Match Match { get; private set; }

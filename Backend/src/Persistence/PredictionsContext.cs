@@ -29,6 +29,9 @@ namespace Persistence
         public virtual DbSet<Prediction> Predictions { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
 
+        public virtual DbSet<HeadToHeadTournament> HeadToHeadTournaments { get; set; }
+        
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
@@ -49,6 +52,8 @@ namespace Persistence
             modelBuilder.ApplyConfiguration(new TeamEntityConfiguration());
             modelBuilder.ApplyConfiguration(new PredictionEntityConfiguration());
             modelBuilder.ApplyConfiguration(new ExpertEntityConfiguration());
+            
+            modelBuilder.ApplyConfiguration(new HeadToHeadTournamentEntityConfiguration());
         }
 
         public void BeginTransaction()

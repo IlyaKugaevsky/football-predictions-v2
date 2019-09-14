@@ -9,6 +9,7 @@ namespace ReadModel.Mapping
         public HeadToHeadMappingProfile()
         {
             CreateMap<HeadToHeadTournament, HeadToHeadTournamentReadDto>();
+            CreateMap<HeadToHeadTour, HeadToHeadTourReadDto>();
 
             CreateMap<HeadToHeadMatch, HeadToHeadMatchReadDto>()
                 .ConstructUsing(m => new HeadToHeadMatchReadDto(

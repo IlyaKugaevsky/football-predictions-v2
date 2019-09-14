@@ -30,6 +30,7 @@ namespace Persistence
         public virtual DbSet<Tour> Tours { get; set; }
 
         public virtual DbSet<HeadToHeadTournament> HeadToHeadTournaments { get; set; }
+        public virtual DbSet<HeadToHeadTour> HeadToHeadTours { get; set; }
         public virtual DbSet<HeadToHeadMatch> HeadToHeadMatches { get; set; }
         
         
@@ -55,6 +56,7 @@ namespace Persistence
             modelBuilder.ApplyConfiguration(new ExpertEntityConfiguration());
             
             modelBuilder.ApplyConfiguration(new HeadToHeadTournamentEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new HeadToHeadTourEntityConfiguration());
             modelBuilder.ApplyConfiguration(new HeadToHeadMatchEntityConfiguration());
         }
 

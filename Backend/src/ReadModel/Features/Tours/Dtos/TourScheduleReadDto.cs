@@ -9,10 +9,10 @@ namespace ReadModel.Features.Tours.Dtos
         [JsonProperty(PropertyName = "matchInfos")]
         private readonly List<MatchInfoReadDto> _matchInfos = new List<MatchInfoReadDto>();
 
-        public TourScheduleReadDto(TourInfoReadDto tourtInfo,
+        public TourScheduleReadDto(TourInfoReadDto tourInfo,
             IEnumerable<MatchInfoReadDto> matchInfos)
         {
-            TourInfo = tourtInfo;
+            TourInfo = tourInfo;
             _matchInfos.AddRange(matchInfos);
         }
 

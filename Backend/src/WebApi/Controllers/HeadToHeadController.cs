@@ -35,5 +35,15 @@ namespace WebApi.Controllers
 
             return Ok(matches);
         }
+        
+        // GET api/headtohead/tours/
+        [HttpGet("tours")]
+        public async Task<IActionResult> GetAllTours()
+        {
+            var getHeadToHeadTours = new GetHeadToHeadTours();
+            var tours = await _mediator.Send(getHeadToHeadTours);
+
+            return Ok(tours);
+        }
     }
 }

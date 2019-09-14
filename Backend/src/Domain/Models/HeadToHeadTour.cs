@@ -13,20 +13,29 @@ namespace Domain.Models
 
     public class HeadToHeadTour: Entity
     {
+        private readonly List<HeadToHeadMatch> _matches = new List<HeadToHeadMatch>();
         protected HeadToHeadTour()
         {
         }
+        
+        [ForeignKey("HeadToHeadTournamentId")]
         public HeadToHeadTournament HeadToHeadTournament { get; private set; }
         public int HeadToHeadTournamentId { get; private set; }
-
-        public int HeadToHeadTourId { get; private set; }
-
-
         public int ParentTourId { get; private set; }
 
         [ForeignKey("ParentTourId")]
         public Tour ParentTour { get; private set; }
+        
+        public IEnumerable<HeadToHeadMatch> Matches => _matches.AsReadOnly();
+        
+        public void AddMatches(IEnumerable<HeadToHeadMatch> matches)
+        {
+            _matches.AddRange(matches);
+        }
 
-        public virtual List<HeadToHeadMatch> Matches { get; private set; }
+        public void AddMatch(HeadToHeadMatch match)
+        {
+            _matches.Add(match);
+        }
     }
 }

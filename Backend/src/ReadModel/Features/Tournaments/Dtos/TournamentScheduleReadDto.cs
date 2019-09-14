@@ -5,12 +5,12 @@ using ReadModel.Features.Tours.Dtos;
 
 namespace ReadModel.Features.Tournaments.Dtos
 {
-    public class TournamentScheduleDto
+    public class TournamentScheduleReadDto
     {
         [JsonProperty(PropertyName = "tourSchedules")]
         private readonly List<TourScheduleReadDto> _tourSchedules;
 
-        public TournamentScheduleDto(TournamentInfoReadDto tournamentInfo,
+        public TournamentScheduleReadDto(TournamentInfoReadDto tournamentInfo,
             IEnumerable<TourScheduleReadDto> tourSchedules)
         {
             TournamentInfo = tournamentInfo;

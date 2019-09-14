@@ -1,8 +1,8 @@
 namespace ReadModel.Features.HeadToHead.Dtos
 {
-    public class HeadToHeadTourReadDto
+    public class HeadToHeadTourInfoReadDto
     {
-        public HeadToHeadTourReadDto(int id, int headToHeadTournamentId, int parentTourId)
+        public HeadToHeadTourInfoReadDto(int id, int headToHeadTournamentId, int parentTourId)
         {
             Id = id;
             HeadToHeadTournamentId = headToHeadTournamentId;

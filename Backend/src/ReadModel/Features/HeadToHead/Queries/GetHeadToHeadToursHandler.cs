@@ -11,7 +11,7 @@ using ReadModel.Features.HeadToHead.Dtos;
 
 namespace ReadModel.Features.HeadToHead.Queries
 {
-    public class GetHeadToHeadToursHandler: IRequestHandler<GetHeadToHeadTours, IEnumerable<HeadToHeadTourReadDto>>
+    public class GetHeadToHeadToursHandler: IRequestHandler<GetHeadToHeadTours, IEnumerable<HeadToHeadTourInfoReadDto>>
     {
         private readonly PredictionsContext _context;
         private readonly IMapper _mapper;
@@ -23,10 +23,10 @@ namespace ReadModel.Features.HeadToHead.Queries
         }
 
 
-        public async Task<IEnumerable<HeadToHeadTourReadDto>> Handle(GetHeadToHeadTours request, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<HeadToHeadTourInfoReadDto>> Handle(GetHeadToHeadTours request, CancellationToken cancellationToken = default(CancellationToken))
         {
             var tours = await _context.HeadToHeadTours.Fetch(FetchMode.ForRead).ToListAsync(cancellationToken);
-            return _mapper.Map<IEnumerable<HeadToHeadTourReadDto>>(tours);
+            return _mapper.Map<IEnumerable<HeadToHeadTourInfoReadDto>>(tours);
         }
     }
 }

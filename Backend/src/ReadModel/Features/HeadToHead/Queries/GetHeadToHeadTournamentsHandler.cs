@@ -11,7 +11,7 @@ using ReadModel.Features.HeadToHead.Dtos;
 
 namespace ReadModel.Features.HeadToHead.Queries
 {
-    public class GetHeadToHeadTournamentsHandler : IRequestHandler<GetHeadToHeadTournaments, IEnumerable<HeadToHeadTournamentReadDto>>
+    public class GetHeadToHeadTournamentsHandler : IRequestHandler<GetHeadToHeadTournaments, IEnumerable<HeadToHeadTournamentInfoReadDto>>
     {
         private readonly PredictionsContext _context;
         private readonly IMapper _mapper;
@@ -23,10 +23,10 @@ namespace ReadModel.Features.HeadToHead.Queries
         }
 
 
-        public async Task<IEnumerable<HeadToHeadTournamentReadDto>> Handle(GetHeadToHeadTournaments request, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<HeadToHeadTournamentInfoReadDto>> Handle(GetHeadToHeadTournaments request, CancellationToken cancellationToken = default(CancellationToken))
         {
             var tournaments = await _context.HeadToHeadTournaments.Fetch(FetchMode.ForRead).ToListAsync(cancellationToken);
-            return _mapper.Map<IEnumerable<HeadToHeadTournamentReadDto>>(tournaments);
+            return _mapper.Map<IEnumerable<HeadToHeadTournamentInfoReadDto>>(tournaments);
         }
     }
 }

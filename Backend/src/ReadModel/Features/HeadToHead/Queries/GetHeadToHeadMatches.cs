@@ -4,7 +4,7 @@ using ReadModel.Features.HeadToHead.Dtos;
 
 namespace ReadModel.Features.HeadToHead.Queries
 {
-    public class GetHeadToHeadMatches : IRequest<IEnumerable<HeadToHeadMatchReadDto>>
+    public class GetHeadToHeadMatches : IRequest<IEnumerable<HeadToHeadMatchInfoReadDto>>
     {
     }
 }

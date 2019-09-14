@@ -45,5 +45,16 @@ namespace WebApi.Controllers
 
             return Ok(tours);
         }
+        
+        // GET api/headtohead/tournaments/:id/schedule
+        [HttpGet("tournaments/{id}/schedule")]
+        public async Task<IActionResult> GetHeadToHeadTournamentSchedule(int id)
+        {
+            var getHeadToHeadTournamentSchedule = new GetHeadToHeadTournamentSchedule(id);
+
+            var schedule =  await _mediator.Send(getHeadToHeadTournamentSchedule);
+
+            return Ok(schedule);
+        }
     }
 }

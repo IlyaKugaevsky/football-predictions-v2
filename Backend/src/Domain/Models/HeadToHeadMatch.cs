@@ -18,9 +18,10 @@ namespace Domain.Models
         }
         
         public int HeadToHeadTourId { get; private set; }
+        [ForeignKey("HeadToHeadTourId")]
         public HeadToHeadTour HeadToHeadTour { get; private set; }
 
-        public int HeadToHeadMatchId { get; private set; }
+//        public int HeadToHeadMatchId { get; private set; }
 
 
         public int HomeExpertId { get; private set; }

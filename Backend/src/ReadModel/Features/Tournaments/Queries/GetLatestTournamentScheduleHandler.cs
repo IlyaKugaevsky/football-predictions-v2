@@ -13,7 +13,7 @@ using ReadModel.Features.Tours.Dtos;
 
 namespace ReadModel.Features.Tournaments.Queries
 {
-    public class GetLatestTournamentScheduleHandler : IRequestHandler<GetLatestTournamentSchedule, TournamentScheduleDto>
+    public class GetLatestTournamentScheduleHandler : IRequestHandler<GetLatestTournamentSchedule, TournamentScheduleReadDto>
     {
         private readonly PredictionsContext _context;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace ReadModel.Features.Tournaments.Queries
             _mapper = mapper;
         }
 
-        public async Task<TournamentScheduleDto> Handle(GetLatestTournamentSchedule request,
+        public async Task<TournamentScheduleReadDto> Handle(GetLatestTournamentSchedule request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var tournamentWithScheduleInfo = await _context
@@ -35,11 +35,11 @@ namespace ReadModel.Features.Tournaments.Queries
             var tournamentInfo = _mapper.Map<TournamentInfoReadDto>(tournamentWithScheduleInfo);
             var tours = tournamentWithScheduleInfo.Tours;
 
-            var tournamentSchedules = tours.Select(t => new TourScheduleReadDto(
+            var tourSchedules = tours.Select(t => new TourScheduleReadDto(
                 _mapper.Map<TourInfoReadDto>(t),
                 _mapper.Map<IEnumerable<MatchInfoReadDto>>(t.Matches)));
 
-            return new TournamentScheduleDto(tournamentInfo, tournamentSchedules);
+            return new TournamentScheduleReadDto(tournamentInfo, tourSchedules);
         }
     }
 }

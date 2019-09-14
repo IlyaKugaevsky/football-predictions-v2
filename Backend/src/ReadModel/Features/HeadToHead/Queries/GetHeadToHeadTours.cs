@@ -4,7 +4,7 @@ using ReadModel.Features.HeadToHead.Dtos;
 
 namespace ReadModel.Features.HeadToHead.Queries
 {
-    public class GetHeadToHeadTours : IRequest<IEnumerable<HeadToHeadTourReadDto>>
+    public class GetHeadToHeadTours : IRequest<IEnumerable<HeadToHeadTourInfoReadDto>>
     {
     }
 }

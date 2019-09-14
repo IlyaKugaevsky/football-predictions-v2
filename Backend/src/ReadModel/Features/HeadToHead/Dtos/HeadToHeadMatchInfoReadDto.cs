@@ -2,9 +2,9 @@ using ReadModel.Features.Experts.Dtos;
 
 namespace ReadModel.Features.HeadToHead.Dtos
 {
-    public class HeadToHeadMatchReadDto
+    public class HeadToHeadMatchInfoReadDto
     {
-        public HeadToHeadMatchReadDto(int id, int headToHeadTourId, bool isOver, HeadToHeadExpertReadDto homeExpert,
+        public HeadToHeadMatchInfoReadDto(int id, int headToHeadTourId, bool isOver, HeadToHeadExpertReadDto homeExpert,
             HeadToHeadExpertReadDto awayExpert)
         {
             Id = id;

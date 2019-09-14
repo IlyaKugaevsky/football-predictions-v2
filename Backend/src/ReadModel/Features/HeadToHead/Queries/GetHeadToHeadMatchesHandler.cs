@@ -10,7 +10,7 @@ using ReadModel.Features.HeadToHead.Dtos;
 
 namespace ReadModel.Features.HeadToHead.Queries
 {
-    public class GetHeadToHeadMatchesHandler: IRequestHandler<GetHeadToHeadMatches, IEnumerable<HeadToHeadMatchReadDto>>
+    public class GetHeadToHeadMatchesHandler: IRequestHandler<GetHeadToHeadMatches, IEnumerable<HeadToHeadMatchInfoReadDto>>
     {
         private readonly PredictionsContext _context;
         private readonly IMapper _mapper;
@@ -20,10 +20,10 @@ namespace ReadModel.Features.HeadToHead.Queries
             _context = context;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<HeadToHeadMatchReadDto>> Handle(GetHeadToHeadMatches request, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<HeadToHeadMatchInfoReadDto>> Handle(GetHeadToHeadMatches request, CancellationToken cancellationToken = default(CancellationToken))
         {
             var matches = await _context.HeadToHeadMatches.FetchWithExperts(FetchMode.ForRead).ToListAsync(cancellationToken);
-            return _mapper.Map<IEnumerable<HeadToHeadMatchReadDto>>(matches);
+            return _mapper.Map<IEnumerable<HeadToHeadMatchInfoReadDto>>(matches);
         }
     }
 }

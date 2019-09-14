@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.FetchExtensions;
+using Persistence.QueryExtensions;
 using ReadModel.Features.Tournaments.Dtos;
 
 namespace ReadModel.Features.Tournaments.Queries

@@ -5,6 +5,8 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Persistence.FetchExtensions;
+using Persistence.QueryExtensions;
 using ReadModel.Features.HeadToHead.Dtos;
 
 namespace ReadModel.Features.HeadToHead.Queries
@@ -23,7 +25,7 @@ namespace ReadModel.Features.HeadToHead.Queries
 
         public async Task<IEnumerable<HeadToHeadTournamentReadDto>> Handle(GetHeadToHeadTournaments request, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tournaments = await _context.HeadToHeadTournaments.ToListAsync(cancellationToken);
+            var tournaments = await _context.HeadToHeadTournaments.Fetch(FetchMode.ForRead).ToListAsync(cancellationToken);
             return _mapper.Map<IEnumerable<HeadToHeadTournamentReadDto>>(tournaments);
         }
     }

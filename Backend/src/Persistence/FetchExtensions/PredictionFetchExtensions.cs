@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Persistence.FetchExtensions
 {
-    public static class ExpertFetchExtensions
+    public static class PredictionFetchExtensions
     {
     }
 }

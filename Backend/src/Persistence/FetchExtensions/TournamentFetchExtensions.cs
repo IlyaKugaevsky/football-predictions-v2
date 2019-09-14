@@ -7,12 +7,6 @@ namespace Persistence.FetchExtensions
 {
     public static class TournamentFetchExtensions
     {
-        public static IQueryable<Tournament> Fetch(this IQueryable<Tournament> tournaments, FetchMode fetchMode)
-        {
-            return tournaments
-                .ApplyFetchMode(fetchMode);
-        }
-
         public static IQueryable<Tournament> FetchWithTours(this IQueryable<Tournament> tournaments, FetchMode fetchMode)
         {
             return tournaments

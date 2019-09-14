@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.FetchExtensions;
+using Persistence.QueryExtensions;
 using ReadModel.Features.Experts.Dtos;
 
 namespace ReadModel.Features.Experts.Queries

@@ -29,5 +29,10 @@ namespace Persistence.QueryExtensions
                     throw new ArgumentOutOfRangeException(nameof(fetchMode), fetchMode, "FetchMode must be either ForRead or ForModify");
             }
         }
+        
+        public static IQueryable<T> Fetch<T>(this IQueryable<T> entities, FetchMode fetchMode) where T : Entity
+        {
+            return entities.ApplyFetchMode(fetchMode);
+        }
     }
 }

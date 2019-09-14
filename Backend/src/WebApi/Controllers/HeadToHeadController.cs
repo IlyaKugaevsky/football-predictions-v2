@@ -9,7 +9,7 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class HeadToHeadController: Controller
     {
-        private IMediator _mediator;
+        private readonly IMediator _mediator;
         
         public HeadToHeadController(IMediator mediator)
         {
@@ -24,6 +24,16 @@ namespace WebApi.Controllers
             var tournaments = await _mediator.Send(getTournaments);
 
             return Ok(tournaments);
+        }
+        
+        // GET api/headtohead/matches/
+        [HttpGet("matches")]
+        public async Task<IActionResult> GetAllMatches()
+        {
+            var getMatches = new GetHeadToHeadMatches();
+            var matches = await _mediator.Send(getMatches);
+
+            return Ok(matches);
         }
     }
 }

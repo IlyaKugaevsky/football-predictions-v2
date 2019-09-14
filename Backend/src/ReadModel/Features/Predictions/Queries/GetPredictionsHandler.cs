@@ -7,6 +7,7 @@ using ReadModel.Features.Predictions.Dtos;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Persistence.QueryExtensions;
 
 namespace ReadModel.Features.Predictions.Queries
 {

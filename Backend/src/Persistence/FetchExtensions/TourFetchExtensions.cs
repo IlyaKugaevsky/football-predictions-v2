@@ -7,12 +7,6 @@ namespace Persistence.FetchExtensions
 {
     public static class TourFetchExtensions
     {
-
-        public static IQueryable<Tour> Fetch(this IQueryable<Tour> tours, FetchMode fetchMode)
-        {
-            return tours.ApplyFetchMode(fetchMode);
-        }
-
         public static IQueryable<Tour> FetchWitMatchesAndPredictions(this IQueryable<Tour> tours, FetchMode fetchMode)
         {
             return tours

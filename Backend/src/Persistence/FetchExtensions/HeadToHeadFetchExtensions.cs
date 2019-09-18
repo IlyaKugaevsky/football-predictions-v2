@@ -36,6 +36,17 @@ namespace Persistence.FetchExtensions
                 .ApplyFetchMode(fetchMode);
         }
         
+        public static IQueryable<HeadToHeadTour> FetchWithEvaluationInfo(this IQueryable<HeadToHeadTour> tours, FetchMode fetchMode)
+        {
+            return tours
+                .Include(tr => tr.Matches)
+                .Include(tr => tr.ParentTour)
+                .ThenInclude(ptr => ptr.Matches)
+                .ThenInclude(m => m.Predictions)
+                .ThenInclude(p => p.Expert)                    
+                .ApplyFetchMode(fetchMode);
+        }
+        
         public static IQueryable<HeadToHeadMatch> FetchWithExperts(this IQueryable<HeadToHeadMatch> matches, FetchMode fetchMode)
         {
             return matches

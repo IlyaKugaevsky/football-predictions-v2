@@ -60,14 +60,7 @@ namespace WebApi.Controllers
 
             var isCompletedSuccessfully = await _mediator.Send(deleteTour);
 
-            if (isCompletedSuccessfully)
-            {
-                return NoContent();
-            }
-            else
-            {
-                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-            }
+            return isCompletedSuccessfully ? NoContent() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
 
 

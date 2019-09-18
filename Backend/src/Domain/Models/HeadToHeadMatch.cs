@@ -21,9 +21,6 @@ namespace Domain.Models
         [ForeignKey("HeadToHeadTourId")]
         public HeadToHeadTour HeadToHeadTour { get; private set; }
 
-//        public int HeadToHeadMatchId { get; private set; }
-
-
         public int HomeExpertId { get; private set; }
         public int AwayExpertId { get; private set; }
 
@@ -37,5 +34,11 @@ namespace Domain.Models
         public byte AwayGoals { get; private set; }
 
         public bool IsOver { get; private set; }
+
+        public void SetScore(byte homeGoals, byte awayGoals)
+        {
+            HomeGoals = homeGoals;
+            AwayGoals = awayGoals;
+        }
     }
 }

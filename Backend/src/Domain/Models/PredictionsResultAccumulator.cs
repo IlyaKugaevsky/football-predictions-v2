@@ -39,5 +39,6 @@ namespace Domain.Models
             }
             PointSum += PredictionResultConverter.FromThreePointSystem(predictionResult);
         }
+
     }
 }

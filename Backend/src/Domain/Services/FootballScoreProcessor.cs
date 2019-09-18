@@ -5,7 +5,8 @@ namespace Domain.Services
 {
     public static class FootballScoreProcessor
     {
-        private static readonly string FootballScorePattern = @"^[0-9]{1,2}:[0-9]{1,2}$";
+        private const string FootballScorePattern = @"^[0-9]{1,2}:[0-9]{1,2}$";
+
         private static bool IsValidGoalsNumber(int goalsNumber) 
             => (goalsNumber >= 0) && (goalsNumber <= 99);
 

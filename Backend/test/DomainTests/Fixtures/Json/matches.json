@@ -1,15 +1,4 @@
-﻿// matches: 2, experts: 2, predictions: 4
-
-// overall
-//  scores: 1, differences: 1, outcomes: 1
-
-// Mike
-//  scores: 1, differences: 1, outcomes: 0
-
-// John:
-//  scores: 0, differences: 0, outcomes: 1
-
-[
+﻿[
   {
     "_predictions": [
       {

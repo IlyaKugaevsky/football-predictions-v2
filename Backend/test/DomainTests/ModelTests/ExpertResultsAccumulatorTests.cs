@@ -1,30 +1,27 @@
-﻿using Domain.Models;
-using Domain.Services;
-using Newtonsoft.Json;
-using Shouldly;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Domain.Models;
+using Domain.Services;
+using Newtonsoft.Json;
+using Shouldly;
 using Utils.Json;
 using Xunit;
 
-namespace ReadModelTests.ServiceTests
+namespace DomainTests.ModelTests
 {
-    public class PredictionServiceTests
+    public class ExpertResultsAccumulatorTests
     {
         private readonly JsonSerializerSettings _settings;
-        private readonly PredictionService _predictionService;
-
-        public PredictionServiceTests()
+        public ExpertResultsAccumulatorTests()
         {
             _settings = new JsonSerializerSettings
             {
                 ContractResolver = new AllPropsAndFieldsContractResolver()
             };
 
-            _predictionService = new PredictionService();
         }
-
+        
         [Fact]
         public void Should_Evaluate_Predictions_Result_Correctly()
         {
@@ -38,19 +35,23 @@ namespace ReadModelTests.ServiceTests
 
             var expert1 = experts[0];
             var expert2 = experts[1];
+            
+            var expertResults = new ExpertsResultAccumulator(matches);
 
-            var expertResults = _predictionService.GroupPredictionsResultsByExpert(matches);
-            expertResults.Count.ShouldBe(2);
+            var expertResultsTable = expertResults.ExpertsTable;
+            
+            
+            expertResultsTable.Count.ShouldBe(2);
 
             expert1.Nickname.ShouldBe("Mike");
-            expertResults[expert1].Scores.ShouldBe(1);
-            expertResults[expert1].Differences.ShouldBe(1);
-            expertResults[expert1].Outcomes.ShouldBe(0);
+            expertResultsTable[expert1].Scores.ShouldBe(1);
+            expertResultsTable[expert1].Differences.ShouldBe(1);
+            expertResultsTable[expert1].Outcomes.ShouldBe(0);
 
             expert2.Nickname.ShouldBe("John");
-            expertResults[expert2].Scores.ShouldBe(0);
-            expertResults[expert2].Differences.ShouldBe(0);
-            expertResults[expert2].Outcomes.ShouldBe(1);
+            expertResultsTable[expert2].Scores.ShouldBe(0);
+            expertResultsTable[expert2].Differences.ShouldBe(0);
+            expertResultsTable[expert2].Outcomes.ShouldBe(1);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Services;
 
 namespace Domain.Models
 {
@@ -36,6 +37,35 @@ namespace Domain.Models
         public void AddMatch(HeadToHeadMatch match)
         {
             _matches.Add(match);
+        }
+
+        public void EnsureClosingConditions()
+        {
+            if (!ParentTour.IsClosed) throw new InvalidOperationException("The parent tour must be closed!");
+        }
+
+        public void Close()
+        {
+            EnsureClosingConditions();
+        }
+
+        public void Evaluate()
+        {
+            if (!ParentTour.IsClosed) throw new InvalidOperationException("The parent tour must be closed!");
+            
+            var headToHeadMatches = Matches;
+            var matches = ParentTour.Matches;
+            
+            var expertResults = new ExpertsResultAccumulator(matches);
+            var expertsTable = expertResults.ExpertsTable;
+
+            foreach (var headToHeadMatch in headToHeadMatches)
+            {
+                var homeGoals = (byte)expertsTable[headToHeadMatch.HomeExpert].PointSum;
+                var awayGoals = (byte)expertsTable[headToHeadMatch.AwayExpert].PointSum;
+                
+                headToHeadMatch.SetScore(homeGoals, awayGoals);
+            }
         }
     }
 }

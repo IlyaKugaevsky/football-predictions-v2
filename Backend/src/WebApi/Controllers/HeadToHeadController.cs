@@ -1,8 +1,10 @@
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReadModel.Features.HeadToHead.Queries;
 using ReadModel.Features.Predictions.Queries;
+using WriteModel.Features.HeadToHead.Commands;
 
 namespace WebApi.Controllers
 {
@@ -55,6 +57,16 @@ namespace WebApi.Controllers
             var schedule =  await _mediator.Send(getHeadToHeadTournamentSchedule);
 
             return Ok(schedule);
+        }
+        
+        // POST api/headtohead/tours/:id/evaluate
+        [HttpPost("tours/{id}/evaluate")]
+        public async Task<IActionResult> EvaluateHeadToHeadTour(int id)
+        {
+            var evaluateHeadToHeadTour = new EvaluateHeadToHeadTour(id);
+            var isCompletedSuccessfully = await _mediator.Send(evaluateHeadToHeadTour);
+
+            return isCompletedSuccessfully ? NoContent() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Domain.Models;
 using Domain.Services;
 using Domain.PointSystems;
 using MediatR;
@@ -37,7 +38,8 @@ namespace ReadModel.Features.Stats.Queries
             var matches = tour.Matches;
             var threePointSystem = new ThreePointSystem();
 
-            var predictionResultsByExpert = _predictionService.GroupPredictionsResultsByExpert(matches);
+            var expertResults = new ExpertsResultAccumulator(matches);
+            var predictionResultsByExpert = expertResults.ExpertsTable;
             var expertStats = _statService.DenormalizePredictionResultsToDto(predictionResultsByExpert, threePointSystem);
 
             return expertStats.OrderBy(s => s.Sum);

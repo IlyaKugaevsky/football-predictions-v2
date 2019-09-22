@@ -40,6 +40,9 @@ namespace Persistence.FetchExtensions
         {
             return tours
                 .Include(tr => tr.Matches)
+                .ThenInclude(m => m.HomeExpert)
+                .Include(tr => tr.Matches)
+                .ThenInclude(m => m.AwayExpert)
                 .Include(tr => tr.ParentTour)
                 .ThenInclude(ptr => ptr.Matches)
                 .ThenInclude(m => m.Predictions)

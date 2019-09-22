@@ -16,6 +16,7 @@ namespace Domain.Models
             if (!IsClosed) return PredictionResult.NotYetAssigned;
             if (Score) return PredictionResult.ScoreGuessed;
             if (Difference) return PredictionResult.DifferenceGuessed;
+            // ReSharper disable once ConvertIfStatementToReturnStatement
             if (Outcome) return PredictionResult.OutcomeGuessed;
             return PredictionResult.NothingGuessed;
         }

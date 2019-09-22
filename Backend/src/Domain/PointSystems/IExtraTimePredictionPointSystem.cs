@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.PointSystems
 {
-    public interface IExtraTimePointSystem
+    public interface IExtraTimePredictionPointSystem
     {
         int MatchWinnerWeight { get; }
     }

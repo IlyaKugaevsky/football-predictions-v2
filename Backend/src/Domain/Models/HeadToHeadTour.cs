@@ -61,10 +61,12 @@ namespace Domain.Models
 
             foreach (var headToHeadMatch in headToHeadMatches)
             {
-                var homeGoals = (byte)expertsTable[headToHeadMatch.HomeExpert].PointSum;
-                var awayGoals = (byte)expertsTable[headToHeadMatch.AwayExpert].PointSum;
+                const byte noContestPoints = 0;
+                   
+                var homeGoals = expertsTable.ContainsKey(headToHeadMatch.HomeExpert) ? expertsTable[headToHeadMatch.HomeExpert].PointSum : noContestPoints;
+                var awayGoals = expertsTable.ContainsKey(headToHeadMatch.AwayExpert) ? expertsTable[headToHeadMatch.AwayExpert].PointSum : noContestPoints;
                 
-                headToHeadMatch.SetScore(homeGoals, awayGoals);
+                headToHeadMatch.SetScore((byte)homeGoals, (byte)awayGoals);
             }
         }
     }

@@ -59,6 +59,17 @@ namespace WebApi.Controllers
             return Ok(schedule);
         }
         
+        // GET api/headtohead/tournaments/:id/table
+        [HttpGet("tournaments/{id}/table")]
+        public async Task<IActionResult> GetHeadToHeadTable(int id)
+        {
+            var getHeadToHeadTable = new GetHeadToHeadTable(id);
+
+            var table =  await _mediator.Send(getHeadToHeadTable);
+
+            return Ok(table);
+        }
+        
         // POST api/headtohead/tours/:id/evaluate
         [HttpPost("tours/{id}/evaluate")]
         public async Task<IActionResult> EvaluateHeadToHeadTour(int id)

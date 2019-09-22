@@ -40,7 +40,7 @@ namespace ReadModel.Features.Tournaments.Queries
                 .WithIdAsync(tourId, cancellationToken);
 
             var matches = tour.Matches;
-            var threePointSystem = new ThreePointSystem();
+            var threePointSystem = new DefaultPredictionPointSystem();
 
             var predictionResultsByExpert = _predictionService.GroupPredictionsResultsByExpert(matches);
             var expertStats = _statService.DenormalizePredictionResultsToDto(predictionResultsByExpert, threePointSystem);

@@ -2,7 +2,7 @@
 
 namespace Domain.PointSystems
 {
-    public interface ICommonPointSystem
+    public interface ICommonPredictionPointSystem
     {
         int OutcomeWeight { get; }
         int DifferenceWeight { get; }

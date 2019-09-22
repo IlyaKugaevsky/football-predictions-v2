@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Domain.PointSystems
 {
-    public class LowDrawPlayoffPointSystem: IExtraTimePointSystem, ICommonPointSystem
+    public class LowDrawPlayoffPredictionPredictionPointSystem: IExtraTimePredictionPointSystem, ICommonPredictionPointSystem
     {
         public int OutcomeWeight => 1;
         public int DrawDIfferenceWeight => 1;

@@ -36,7 +36,7 @@ namespace ReadModel.Features.Stats.Queries
                 .WithIdAsync(tourId, cancellationToken);
 
             var matches = tour.Matches;
-            var threePointSystem = new ThreePointSystem();
+            var threePointSystem = new DefaultPredictionPointSystem();
 
             var expertResults = new ExpertsResultAccumulator(matches);
             var predictionResultsByExpert = expertResults.ExpertsTable;

@@ -3,7 +3,7 @@ using Domain.Models;
 
 namespace Domain.PointSystems
 {
-    public class ThreePointSystem: ICommonPointSystem
+    public class DefaultPredictionPointSystem: ICommonPredictionPointSystem
     {
         public int OutcomeWeight => 1;
         public int DifferenceWeight => 2;

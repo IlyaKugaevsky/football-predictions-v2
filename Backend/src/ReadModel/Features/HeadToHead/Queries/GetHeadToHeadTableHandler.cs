@@ -29,27 +29,21 @@ namespace ReadModel.Features.HeadToHead.Queries
         {
             var tournamentId = request.HeadToHeadTournamentId;
 
-            var tournamentWithScheduleInfo = await _context
+            var headToHeadTournament = await _context
                 .HeadToHeadTournaments
                 .FetchWithScheduleInfo(FetchMode.ForRead)
                 .WithIdAsync(tournamentId, cancellationToken);
 
-            var parentTournament = tournamentWithScheduleInfo.ParentTournament;
+            var parentTournament = headToHeadTournament.ParentTournament;            
+            var headToHeadTours = headToHeadTournament.Tours.ToList();
             
-            var tours = tournamentWithScheduleInfo.Tours.ToList();
+            var tableProcessor = new LeagueTableProcessor(parentTournament.Title);
 
-
-            const int toursNumber = 7;
-            var tableProcessor = new LeagueTableProcessor("test trnm");
-
-            for (var i = 0; i < toursNumber; i++)
+            foreach (var headToHeadTour in headToHeadTours)
             {
-                var testTour = tours.ToList()[i];
-
-                var headToHeadMatches = testTour.Matches;
-
+                if (!headToHeadTour.IsOver) break;
                 
-
+                var headToHeadMatches = headToHeadTour.Matches;
                 foreach (var headToHeadMatch in headToHeadMatches)
                 {
                     var homeExpertNickname = headToHeadMatch.HomeExpert.Nickname;
@@ -65,7 +59,7 @@ namespace ReadModel.Features.HeadToHead.Queries
             var table = tableProcessor.Table;
             var tableLines = table.Select(line => new HeadToHeadTableLineReadDto(line.Key, line.Value)).OrderBy(line => line.Points).ThenBy(lines => lines.ScoredGoals - lines.ConcededGoals).ToList();
 
-            return new HeadToHeadTableReadDto("test trnm", tableLines);
+            return new HeadToHeadTableReadDto(tableProcessor.TournamentTitle, tableLines);
         }
     }
 }

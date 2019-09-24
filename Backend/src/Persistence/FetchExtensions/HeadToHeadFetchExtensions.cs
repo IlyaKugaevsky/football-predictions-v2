@@ -25,6 +25,7 @@ namespace Persistence.FetchExtensions
         public static IQueryable<HeadToHeadTournament> FetchWithScheduleInfo(this IQueryable<HeadToHeadTournament> tournaments, FetchMode fetchMode)
         {
             return tournaments
+                .Include(trn => trn.ParentTournament)
                 .Include(trn => trn.Tours)
                 .ThenInclude(t => t.Matches)
                 .ThenInclude(m => m.HomeExpert)

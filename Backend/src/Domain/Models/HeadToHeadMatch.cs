@@ -37,8 +37,11 @@ namespace Domain.Models
 
         public void SetScore(byte homeGoals, byte awayGoals)
         {
+//            if (!IsOver) throw new InvalidOperationException("The match is over!");
+            
             HomeGoals = homeGoals;
             AwayGoals = awayGoals;
+            IsOver = true;
         }
     }
 }

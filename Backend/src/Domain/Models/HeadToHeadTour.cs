@@ -26,6 +26,7 @@ namespace Domain.Models
 
         [ForeignKey("ParentTourId")]
         public Tour ParentTour { get; private set; }
+        public bool IsOver { get; private set; }
         
         public IEnumerable<HeadToHeadMatch> Matches => _matches.AsReadOnly();
         
@@ -51,23 +52,27 @@ namespace Domain.Models
 
         public void Evaluate()
         {
+            if (IsOver) return;
             if (!ParentTour.IsClosed) throw new InvalidOperationException("The parent tour must be closed!");
             
             var headToHeadMatches = Matches;
-            var matches = ParentTour.Matches;
+            var parentMatches = ParentTour.Matches;
             
-            var expertResults = new ExpertsResultAccumulator(matches);
+            var expertResults = new ExpertsResultAccumulator(parentMatches);
             var expertsTable = expertResults.ExpertsTable;
+            
+            const byte noContestPoints = 0;
 
             foreach (var headToHeadMatch in headToHeadMatches)
             {
-                const byte noContestPoints = 0;
-                   
+                if (headToHeadMatch.IsOver) continue;
+                
                 var homeGoals = expertsTable.ContainsKey(headToHeadMatch.HomeExpert) ? expertsTable[headToHeadMatch.HomeExpert].PointSum : noContestPoints;
                 var awayGoals = expertsTable.ContainsKey(headToHeadMatch.AwayExpert) ? expertsTable[headToHeadMatch.AwayExpert].PointSum : noContestPoints;
-                
                 headToHeadMatch.SetScore((byte)homeGoals, (byte)awayGoals);
             }
+
+            IsOver = true;
         }
     }
 }

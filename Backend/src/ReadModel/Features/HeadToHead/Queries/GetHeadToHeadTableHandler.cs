@@ -57,7 +57,7 @@ namespace ReadModel.Features.HeadToHead.Queries
             }
 
             var table = tableProcessor.Table;
-            var tableLines = table.Select(line => new HeadToHeadTableLineReadDto(line.Key, line.Value)).OrderBy(line => line.Points).ThenBy(lines => lines.ScoredGoals - lines.ConcededGoals).ToList();
+            var tableLines = table.Select(line => new HeadToHeadTableLineReadDto(line.Key, line.Value)).OrderBy(line => line.Points).ThenBy(lines => lines.ScoredGoals - lines.ConcededGoals).ThenBy(line => line.ScoredGoals).ToList();
 
             return new HeadToHeadTableReadDto(tableProcessor.TournamentTitle, tableLines);
         }

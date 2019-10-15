@@ -43,5 +43,13 @@ namespace Domain.Models
             AwayGoals = awayGoals;
             IsOver = true;
         }
+
+        public void RollBack()
+        {
+            IsOver = false;
+
+            HomeGoals = 0;
+            AwayGoals = 0;
+        }
     }
 }

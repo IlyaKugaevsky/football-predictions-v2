@@ -81,7 +81,17 @@ namespace WebApi.Controllers
         [HttpGet("{id}/tours/{number}/expert-stats")]
         public async Task<IActionResult> GetExpertStats(int id, int number)
         {
-            var getExpertStats = new GetExpertStats(id, number);
+            var getExpertStats = new GetExpertStatsByTourNumber(id, number);
+            var expertStats = await _mediator.Send(getExpertStats);
+
+            return Ok(expertStats);
+        }
+        
+        // GET api/tournaments/expert-stats
+        [HttpGet("{id}/expert-stats")]
+        public async Task<IActionResult> GetExpertStats(int id)
+        {
+            var getExpertStats = new GetExpertStats(id);
             var expertStats = await _mediator.Send(getExpertStats);
 
             return Ok(expertStats);
@@ -89,10 +99,10 @@ namespace WebApi.Controllers
 
         // POST api/tournaments/
         [HttpPost()]
-        public async Task<IActionResult> CreateTournament([FromBody] TournamenWriteDto tournamen)
+        public async Task<IActionResult> CreateTournament([FromBody] TournamenWriteDto tournament)
         {
-            var createTournament = new CreateTournament(tournamen.Title,
-                tournamen.StartDate, tournamen.EndDate);
+            var createTournament = new CreateTournament(tournament.Title,
+                tournament.StartDate, tournament.EndDate);
 
             var isCompletedSuccessfully = await _mediator.Send(createTournament);
 
@@ -147,7 +157,7 @@ namespace WebApi.Controllers
         // DELETE api/tournaments/:id
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTournament(int id, 
-            [FromBody] TournamenWriteDto tournamen)
+            [FromBody] TournamenWriteDto tournament)
         {
             var deleteTournament = new DeleteTournament(id);
 

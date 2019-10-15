@@ -77,7 +77,17 @@ namespace WebApi.Controllers
             var evaluateHeadToHeadTour = new EvaluateHeadToHeadTour(id);
             var isCompletedSuccessfully = await _mediator.Send(evaluateHeadToHeadTour);
 
-            return isCompletedSuccessfully ? NoContent() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            return isCompletedSuccessfully ? Ok() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+        
+        // POST api/headtohead/tours/:id/rollback
+        [HttpPost("tours/{id}/rollback")]
+        public async Task<IActionResult> RollbackHeadToHeadTour(int id)
+        {
+            var rollbackHeadToHeadTour = new RollbackHeadToHeadTour(id);
+            var isCompletedSuccessfully = await _mediator.Send(rollbackHeadToHeadTour);
+
+            return isCompletedSuccessfully ? Ok() : new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
     }
 }

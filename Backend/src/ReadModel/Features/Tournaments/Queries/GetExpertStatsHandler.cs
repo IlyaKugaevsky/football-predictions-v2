@@ -1,4 +1,9 @@
-﻿using Domain.PointSystems;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
+using Domain.PointSystems;
 using MediatR;
 using Persistence;
 using Persistence.FetchExtensions;
@@ -6,46 +11,55 @@ using Persistence.QueryExtensions;
 using ReadModel.Features.Predictions;
 using ReadModel.Features.Stats;
 using ReadModel.Features.Stats.Dtos;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ReadModel.Features.Tournaments.Queries
 {
-    public class GetExpertStatsHandler: IRequestHandler<GetExpertStats, IEnumerable<ExpertStatsReadDto>>
+    public class GetExpertStatsHandler: IRequestHandler<GetExpertStats, IEnumerable<ExpertStatsInTourReadDto>>
     {
         private readonly PredictionsContext _context;
-        private readonly PredictionService _predictionService;
+        private readonly IMapper _mapper;
         private readonly StatService _statService;
+        private readonly PredictionService _predictionService;
 
-        public GetExpertStatsHandler(PredictionsContext context)
+
+
+        public GetExpertStatsHandler(PredictionsContext context, IMapper mapper)
         {
             _context = context;
-            _predictionService = new PredictionService();
+            _mapper = mapper;
             _statService = new StatService();
+            _predictionService = new PredictionService();
         }
 
-        public async Task<IEnumerable<ExpertStatsReadDto>> Handle(GetExpertStats request,
+        public async Task<IEnumerable<ExpertStatsInTourReadDto>> Handle(GetExpertStats request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tourNumber = request.TourNumber;
             var tournamentId = request.TournamentId;
 
-            var tourId = await _context.GetTourId(tourNumber, tournamentId, cancellationToken);
+            var tournament = await _context.Tournaments
+                .FetchWithToursAndMatchesAndPredictionsAndExperts(FetchMode.ForRead)
+                .WithIdAsync(tournamentId, cancellationToken);
 
-            var tour = await _context
-                .Tours
-                .FetchWithBasePredictionsInfo(FetchMode.ForRead)
-                .WithIdAsync(tourId, cancellationToken);
+            var tours = tournament.Tours.ToList();
+            var expertStatsInTournament = new List<ExpertStatsInTourReadDto>();
 
-            var matches = tour.Matches;
-            var threePointSystem = new DefaultPredictionPointSystem();
+            foreach (var tour in tours)
+            {
+                if (!tour.IsClosed) break;
+                
+                var matches = tour.Matches;
+                var threePointSystem = new DefaultPredictionPointSystem();
 
-            var predictionResultsByExpert = _predictionService.GroupPredictionsResultsByExpert(matches);
-            var expertStats = _statService.DenormalizePredictionResultsToDto(predictionResultsByExpert, threePointSystem);
+                var predictionResultsByExpert = _predictionService.GroupPredictionsResultsByExpert(matches);
+                var expertStats = _statService.DenormalizePredictionResultsToDto(predictionResultsByExpert, threePointSystem);
+                expertStats = expertStats.OrderByDescending(es => es.Sum).ToList();
+                
+                var expertStatsInTour = new ExpertStatsInTourReadDto(tour.Number, expertStats);
 
-            return expertStats.OrderByDescending(s => s.Sum);
+                expertStatsInTournament.Add(expertStatsInTour);
+            }
+
+            return expertStatsInTournament;
         }
     }
 }

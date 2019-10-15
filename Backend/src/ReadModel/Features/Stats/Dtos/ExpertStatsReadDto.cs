@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using System.Diagnostics.Contracts;
+using Domain.Models;
 
 namespace ReadModel.Features.Stats.Dtos
 {

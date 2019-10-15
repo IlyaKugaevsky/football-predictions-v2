@@ -50,6 +50,16 @@ namespace Domain.Models
             EnsureClosingConditions();
         }
 
+        public void Rollback()
+        {
+            foreach (var headToHeadMatch in Matches)
+            {
+                headToHeadMatch.RollBack();
+            }
+
+            IsOver = false;
+        }
+
         public void Evaluate()
         {
             if (IsOver) return;
